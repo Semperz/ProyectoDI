@@ -17,11 +17,23 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>230</y>
-      <width>75</width>
-      <height>23</height>
+      <x>320</x>
+      <y>320</y>
+      <width>80</width>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>80</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>80</width>
+      <height>25</height>
+     </size>
     </property>
     <property name="text">
      <string>Aceptar</string>
@@ -61,8 +73,20 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSalir">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionSalir"/>
+   </widget>
+   <addaction name="menuSalir"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
