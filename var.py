@@ -1,6 +1,6 @@
 '''
 
-fichero de variable globales
+fichero de variables globales
 
 '''
 global ui
