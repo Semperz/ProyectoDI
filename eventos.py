@@ -1,6 +1,9 @@
 import sys
 from PyQt6 import QtWidgets, QtGui
 
+import conexion
+import var
+
 
 class Eventos():
     def mensajeSalir(self=None):
@@ -18,3 +21,8 @@ class Eventos():
             sys.exit()
         else:
             mbox.hide()
+
+    def cargarProv(self):
+        var.ui.cmbProvcli.clear()
+        listado = conexion.Conexion.listarProvincias(self)
+        var.ui.cmbProvcli.addItems(listado)
