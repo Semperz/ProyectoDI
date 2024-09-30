@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/icono.svg</normaloff>img/icono.svg</iconset>
+    <normaloff>C:/Users/a23sergiopg/.designer/backup/img/icono.svg</normaloff>C:/Users/a23sergiopg/.designer/backup/img/icono.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -401,6 +401,18 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnModifcli">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="text">
                <string>Modificar</string>
               </property>
@@ -408,6 +420,18 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnDelcli">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="text">
                <string>Eliminar</string>
               </property>
