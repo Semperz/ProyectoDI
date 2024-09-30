@@ -53,7 +53,8 @@ class Conexion:
     def listarMunicipios(self):
         listaMuni = []
         query = QtSql.QSqlQuery()
-        query.prepare("SELECT * FROM municipios")
+        query.prepare("SELECT * FROM municipios"
+                      " WHERE fk_idprov = (SELECT idprov FROM provincias)")
         if query.exec():
             while query.next():
                 listaMuni.append(query.value(1))
