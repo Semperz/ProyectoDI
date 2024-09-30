@@ -26,3 +26,7 @@ class Eventos():
         var.ui.cmbProvcli.clear()
         listado = conexion.Conexion.listarProvincias(self)
         var.ui.cmbProvcli.addItems(listado)
+    def cargarMuni(self):
+        var.ui.cmbMunicli.clear()
+        listado = conexion.Conexion.listarMunicipios(self)
+        var.ui.cmbMunicli.addItems(listado)
