@@ -39,6 +39,13 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="12" alignment="Qt::AlignHCenter">
+             <widget class="QCheckBox" name="chkHistoriacli">
+              <property name="text">
+               <string>Historico</string>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="6">
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
@@ -54,29 +61,6 @@
                </size>
               </property>
              </spacer>
-            </item>
-            <item row="2" column="3">
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="11" alignment="Qt::AlignHCenter">
-             <widget class="QCheckBox" name="chkHistoriacli">
-              <property name="text">
-               <string>Historico</string>
-              </property>
-             </widget>
             </item>
             <item row="0" column="2">
              <widget class="QLineEdit" name="txtDnicli">
@@ -95,19 +79,31 @@
               <property name="styleSheet">
                <string notr="true">background-color:rgb(229, 255, 255);</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
+            </item>
+            <item row="2" column="3">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item row="0" column="1">
              <widget class="QLabel" name="lblDnicli">
               <property name="text">
                <string>DNI/CIF:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="lblEmailcli">
-              <property name="text">
-               <string>Email:</string>
               </property>
              </widget>
             </item>
@@ -130,6 +126,32 @@
               </property>
              </widget>
             </item>
+            <item row="1" column="5" colspan="7">
+             <widget class="QLineEdit" name="txtNomcli">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="lblEmailcli">
+              <property name="text">
+               <string>Email:</string>
+              </property>
+             </widget>
+            </item>
             <item row="2" column="5" colspan="4">
              <widget class="QLineEdit" name="txtMovilcli">
               <property name="minimumSize">
@@ -149,39 +171,6 @@
               </property>
               <property name="text">
                <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="5" colspan="6">
-             <widget class="QLineEdit" name="txtNomcli">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>250</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QLabel" name="lblMovilcli">
-              <property name="text">
-               <string>Móvil:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="lblApelcli">
-              <property name="text">
-               <string>Apellidos:</string>
               </property>
              </widget>
             </item>
@@ -208,6 +197,20 @@
               </property>
               <property name="styleSheet">
                <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="lblApelcli">
+              <property name="text">
+               <string>Apellidos:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="4">
+             <widget class="QLabel" name="lblMovilcli">
+              <property name="text">
+               <string>Móvil:</string>
               </property>
              </widget>
             </item>
@@ -256,7 +259,21 @@
               </property>
              </widget>
             </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="lblDircli">
+              <property name="text">
+               <string>Dirección:</string>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="11">
+             <widget class="QLabel" name="lblMunicli">
+              <property name="text">
+               <string>Municipio:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="12">
              <widget class="QComboBox" name="cmbMunicli">
               <property name="minimumSize">
                <size>
@@ -275,20 +292,6 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="lblDircli">
-              <property name="text">
-               <string>Dirección:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="10">
-             <widget class="QLabel" name="lblMunicli">
-              <property name="text">
-               <string>Municipio:</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="3">
              <spacer name="horizontalSpacer">
               <property name="orientation">
@@ -296,19 +299,6 @@
               </property>
               <property name="sizeType">
                <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="3" column="9">
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -331,7 +321,7 @@
               </property>
              </spacer>
             </item>
-            <item row="0" column="12" rowspan="4">
+            <item row="0" column="13" rowspan="4">
              <spacer name="horizontalSpacer_9">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -343,6 +333,71 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="3" column="10">
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="6">
+             <widget class="QLabel" name="lblFechaAltacli">
+              <property name="text">
+               <string>Fecha Alta:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="8">
+             <widget class="QPushButton" name="btnCalendarCli">
+              <property name="minimumSize">
+               <size>
+                <width>28</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>28</width>
+                <height>1677777</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #FFF</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>img/calendar-icon_34471.ico</normaloff>img/calendar-icon_34471.ico</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="7">
+             <widget class="QLineEdit" name="txtAltaCli">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
