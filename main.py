@@ -1,3 +1,4 @@
+import clientes
 import conexion
 import eventos
 import styles
@@ -20,6 +21,10 @@ class Main(QtWidgets.QMainWindow):
         zona de eventos del menubar
         '''
         var.ui.actSalir.triggered.connect(eventos.Eventos.mensajeSalir)
+        '''
+        eventos de botones
+        '''
+        var.ui.btnGrabarcli.clicked.connect(clientes.Clientes.altaClientes)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
