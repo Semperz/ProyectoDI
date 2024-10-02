@@ -11,6 +11,10 @@ QMenuBar {
     background-color: whitesmoke;
 }
 
+QLineEdit{
+    background-color:rgb(229, 255, 255);
+}
+
 QPushButton {
     background-color: #0ea2ae;
     font-weight: bold;

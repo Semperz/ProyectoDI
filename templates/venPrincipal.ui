@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1058</width>
     <height>768</height>
    </rect>
   </property>
@@ -358,25 +358,34 @@
              <widget class="QPushButton" name="btnCalendarCli">
               <property name="minimumSize">
                <size>
-                <width>28</width>
-                <height>0</height>
+                <width>25</width>
+                <height>25</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>28</width>
-                <height>1677777</height>
+                <width>25</width>
+                <height>25</height>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: #FFF</string>
+               <string notr="true"/>
               </property>
               <property name="text">
                <string/>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>img/calendar-icon_34471.ico</normaloff>img/calendar-icon_34471.ico</iconset>
+                <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>25</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -647,7 +656,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
+     <width>1058</width>
      <height>21</height>
     </rect>
    </property>
@@ -676,6 +685,24 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>txtDnicli</tabstop>
+  <tabstop>txtAltaCli</tabstop>
+  <tabstop>txtApelcli</tabstop>
+  <tabstop>txtNomcli</tabstop>
+  <tabstop>txtEmailcli</tabstop>
+  <tabstop>txtMovilcli</tabstop>
+  <tabstop>txtDircli</tabstop>
+  <tabstop>cmbProvcli</tabstop>
+  <tabstop>cmbMunicli</tabstop>
+  <tabstop>chkHistoriacli</tabstop>
+  <tabstop>btnCalendarCli</tabstop>
+  <tabstop>btnGrabarcli</tabstop>
+  <tabstop>btnModifcli</tabstop>
+  <tabstop>btnDelcli</tabstop>
+  <tabstop>tabClientes</tabstop>
+  <tabstop>panPrincipal</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

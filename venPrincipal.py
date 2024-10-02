@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'venPrincipal.ui'
+# Form implementation generated from reading ui file '.\\templates\\venPrincipal.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_venPrincipal(object):
     def setupUi(self, venPrincipal):
         venPrincipal.setObjectName("venPrincipal")
-        venPrincipal.resize(1024, 768)
+        venPrincipal.resize(1058, 768)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -128,13 +128,15 @@ class Ui_venPrincipal(object):
         self.lblFechaAltacli.setObjectName("lblFechaAltacli")
         self.gridLayout.addWidget(self.lblFechaAltacli, 0, 6, 1, 1)
         self.btnCalendarCli = QtWidgets.QPushButton(parent=self.pesClientes)
-        self.btnCalendarCli.setMinimumSize(QtCore.QSize(28, 0))
-        self.btnCalendarCli.setMaximumSize(QtCore.QSize(28, 1677777))
-        self.btnCalendarCli.setStyleSheet("background-color: #FFF")
+        self.btnCalendarCli.setMinimumSize(QtCore.QSize(25, 25))
+        self.btnCalendarCli.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnCalendarCli.setStyleSheet("")
         self.btnCalendarCli.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("img/calendar-icon_34471.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/calendario.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btnCalendarCli.setIcon(icon1)
+        self.btnCalendarCli.setIconSize(QtCore.QSize(25, 25))
+        self.btnCalendarCli.setCheckable(False)
         self.btnCalendarCli.setObjectName("btnCalendarCli")
         self.gridLayout.addWidget(self.btnCalendarCli, 0, 8, 1, 1)
         self.txtAltaCli = QtWidgets.QLineEdit(parent=self.pesClientes)
@@ -203,7 +205,7 @@ class Ui_venPrincipal(object):
         self.gridLayout_2.addItem(spacerItem14, 0, 2, 1, 1)
         venPrincipal.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=venPrincipal)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1024, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1058, 21))
         self.menubar.setObjectName("menubar")
         self.menuSalir = QtWidgets.QMenu(parent=self.menubar)
         self.menuSalir.setObjectName("menuSalir")
@@ -223,6 +225,21 @@ class Ui_venPrincipal(object):
         self.retranslateUi(venPrincipal)
         self.panPrincipal.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(venPrincipal)
+        venPrincipal.setTabOrder(self.txtDnicli, self.txtAltaCli)
+        venPrincipal.setTabOrder(self.txtAltaCli, self.txtApelcli)
+        venPrincipal.setTabOrder(self.txtApelcli, self.txtNomcli)
+        venPrincipal.setTabOrder(self.txtNomcli, self.txtEmailcli)
+        venPrincipal.setTabOrder(self.txtEmailcli, self.txtMovilcli)
+        venPrincipal.setTabOrder(self.txtMovilcli, self.txtDircli)
+        venPrincipal.setTabOrder(self.txtDircli, self.cmbProvcli)
+        venPrincipal.setTabOrder(self.cmbProvcli, self.cmbMunicli)
+        venPrincipal.setTabOrder(self.cmbMunicli, self.chkHistoriacli)
+        venPrincipal.setTabOrder(self.chkHistoriacli, self.btnCalendarCli)
+        venPrincipal.setTabOrder(self.btnCalendarCli, self.btnGrabarcli)
+        venPrincipal.setTabOrder(self.btnGrabarcli, self.btnModifcli)
+        venPrincipal.setTabOrder(self.btnModifcli, self.btnDelcli)
+        venPrincipal.setTabOrder(self.btnDelcli, self.tabClientes)
+        venPrincipal.setTabOrder(self.tabClientes, self.panPrincipal)
 
     def retranslateUi(self, venPrincipal):
         _translate = QtCore.QCoreApplication.translate
