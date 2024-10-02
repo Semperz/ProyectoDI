@@ -32,6 +32,10 @@ class Main(QtWidgets.QMainWindow):
         eventos de cajas de texto
         '''
         var.ui.txtDnicli.editingFinished.connect(lambda: clientes.Clientes.checkDNI(var.ui.txtDnicli.text()))
+        '''
+        combobox events
+        '''
+        var.ui.cmbProvcli.currentIndexChanged.connect(eventos.Eventos.cargarMuni)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

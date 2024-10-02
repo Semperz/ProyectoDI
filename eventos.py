@@ -28,7 +28,8 @@ class Eventos:
         var.ui.cmbProvcli.addItems(listado)
     def cargarMuni(self):
         var.ui.cmbMunicli.clear()
-        listado = conexion.Conexion.listarMunicipios(self)
+        provActual = var.ui.cmbProvcli.currentText()
+        listado = conexion.Conexion.listarMunicipios(provActual)
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):
