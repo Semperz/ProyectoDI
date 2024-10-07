@@ -1,5 +1,3 @@
-from tabnanny import check
-
 import clientes
 import conexion
 import eventos
