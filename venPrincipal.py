@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\\templates\\venPrincipal.ui'
+# Form implementation generated from reading ui file '.\templates\venPrincipal.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -133,7 +133,7 @@ class Ui_venPrincipal(object):
         self.btnAltaCli.setStyleSheet("")
         self.btnAltaCli.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\\\templates\\../img/calendario.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\templates\\../img/calendario.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btnAltaCli.setIcon(icon1)
         self.btnAltaCli.setIconSize(QtCore.QSize(25, 25))
         self.btnAltaCli.setCheckable(False)
