@@ -1,5 +1,7 @@
 import os
 from PyQt6 import QtSql, QtWidgets
+from PyQt6.QtWidgets import QMessageBox
+from PyQt6 import QtGui
 
 class Conexion:
 
@@ -61,7 +63,17 @@ class Conexion:
                 listaMuni.append(query.value(1))
         return listaMuni
 
-
-
+    def altaCliente(nuevoCli):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT into clientes (dnicli, altacli, apelcli, nomecli, emailcli, movilcli, "
+                          " dircli, provcli, municli ) VALUES (:dnicli, :altacli, :apelcli, :nomecli, "
+                          " :emailcli, :movilcli, :dircli, :provcli, :municli)")
+            columnas = ['dnicli', 'altacli', 'apelcli', 'nomecli', 'emailcli', 'movilcli', 'dircli', 'provcli',
+                        'municli']
+            for i in range(len(columnas)):
+                query.bindValue(":"+str(columnas[i]), nuevoCli[i])
+        except Exception as e:
+            print(e)
 
 

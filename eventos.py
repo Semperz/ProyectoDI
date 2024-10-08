@@ -65,7 +65,6 @@ class Eventos:
     def cargaFecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
-            print(data)
             if var.panel == var.ui.panPrincipal.currentIndex():
                 var.ui.txtAltaCli.setText(str(data))
             time.sleep(0.5)

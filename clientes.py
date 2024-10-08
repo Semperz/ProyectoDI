@@ -1,7 +1,6 @@
-import time
+from PyQt6 import QtWidgets, QtGui
 
-from PyQt6 import QtWidgets
-
+import conexion
 import eventos
 import var
 
@@ -22,10 +21,26 @@ class Clientes:
             print("error check cliente",e)
 
     def altaClientes(self):
-        dni =var.ui.txtDnicli.text()
-        print(dni)
+        try:
+            nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
+                    var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            if conexion.Conexion.altaCliente(nuevoCli):
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Cliente grabado en la base de datos")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+            else:
+                QtWidgets.QMessageBox.critical(None, 'Error', "Faltan datos")
+        except Exception as e:
+            print("error alta cliente",e)
 
-    def checkEmail(mail):
+
+    def checkEmail(nuevo):
         try:
             mail = str(var.ui.txtEmailcli.text())
             if eventos.Eventos.validarMail(mail):
