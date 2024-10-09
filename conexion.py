@@ -1,4 +1,6 @@
 import os
+import sqlite3
+
 from PyQt6 import QtSql, QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6 import QtGui
@@ -73,7 +75,11 @@ class Conexion:
                         'municli']
             for i in range(len(columnas)):
                 query.bindValue(":"+str(columnas[i]), nuevoCli[i])
-        except Exception as e:
-            print(e)
+            if query.exec():
+                return True
+            else:
+                return False
+        except sqlite3.IntegrityError:
+            return False
 
 

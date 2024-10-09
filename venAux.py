@@ -13,5 +13,5 @@ class Calendar(QtWidgets.QDialog):
         mes = datetime.now().month
         ano = datetime.now().year
 
-        var.uicalendar.Calendar.setSelectedDate((QtCore.QDate(mes, ano, dia)))
+        var.uicalendar.Calendar.setSelectedDate((QtCore.QDate(dia, mes, ano)))
         var.uicalendar.Calendar.clicked.connect(eventos.Eventos.cargaFecha)

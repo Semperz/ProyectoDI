@@ -24,7 +24,9 @@ class Clientes:
         try:
             nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
-            if conexion.Conexion.altaCliente(nuevoCli):
+            if not conexion.Conexion.altaCliente(nuevoCli):
+                QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
+            else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
@@ -34,8 +36,7 @@ class Clientes:
                     QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-            else:
-                QtWidgets.QMessageBox.critical(None, 'Error', "Faltan datos")
+                mbox.exec()
         except Exception as e:
             print("error alta cliente",e)
 
