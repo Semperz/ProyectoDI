@@ -24,6 +24,11 @@ class Clientes:
         try:
             nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            '''for i in len(nuevoCli):
+                if nuevoCli[i] == "":
+                    QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
+                else:
+                    pass'''
             if not conexion.Conexion.altaCliente(nuevoCli):
                 QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
             else:
@@ -55,3 +60,17 @@ class Clientes:
 
         except Exception as error:
             print("error check cliente", error)
+
+    def checkNumero(nuevo):
+        try:
+            telefono = str(var.ui.txtMovilcli.text())
+            if eventos.Eventos.validarTelefono(telefono):
+                var.ui.txtMovilcli.setStyleSheet('background-color: rgb(255, 255, 255);')
+                var.ui.txtMovilcli.setText(telefono.lower())
+
+            else:
+                var.ui.txtMovilcli.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
+                var.ui.txtMovilcli.setText(None)
+                var.ui.txtMovilcli.setFocus()
+        except Exception as e:
+            print("error check cliente", e)

@@ -81,3 +81,10 @@ class Eventos:
             return True
         else:
             return False
+
+    def validarTelefono(telefono):
+        regex = r'^\+?\d{0,3}\d{9}$'
+        if re.match(regex, telefono):
+            return True
+        else:
+            return False
