@@ -24,11 +24,12 @@ class Clientes:
         try:
             nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
-            '''for i in len(nuevoCli):
+            for i in range(len(nuevoCli)):
                 if nuevoCli[i] == "":
-                    QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
+                    QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir")
+                    return
                 else:
-                    pass'''
+                    pass
             if not conexion.Conexion.altaCliente(nuevoCli):
                 QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
             else:
