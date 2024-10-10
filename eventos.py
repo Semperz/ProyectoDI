@@ -88,3 +88,18 @@ class Eventos:
             return True
         else:
             return False
+
+    def resizeTablaClientes(self):
+        try:
+            header = var.ui.tabClientes.horizontalHeader()
+            for i in range(header.count()):
+                if (i == 0 or i == 1):
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+                else:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+                header_item = var.ui.tabClientes.horizontalHeaderItem(i)
+                font = header_item.font()
+                font.setBold(True)
+                header_item.setFont(font)
+        except Exception as error:
+            print("error en resize tabla clientes: ", error)

@@ -1,4 +1,4 @@
-from PyQt6 import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtGui, QtCore
 
 import conexion
 import eventos
@@ -43,6 +43,7 @@ class Clientes:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
+                #Clientes.cargaTablaClientes(self)
         except Exception as e:
             print("error alta cliente",e)
 
@@ -75,3 +76,24 @@ class Clientes:
                 var.ui.txtMovilcli.setFocus()
         except Exception as e:
             print("error check cliente", e)
+
+    def cargaTablaClientes(self):
+        try:
+            listado = conexion.Conexion.listadoClientes(self)
+            print(listado)
+            index = 0
+            column = 0
+            for cliente in listado:
+                var.ui.tabClientes.setRowCount(index + 1)
+                # var.ui.tabClientes.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                # var.ui.tabClientes.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                # var.ui.tabClientes.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                # var.ui.tabClientes.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                # var.ui.tabClientes.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                # var.ui.tabClientes.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter.AlignVCenter)
+                for i, celda in enumerate(cliente):
+                    var.ui.tabClientes.setItem(index, i, QtWidgets.QTableWidgetItem(celda))
+                    column += 1
+                index += 1
+        except Exception as e:
+            print("error carga tabla clientes",e)

@@ -82,4 +82,18 @@ class Conexion:
         except sqlite3.IntegrityError:
             return False
 
+    def listadoClientes(self):
+        try:
+            listado = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT apelcli, nomecli, emailcli, movilcli, "
+                          " provcli, municli, bajacli FROM clientes")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("error listado en conexión", e)
+
 
