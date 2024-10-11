@@ -173,6 +173,7 @@ class Ui_venPrincipal(object):
         self.txtAltaCli = QtWidgets.QLineEdit(parent=self.pesClientes)
         self.txtAltaCli.setMinimumSize(QtCore.QSize(80, 0))
         self.txtAltaCli.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.txtAltaCli.setStyleSheet("background-color:rgb(229, 255, 255);")
         self.txtAltaCli.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.txtAltaCli.setObjectName("txtAltaCli")
         self.gridLayout.addWidget(self.txtAltaCli, 0, 7, 1, 1)

@@ -44,6 +44,7 @@ class Clientes:
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 Clientes.cargaTablaClientes()
+                eventos.Eventos.clearCampos()
         except Exception as e:
             print("error alta cliente",e)
 
@@ -52,7 +53,7 @@ class Clientes:
         try:
             mail = str(var.ui.txtEmailcli.text())
             if eventos.Eventos.validarMail(mail):
-                var.ui.txtEmailcli.setStyleSheet('background-color: rgb(255, 255, 255);')
+                var.ui.txtEmailcli.setStyleSheet('background-color: rgb(229, 255, 255);')
                 var.ui.txtEmailcli.setText(mail.lower())
 
             else:
@@ -67,7 +68,7 @@ class Clientes:
         try:
             telefono = str(var.ui.txtMovilcli.text())
             if eventos.Eventos.validarTelefono(telefono):
-                var.ui.txtMovilcli.setStyleSheet('background-color: rgb(255, 255, 255);')
+                var.ui.txtMovilcli.setStyleSheet('background-color: rgb(229, 255, 255);')
                 var.ui.txtMovilcli.setText(telefono.lower())
 
             else:
