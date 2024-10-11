@@ -45,7 +45,7 @@ class Conexion:
             return False
 
     @staticmethod
-    def listarProvincias(self):
+    def listarProvincias():
         listaProv = []
         query = QtSql.QSqlQuery()
         query.prepare("SELECT * FROM provincias")
@@ -81,8 +81,8 @@ class Conexion:
                 return False
         except sqlite3.IntegrityError:
             return False
-
-    def listadoClientes(self):
+    @staticmethod
+    def listadoClientes():
         try:
             listado = []
             query = QtSql.QSqlQuery()

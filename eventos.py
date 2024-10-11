@@ -23,12 +23,13 @@ class Eventos:
             sys.exit()
         else:
             mbox.hide()
-
-    def cargarProv(self):
+    @staticmethod
+    def cargarProv():
         var.ui.cmbProvcli.clear()
-        listado = conexion.Conexion.listarProvincias(self)
+        listado = conexion.Conexion.listarProvincias()
         var.ui.cmbProvcli.addItems(listado)
-    def cargarMuni(self):
+    @staticmethod
+    def cargarMuni():
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
         listado = conexion.Conexion.listarMunicipios(provActual)
@@ -88,12 +89,12 @@ class Eventos:
             return True
         else:
             return False
-
-    def resizeTablaClientes(self):
+    @staticmethod
+    def resizeTablaClientes():
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(header.count()):
-                if (i == 0 or i == 1):
+                if i not in (3,6):
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
                 else:
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)

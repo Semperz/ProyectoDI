@@ -42,7 +42,7 @@ class Ui_venPrincipal(object):
         spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         self.gridLayout_3.addItem(spacerItem1, 4, 0, 1, 1)
         self.tabClientes = QtWidgets.QTableWidget(parent=self.pesClientes)
-        self.tabClientes.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectColumns)
+        self.tabClientes.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.tabClientes.setObjectName("tabClientes")
         self.tabClientes.setColumnCount(7)
         self.tabClientes.setRowCount(0)

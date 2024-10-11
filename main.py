@@ -17,9 +17,9 @@ class Main(QtWidgets.QMainWindow):
         var.uicalendar = Calendar()
         self.setStyleSheet(styles.load_stylesheet())
         conexion.Conexion.db_conexion(self)
-        eventos.Eventos.cargarProv(self)
-        eventos.Eventos.cargarMuni(self)
-        clientes.Clientes.cargaTablaClientes(self)
+        eventos.Eventos.cargarProv()
+        eventos.Eventos.cargarMuni()
+        clientes.Clientes.cargaTablaClientes()
 
         '''
         zona de eventos del menubar

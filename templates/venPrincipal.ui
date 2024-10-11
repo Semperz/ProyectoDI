@@ -83,7 +83,7 @@
         <item row="3" column="0">
          <widget class="QTableWidget" name="tabClientes">
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectColumns</enum>
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
