@@ -1,11 +1,24 @@
+import locale
+import os.path
 import sys
 import time
 import re
-from PyQt6 import QtWidgets, QtGui
+from datetime import datetime
 
+from PyQt6 import QtWidgets, QtGui
+import zipfile
+import shutil
+
+import clientes
 import conexion
+import conexionserver
+import eventos
 import var
 
+
+#Establecer configuracion regional
+locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
     def mensajeSalir(self=None):
@@ -26,13 +39,15 @@ class Eventos:
     @staticmethod
     def cargarProv():
         var.ui.cmbProvcli.clear()
-        listado = conexion.Conexion.listarProvincias()
+        #listado = conexion.Conexion.listarProvincias()
+        listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvcli.addItems(listado)
     @staticmethod
     def cargarMuni():
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
-        listado = conexion.Conexion.listarMunicipios(provActual)
+        #listado = conexion.Conexion.listarMunicipios(provActual)
+        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):
@@ -94,7 +109,7 @@ class Eventos:
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(header.count()):
-                if i not in (3,6):
+                if i not in (2,5):
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
                 else:
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
@@ -114,3 +129,52 @@ class Eventos:
         var.ui.txtAltaCli.setText(None)
         var.ui.txtDircli.setText(None)
         var.ui.cmbProvcli.setCurrentIndex(0)
+
+    def crearBackup(self):
+        try:
+            fecha = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+            copia = str(fecha)+"_backup.zip"
+            directorio, fichero = var.dlgabrir.getSaveFileName(None, "Guardar Copia Seguridad",copia, ".zip")
+            print(directorio)
+            if var.dlgabrir.accept and fichero:
+                fichzip = zipfile.ZipFile(fichero, 'w')
+                fichzip.write("bbdd.sqlite", os.path.basename("bbdd.sqlite"), zipfile.ZIP_DEFLATED)
+                fichzip.close()
+                shutil.move(fichero, directorio)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
+                mbox.setWindowTitle('Copia seguridad')
+                mbox.setText("Copia de seguridad guardada")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+        except Exception as error:
+            print("error en crear backup: ", error)
+
+    def restaurarBackup(self):
+        try:
+            filename = var.dlgabrir.getOpenFileName(None, "Restaurar Copia Seguridad", "", "*.zip;;All Files (*)")
+            file = filename[0]
+            if file:
+                with zipfile.ZipFile(file, "r") as bbdd:
+                    bbdd.extractall(pwd=None)
+                bbdd.close()
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
+                mbox.setWindowTitle('Copia seguridad')
+                mbox.setText("Copia de seguridad restaurada")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                conexion.Conexion.db_conexion(self)
+                eventos.Eventos.cargarProv()
+                conexion.Conexion.listadoClientes()
+                clientes.Clientes.cargaTablaClientes(self)
+        except Exception as error:
+            print("error en restaurar backup: ", error)

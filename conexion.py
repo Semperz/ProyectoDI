@@ -86,7 +86,7 @@ class Conexion:
         try:
             listado = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT apelcli, nomecli, emailcli, movilcli, "
+            query.prepare("SELECT apelcli, nomecli, movilcli, "
                           " provcli, municli, bajacli FROM clientes")
             if query.exec():
                 while query.next():

@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets, QtGui, QtCore
 
 import conexion
+import conexionserver
 import eventos
 import var
 
@@ -78,9 +79,9 @@ class Clientes:
         except Exception as e:
             print("error check cliente", e)
     @staticmethod
-    def cargaTablaClientes():
+    def cargaTablaClientes(self):
         try:
-            listado = conexion.Conexion.listadoClientes()
+            listado = conexionserver.ConexionServer.listadoClientes(self)
             index = 0
             column = 0
             for cliente in listado:
@@ -90,11 +91,10 @@ class Clientes:
                     column += 1
                 var.ui.tabClientes.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabClientes.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tabClientes.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tabClientes.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabClientes.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabClientes.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabClientes.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tabClientes.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tabClientes.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabClientes.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 index += 1
             eventos.Eventos.resizeTablaClientes()
         except Exception as e:

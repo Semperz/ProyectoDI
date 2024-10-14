@@ -1,4 +1,6 @@
 from calendar import Calendar
+
+import conexionserver
 from venAux import *
 import clientes
 import conexion
@@ -15,16 +17,19 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_venPrincipal()
         var.ui.setupUi(self)
         var.uicalendar = Calendar()
+        var.dlgabrir = FileDialogAbrir()
         self.setStyleSheet(styles.load_stylesheet())
         conexion.Conexion.db_conexion(self)
-        eventos.Eventos.cargarProv()
-        eventos.Eventos.cargarMuni()
-        clientes.Clientes.cargaTablaClientes()
+        #conexionserver.ConexionServer.crear_conexion(self)
+
+        clientes.Clientes.cargaTablaClientes(self)
 
         '''
         zona de eventos del menubar
         '''
         var.ui.actSalir.triggered.connect(eventos.Eventos.mensajeSalir)
+        var.ui.actionCrear_Backup.triggered.connect(eventos.Eventos.crearBackup)
+        var.ui.actionRestaurar_Backup.triggered.connect(eventos.Eventos.restaurarBackup)
         '''
         eventos de botones
         '''
@@ -40,6 +45,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         combobox events
         '''
+        eventos.Eventos.cargarProv()
+        eventos.Eventos.cargarMuni()
         var.ui.cmbProvcli.currentIndexChanged.connect(eventos.Eventos.cargarMuni)
 
 if __name__ == '__main__':

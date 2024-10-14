@@ -100,11 +100,6 @@
           </column>
           <column>
            <property name="text">
-            <string>Email</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
             <string>Móvil</string>
            </property>
           </column>
@@ -705,8 +700,14 @@
     <addaction name="actionCrear_Backup"/>
     <addaction name="actionRestaurar_Backup"/>
    </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+   </widget>
    <addaction name="menuSalir"/>
    <addaction name="menuHerramientas"/>
+   <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSalir">
