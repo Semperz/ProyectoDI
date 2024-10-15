@@ -39,15 +39,15 @@ class Eventos:
     @staticmethod
     def cargarProv():
         var.ui.cmbProvcli.clear()
-        #listado = conexion.Conexion.listarProvincias()
-        listado = conexionserver.ConexionServer.listaProv()
+        listado = conexion.Conexion.listarProvincias()
+        #listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvcli.addItems(listado)
     @staticmethod
     def cargarMuni():
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
-        #listado = conexion.Conexion.listarMunicipios(provActual)
-        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        listado = conexion.Conexion.listarMunicipios(provActual)
+        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):
@@ -107,13 +107,13 @@ class Eventos:
     @staticmethod
     def resizeTablaClientes():
         try:
-            header = var.ui.tabClientes.horizontalHeader()
+            header = var.ui.tablaClientes.horizontalHeader()
             for i in range(header.count()):
-                if i not in (2,5):
+                if i not in (0,3,6):
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
                 else:
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
-                header_item = var.ui.tabClientes.horizontalHeaderItem(i)
+                header_item = var.ui.tablaClientes.horizontalHeaderItem(i)
                 font = header_item.font()
                 font.setBold(True)
                 header_item.setFont(font)
@@ -174,7 +174,7 @@ class Eventos:
                 mbox.exec()
                 conexion.Conexion.db_conexion(self)
                 eventos.Eventos.cargarProv()
-                conexion.Conexion.listadoClientes()
+                #conexionserver.ConexionServer.listadoClientes(self)
                 clientes.Clientes.cargaTablaClientes(self)
         except Exception as error:
             print("error en restaurar backup: ", error)

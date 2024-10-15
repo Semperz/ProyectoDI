@@ -86,8 +86,7 @@ class Conexion:
         try:
             listado = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT apelcli, nomecli, movilcli, "
-                          " provcli, municli, bajacli FROM clientes")
+            query.prepare("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
             if query.exec():
                 while query.next():
                     fila = [query.value(i) for i in range(query.record().count())]
@@ -96,4 +95,34 @@ class Conexion:
         except Exception as e:
             print("error listado en conexión", e)
 
+    def datosOneCliente(DNI):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM clientes WHERE dnicli = :DNI")
+            query.bindValue(":DNI", str(DNI))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+            return registro
+        except Exception as error:
+            print("error datos un cliente", error)
 
+    def modifCliente(registro):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("UPDATE clientes set altacli = :altacli, apelcli = :apelcli, nomecli = :nomecli, emailcli = :emailcli,"
+                          "movilcli = :movilcli, dircli = :dircli, provcli = :provcli, municli = :municli "
+                          "where dnicli = :dni")
+            query.bindValue(":dni", str(registro[0]))
+            columnas = ['altacli', 'apelcli', 'nomecli', 'emailcli', 'movilcli', 'dircli', 'provcli',
+                        'municli']
+            for i in range(len(columnas)):
+                query.bindValue(":" + str(columnas[i]), str(registro[i]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error modificar cliente", error)

@@ -64,8 +64,7 @@ class ConexionServer():
             conexion = ConexionServer().crear_conexion()
             listadoclientes = []
             cursor = conexion.cursor()
-            cursor.execute("SELECT apelcli, nomecli, movilcli, "
-                          " provcli, municli, bajacli FROM clientes")
+            cursor.execute("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
             resultados = cursor.fetchall()
             # Procesar cada fila de los resultados
             for fila in resultados:
