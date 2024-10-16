@@ -71,9 +71,10 @@ class Eventos:
             print("error en validar dni ", error)
 
 
-    def abrirCalendar(op):
+    def abrirCalendar(op, btn):
         try:
             var.panel=op
+            var.btn = btn
             var.uicalendar.show()
         except Exception as error:
             print("error en abrir calendar ", error)
@@ -81,9 +82,11 @@ class Eventos:
     def cargaFecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
-            if var.panel == var.ui.panPrincipal.currentIndex():
+            if var.panel == var.ui.panPrincipal.currentIndex() and var.btn == 0:
                 var.ui.txtAltaCli.setText(str(data))
-            time.sleep(0.5)
+            elif var.panel == var.ui.panPrincipal.currentIndex() and var.btn == 1:
+                var.ui.txtBajaCli.setText(str(data))
+            time.sleep(0.2)
             var.uicalendar.hide()
             return data
         except Exception as error:
@@ -178,3 +181,17 @@ class Eventos:
                 clientes.Clientes.cargaTablaClientes(self)
         except Exception as error:
             print("error en restaurar backup: ", error)
+
+
+    def limpiarPanel(self):
+        objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
+                    var.ui.txtNomcli,
+                    var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
+                    var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+
+        for i, dato in enumerate(objetosPanelCli):
+            if i == 7 or i == 8:
+                dato.setCurrentIndex(0)
+            else:
+                dato.setText(None)
+        eventos.Eventos.cargarProv()

@@ -114,9 +114,8 @@ class Conexion:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE clientes set altacli = :altacli, apelcli = :apelcli, nomecli = :nomecli, emailcli = :emailcli,"
                           "movilcli = :movilcli, dircli = :dircli, provcli = :provcli, municli = :municli "
-                          "where dnicli = :dni")
-            query.bindValue(":dni", str(registro[0]))
-            columnas = ['altacli', 'apelcli', 'nomecli', 'emailcli', 'movilcli', 'dircli', 'provcli',
+                          "where dnicli = :dnicli")
+            columnas = ['dnicli', 'altacli', 'apelcli', 'nomecli', 'emailcli', 'movilcli', 'dircli', 'provcli',
                         'municli']
             for i in range(len(columnas)):
                 query.bindValue(":" + str(columnas[i]), str(registro[i]))
@@ -126,3 +125,18 @@ class Conexion:
                 return False
         except Exception as error:
             print("error modificar cliente", error)
+
+    def bajaCliente(datos):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("UPDATE clientes set bajacli = :bajacli "
+                          "where dnicli = :dnicli")
+            query.bindValue(":bajacli", str(datos[0]))
+            query.bindValue(":dnicli", str(datos[1]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error baja cliente", error)
+

@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>C:/Users/a23sergiopg/.designer/backup/img/icono.svg</normaloff>C:/Users/a23sergiopg/.designer/backup/img/icono.svg</iconset>
+    <normaloff>../img/icono.svg</normaloff>../img/icono.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -515,7 +515,7 @@
              </spacer>
             </item>
             <item row="0" column="11">
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="txtBajaCli"/>
             </item>
             <item row="0" column="9">
              <widget class="QLabel" name="label_2">
@@ -776,16 +776,20 @@
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSalir">
-   <property name="text">
-    <string>Salir</string>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
    </property>
-  </action>
-  <action name="actionSalir_2">
-   <property name="text">
-    <string>Salir</string>
-   </property>
-  </action>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionbarLimpiar"/>
+   <addaction name="separator"/>
+   <addaction name="actionbarSalir"/>
+  </widget>
   <action name="actSalir">
    <property name="text">
     <string>Salir</string>
@@ -799,6 +803,36 @@
   <action name="actionRestaurar_Backup">
    <property name="text">
     <string>Restaurar Backup</string>
+   </property>
+  </action>
+  <action name="actionbarSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/icoSalir.ico</normaloff>../img/icoSalir.ico</iconset>
+   </property>
+   <property name="text">
+    <string>barSalir</string>
+   </property>
+   <property name="toolTip">
+    <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
+   </property>
+  </action>
+  <action name="actionbarLimpiar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/icoReload.ico</normaloff>../img/icoReload.ico</iconset>
+   </property>
+   <property name="text">
+    <string>barLimpiar</string>
+   </property>
+   <property name="toolTip">
+    <string>Limpiar</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
    </property>
   </action>
  </widget>

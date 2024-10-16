@@ -30,3 +30,7 @@ QPushButton:pressed {
     background-color:#0C8A94;
     transform: scale(0.95);
 }
+
+QToolBar{
+    background-color:whitesmoke
+}
