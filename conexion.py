@@ -140,3 +140,5 @@ class Conexion:
         except Exception as error:
             print("error baja cliente", error)
 
+
+

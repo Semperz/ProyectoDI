@@ -26,8 +26,10 @@ class Clientes:
         try:
             nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
-            for i in range(len(nuevoCli)):
-                if nuevoCli[i] == "":
+            camposObligatorios = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
+                                    var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            for i in range(len(camposObligatorios)):
+                if camposObligatorios[i] == "":
                     QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir")
                     return
                 else:
