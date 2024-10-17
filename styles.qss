@@ -34,3 +34,8 @@ QPushButton:pressed {
 QToolBar{
     background-color:whitesmoke
 }
+
+QTableWidget::item:selected {
+        background-color: ghostwhite;
+        color: black;
+    }

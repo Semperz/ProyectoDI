@@ -129,8 +129,8 @@ class Clientes:
             modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
                         var.ui.txtNomcli.text(),
                         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
-                        var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
-            if conexion.Conexion.modifCliente(modifcli):
+                        var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
+            if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
@@ -187,6 +187,7 @@ class Clientes:
                 Clientes.cargaTablaClientes(self)
         except Exception as error:
             print("error bajaCliente", error)
+
 
 
 

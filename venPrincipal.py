@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_venPrincipal(object):
     def setupUi(self, venPrincipal):
         venPrincipal.setObjectName("venPrincipal")
-        venPrincipal.resize(1163, 768)
+        venPrincipal.resize(1192, 768)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -258,6 +258,7 @@ class Ui_venPrincipal(object):
         spacerItem11 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         self.gridLayout_3.addItem(spacerItem11, 3, 0, 1, 1)
         self.tablaClientes = QtWidgets.QTableWidget(parent=self.pesClientes)
+        self.tablaClientes.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tablaClientes.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.tablaClientes.setObjectName("tablaClientes")
         self.tablaClientes.setColumnCount(7)
@@ -296,7 +297,7 @@ class Ui_venPrincipal(object):
         self.gridLayout_2.addItem(spacerItem13, 0, 2, 1, 1)
         venPrincipal.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=venPrincipal)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1163, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1192, 21))
         self.menubar.setObjectName("menubar")
         self.menuSalir = QtWidgets.QMenu(parent=self.menubar)
         self.menuSalir.setObjectName("menuSalir")
