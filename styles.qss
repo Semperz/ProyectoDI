@@ -36,6 +36,15 @@ QToolBar{
 }
 
 QTableWidget::item:selected {
-        background-color: ghostwhite;
+        background-color: #FFFFCC;
         color: black;
-    }
+}
+
+QHeaderView::section {
+    background-color: #d7eff6;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid black;
+}

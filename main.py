@@ -20,6 +20,7 @@ class Main(QtWidgets.QMainWindow):
         var.dlgabrir = FileDialogAbrir()
         self.setStyleSheet(styles.load_stylesheet())
         conexion.Conexion.db_conexion(self)
+        var.historico = 0
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         '''
@@ -61,6 +62,11 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.actionbarSalir.triggered.connect(eventos.Eventos.mensajeSalir)
         var.ui.actionbarLimpiar.triggered.connect(eventos.Eventos.limpiarPanel)
+
+        '''
+        eventos checkBox
+        '''
+        var.ui.chkHistoriacli.stateChanged.connect(clientes.Clientes.historicoCli)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

@@ -682,7 +682,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Eliminar</string>
+               <string>Baja</string>
               </property>
              </widget>
             </item>

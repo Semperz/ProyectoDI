@@ -379,7 +379,7 @@ class Ui_venPrincipal(object):
         self.lblAsterisk_5.setText(_translate("venPrincipal", "*"))
         self.btnGrabarcli.setText(_translate("venPrincipal", "Grabar"))
         self.btnModifcli.setText(_translate("venPrincipal", "Modificar"))
-        self.btnDelcli.setText(_translate("venPrincipal", "Eliminar"))
+        self.btnDelcli.setText(_translate("venPrincipal", "Baja"))
         item = self.tablaClientes.horizontalHeaderItem(0)
         item.setText(_translate("venPrincipal", "DNI/NIE"))
         item = self.tablaClientes.horizontalHeaderItem(1)

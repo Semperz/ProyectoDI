@@ -1,9 +1,12 @@
 import os
 import sqlite3
 
-from PyQt6 import QtSql, QtWidgets
+from PyQt6 import QtSql, QtWidgets, QtCore
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6 import QtGui
+
+import var
+
 
 class Conexion:
 
@@ -85,13 +88,23 @@ class Conexion:
     def listadoClientes():
         try:
             listado = []
-            query = QtSql.QSqlQuery()
-            query.prepare("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
-            if query.exec():
-                while query.next():
-                    fila = [query.value(i) for i in range(query.record().count())]
-                    listado.append(fila)
-            return listado
+            if var.historico == 1:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM clientes WHERE bajacli is NULL ORDER BY apelcli, nomecli ASC ")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+            elif var.historico == 0:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+
         except Exception as e:
             print("error listado en conexión", e)
 
@@ -112,17 +125,37 @@ class Conexion:
     def modifCliente(registro):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("UPDATE clientes set altacli = :altacli, apelcli = :apelcli, nomecli = :nomecli, emailcli = :emailcli,"
-                          "movilcli = :movilcli, dircli = :dircli, provcli = :provcli, municli = :municli, bajacli = :bajacli"
-                          "where dnicli = :dnicli")
-            columnas = ['dnicli', 'altacli', 'apelcli', 'nomecli', 'emailcli', 'movilcli', 'dircli', 'provcli',
-                        'municli', 'bajacli']
-            for i in range(len(columnas)):
-                query.bindValue(":" + str(columnas[i]), str(registro[i]))
+            query.prepare("select count(*) from clientes where dnicli = :dni")
+            query.bindValue(":dni", str(registro[0]))
             if query.exec():
-                return True
-            else:
-                return False
+                if query.next() and query.value(0) > 0:
+                    if query.exec():
+                        query2 = QtSql.QSqlQuery()
+                        query2.prepare("UPDATE clientes set altacli = :altacli, apelcli = :apelcli, nomecli = :nomecli, "
+                                      " emailcli = :emailcli, movilcli = :movilcli, dircli = :dircli, provcli = :provcli, "
+                                      " municli = :municli, bajacli = :bajacli where dnicli = :dni")
+                        query2.bindValue(":dnicli", str(registro[0]))
+                        query2.bindValue(":altacli", str(registro[1]))
+                        query2.bindValue(":apelcli", str(registro[2]))
+                        query2.bindValue(":nomecli", str(registro[3]))
+                        query2.bindValue(":emailcli", str(registro[4]))
+                        query2.bindValue(":movilcli", str(registro[5]))
+                        query2.bindValue(":dircli", str(registro[6]))
+                        query2.bindValue(":provcli", str(registro[7]))
+                        query2.bindValue(":municli", str(registro[8]))
+                        if registro[9] == "":
+                            query2.bindValue(":bajacli", QtCore.QVariant())
+                        else:
+                            query2.bindValue(":bajacli", str(registro[9]))
+                        if query2.exec():
+                            print(query2.numRowsAffected())
+                            return True
+                        else:
+                            return False
+                    else:
+                        return False
+                else:
+                    return False
         except Exception as error:
             print("error modificar cliente", error)
 

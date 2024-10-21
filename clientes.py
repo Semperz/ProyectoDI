@@ -154,7 +154,7 @@ class Clientes:
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 Clientes.cargaTablaClientes(self)
-            clientes.Clientes.cargaTablaClientes
+            clientes.Clientes.cargaTablaClientes(self)
         except Exception as error:
             print("error al modificar clientes",error)
 
@@ -188,7 +188,15 @@ class Clientes:
         except Exception as error:
             print("error bajaCliente", error)
 
-
+    def historicoCli(self):
+        try:
+            if var.ui.chkHistoriacli.isChecked():
+                var.historico = 0
+            else:
+                var.historico = 1
+            Clientes.cargaTablaClientes(self)
+        except (Exception) as error:
+            print("error al historico cliente",error)
 
 
 
