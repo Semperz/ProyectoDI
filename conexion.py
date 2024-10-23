@@ -1,9 +1,11 @@
 import os
 import sqlite3
+from datetime import datetime
 
 from PyQt6 import QtSql, QtWidgets, QtCore
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6 import QtGui
+from mysql.connector import DATETIME
 
 import var
 
@@ -133,7 +135,7 @@ class Conexion:
                         query2 = QtSql.QSqlQuery()
                         query2.prepare("UPDATE clientes set altacli = :altacli, apelcli = :apelcli, nomecli = :nomecli, "
                                       " emailcli = :emailcli, movilcli = :movilcli, dircli = :dircli, provcli = :provcli, "
-                                      " municli = :municli, bajacli = :bajacli where dnicli = :dni")
+                                      " municli = :municli, bajacli = :bajacli where dnicli = :dnicli")
                         query2.bindValue(":dnicli", str(registro[0]))
                         query2.bindValue(":altacli", str(registro[1]))
                         query2.bindValue(":apelcli", str(registro[2]))
@@ -164,7 +166,7 @@ class Conexion:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE clientes set bajacli = :bajacli "
                           "where dnicli = :dnicli")
-            query.bindValue(":bajacli", str(datos[0]))
+            query.bindValue(":bajacli", datetime.now().strftime("%d/%m/%Y"))
             query.bindValue(":dnicli", str(datos[1]))
             if query.exec():
                 return True
