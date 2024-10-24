@@ -35,6 +35,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actSalir.triggered.connect(eventos.Eventos.mensajeSalir)
         var.ui.actionCrear_Backup.triggered.connect(eventos.Eventos.crearBackup)
         var.ui.actionRestaurar_Backup.triggered.connect(eventos.Eventos.restaurarBackup)
+        var.ui.actionTipo_de_propiedades.triggered.connect(eventos.Eventos.abrirTipoprop)
         '''
         eventos de botones
         '''
