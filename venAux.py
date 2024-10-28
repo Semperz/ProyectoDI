@@ -2,7 +2,8 @@ from datetime import datetime
 from dlgCalendar import *
 import eventos
 import var
-from dlgGestionprop import Ui_dlgTipoProp
+from dlgGestionprop import *
+from propiedades import Propiedades
 
 
 class Calendar(QtWidgets.QDialog):
@@ -26,3 +27,4 @@ class dlgGestionprop(QtWidgets.QDialog):
         super(dlgGestionprop, self).__init__()
         var.dlggestion = Ui_dlgTipoProp()
         var.dlggestion.setupUi(self)
+        var.dlggestion.btnAltatipoprop.clicked.connect(Propiedades.altaTipopropiedad)

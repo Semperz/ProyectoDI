@@ -202,3 +202,21 @@ class Eventos:
             var.dlggestion.show()
         except Exception as error:
             print(error)
+
+    @staticmethod
+    def resizeTablaPropiedades():
+        try:
+            header = var.ui.tablaPropiedades.horizontalHeader()
+            for i in range(header.count()):
+                if i == 1 or i == 2 or i == 6:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+                else:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+
+                header_item = var.ui.tablaPropiedades.horizontalHeaderItem(i)
+                font = header_item.font()
+                font.setBold(True)
+                header_item.setFont(font)
+        except Exception as e:
+            print("error en resize tabla propiedades", e)

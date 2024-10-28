@@ -1,6 +1,7 @@
 from calendar import Calendar
 
 import conexionserver
+from propiedades import Propiedades
 from venAux import *
 import clientes
 import conexion
@@ -18,6 +19,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.setupUi(self)
         var.uicalendar = Calendar()
         var.dlgabrir = FileDialogAbrir()
+        var.dlggestion = dlgGestionprop()
         self.setStyleSheet(styles.load_stylesheet())
         conexion.Conexion.db_conexion(self)
         var.historico = 0
@@ -27,6 +29,7 @@ class Main(QtWidgets.QMainWindow):
         eventos de tablas
         '''
         eventos.Eventos.resizeTablaClientes()
+        eventos.Eventos.resizeTablaPropiedades()
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)
 
         '''
@@ -44,6 +47,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(lambda: eventos.Eventos.abrirCalendar(0, 1))
         var.ui.btnModifcli.clicked.connect(clientes.Clientes.modifCliente)
         var.ui.btnDelcli.clicked.connect(clientes.Clientes.bajaCliente)
+
 
         '''
         eventos de cajas de texto
