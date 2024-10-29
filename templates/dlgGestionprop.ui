@@ -101,7 +101,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -132,7 +132,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnDeltipoprop">
+     <widget class="QPushButton" name="btnBajatipoprop">
       <property name="text">
        <string>Eliminar</string>
       </property>

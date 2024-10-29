@@ -196,7 +196,9 @@ class Eventos:
             else:
                 dato.setText(None)
         eventos.Eventos.cargarProv()
-
+    """
+    Pagina propiedades
+    """
     def abrirTipoprop(self):
         try:
             var.dlggestion.show()
@@ -220,3 +222,25 @@ class Eventos:
                 header_item.setFont(font)
         except Exception as e:
             print("error en resize tabla propiedades", e)
+
+    def cargarTipoprop(self):
+        try:
+            registro = conexion.Conexion.cargarTipoprop(self)
+            var.ui.cmbTipoprop.clear()
+            var.ui.cmbTipoprop.addItems(registro)
+        except Exception as e:
+            print("error en cargar tipoprop", e)
+
+    @staticmethod
+    def cargarProvprop():
+        var.ui.cmbProvprop.clear()
+        listado = conexion.Conexion.listarProvincias()
+        #listado = conexionserver.ConexionServer.listaProv()
+        var.ui.cmbProvprop.addItems(listado)
+    @staticmethod
+    def cargarMuniprop():
+        var.ui.cmbMuniprop.clear()
+        provActual = var.ui.cmbProvprop.currentText()
+        listado = conexion.Conexion.listarMunicipios(provActual)
+        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        var.ui.cmbMuniprop.addItems(listado)

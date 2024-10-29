@@ -186,3 +186,53 @@ class Conexion:
                 return False
         except Exception as error:
             print("error baja cliente", error)
+
+    """
+    Gestión de propiedades
+    """
+
+    def altaTipoprop(tipo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT into tipoprop (tipo) VALUES (:tipo)")
+            query.bindValue(":tipo", tipo)
+            if query.exec():
+                registro = Conexion.cargarTipoprop(self=None)
+                return registro
+            else:
+                return False
+        except Exception as error:
+            print("error alta tipo", error)
+
+    
+    def bajaTipoprop(tipo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("DELETE from tipoprop where tipo = :tipo")
+            query.bindValue(":tipo", tipo)
+            if query.exec():
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT tipo FROM tipoprop order by tipo ASC")
+                if query.exec():
+                    registro = []
+                    while query.next():
+                        registro.append(str(query.value(0)))
+                    return registro
+            else:
+                return False
+        except Exception as error:
+            print("error alta tipo", error)
+
+
+    def cargarTipoprop(self):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM tipoprop order by tipo ASC")
+            if query.exec():
+                while query.next():
+                    registro.append(str(query.value(0)))
+                return registro
+        except Exception as error:
+            print("error cargar tipo", error)
+

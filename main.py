@@ -1,6 +1,7 @@
 from calendar import Calendar
 
 import conexionserver
+import propiedades
 from propiedades import Propiedades
 from venAux import *
 import clientes
@@ -61,6 +62,10 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.cargarProv()
         eventos.Eventos.cargarMuni()
         var.ui.cmbProvcli.currentIndexChanged.connect(eventos.Eventos.cargarMuni)
+        eventos.Eventos.cargarProvprop()
+        eventos.Eventos.cargarMuniprop()
+        var.ui.cmbProvprop.currentIndexChanged.connect(eventos.Eventos.cargarMuniprop)
+        eventos.Eventos.cargarTipoprop(self)
 
         '''
         eventos del ToolBar
