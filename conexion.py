@@ -236,3 +236,24 @@ class Conexion:
         except Exception as error:
             print("error cargar tipo", error)
 
+
+    def altaPropiedad(propiedad):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT into propiedades (fechaprop, dirprop, provpro, muniprop, tipoprop, "
+                          " habprop, banosprop, superprop, prealquilerprop, prevenprop, CPprop, descriprop,"
+                          "tipoperprop, estadoprop, nomeprop, movilprop ) VALUES (:fechaprop, :dirprop, :provpro, :muniprop, "
+                          " :tipoprop, :habprop, :banosprop, :superprop, :prealquilerprop, :prevenprop, :CPprop,"
+                          " :descriprop, :tipoperprop, :estadoprop, :nomeprop, :movilprop)")
+            columnas = ['fechaprop', 'dirprop', 'provpro', 'muniprop', 'tipoprop'
+                , 'habprop', 'banosprop', 'superprop', 'prealquilerprop', 'prevenprop'
+                , 'CPprop', 'descriprop', 'tipoperprop', 'estadoprop', 'nomeprop', 'movilprop']
+            for i in range(len(columnas)):
+                    query.bindValue(":"+str(columnas[i]), str(propiedad[i]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except sqlite3.IntegrityError:
+            return False
+

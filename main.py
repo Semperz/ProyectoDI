@@ -49,6 +49,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifcli.clicked.connect(clientes.Clientes.modifCliente)
         var.ui.btnDelcli.clicked.connect(clientes.Clientes.bajaCliente)
 
+        var.ui.btnGrabarprop.clicked.connect(propiedades.Propiedades.altaPropiedad)
         var.ui.btnFechaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 0))
         var.ui.btnBajaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 1))
 

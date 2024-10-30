@@ -63,11 +63,28 @@ class Propiedades():
 
     def altaPropiedad(self):
         try:
-            propiedad = [var.ui.txtFechaprop.text(),var.ui.txtFechabajaprop.text(), var.ui.txtDirprop.text(),
-                         var.ui.cmbProvprop.currentText(), var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
-                         var.ui.spnHabprop.text(), var.ui.spnBanosprop.currentText(), var.ui.txtSuperprop.text(),
-                         var.ui.txt.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
-                         var.ui.areatxtDescriprop.toPlainText(), var.ui.txtMovilprop.text()
-                         ]
+            propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text(), var.ui.cmbProvprop.currentText(),
+                         var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
+                         var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
+                         var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
+                         var.ui.areatxtDescriprop.toPlainText()]
+            tipooper = []
+            if var.ui.chkAlquilerprop.isChecked():
+                tipooper.append(var.ui.chkAlquilerprop.text())
+            if var.ui.chkVentaprop.isChecked():
+                tipooper.append(var.ui.chkVentaprop.text())
+            if var.ui.chkInterprop.isChecked():
+                tipooper.append(var.ui.chkInterprop.text())
+            propiedad.append(tipooper)
+            if var.ui.rbtDisponibleprop.isChecked():
+                propiedad.append(var.ui.rbtDisponibleprop.text())
+            if var.ui.rbtAlquiladoprop.isChecked():
+                propiedad.append(var.ui.rbtAlquiladoprop.text())
+            if var.ui.rbtVendidoprop.isChecked():
+                propiedad.append(var.ui.rbtVendidoprop.text())
+
+            propiedad.append(var.ui.txtNomeprop.text())
+            propiedad.append(var.ui.txtMovilprop.text())
+            conexion.Conexion.altaPropiedad(propiedad)
         except Exception as error:
             print(error)
