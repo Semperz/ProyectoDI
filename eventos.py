@@ -83,10 +83,14 @@ class Eventos:
     def cargaFecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
-            if var.panel == var.ui.panPrincipal.currentIndex() and var.btn == 0:
+            if var.panel == 0 and var.btn == 0:
                 var.ui.txtAltaCli.setText(str(data))
-            elif var.panel == var.ui.panPrincipal.currentIndex() and var.btn == 1:
+            elif var.panel == 0 and var.btn == 1:
                 var.ui.txtBajaCli.setText(str(data))
+            elif var.panel == 1 and var.btn == 0:
+                    var.ui.txtFechaprop.setText(str(data))
+            elif var.panel == 1 and var.btn == 1:
+                    var.ui.txtFechabajaprop.setText(str(data))
             time.sleep(0.2)
             var.uicalendar.hide()
             return data
