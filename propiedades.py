@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets, QtGui
-
+import eventos
 import conexion
 import var
 from conexion import Conexion
@@ -85,6 +85,32 @@ class Propiedades():
 
             propiedad.append(var.ui.txtNomeprop.text())
             propiedad.append(var.ui.txtMovilprop.text())
-            conexion.Conexion.altaPropiedad(propiedad)
+            if conexion.Conexion.altaPropiedad(propiedad):
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText("Propiedad grabada en la base de datos")
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+            else:
+                QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error al grabar en la base de datos")
         except Exception as error:
             print(error)
+
+    def checkNumeroProp(nuevo):
+        try:
+            telefono = str(var.ui.txtMovilprop.text())
+            if eventos.Eventos.validarTelefono(telefono):
+                var.ui.txtMovilprop.setStyleSheet('background-color: rgb(229, 255, 255);')
+                var.ui.txtMovilprop.setText(telefono.lower())
+
+            else:
+                var.ui.txtMovilprop.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
+                var.ui.txtMovilprop.setText(None)
+                var.ui.txtMovilprop.setFocus()
+        except Exception as e:
+            print("error numero propiedad", e)
