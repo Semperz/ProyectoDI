@@ -26,6 +26,7 @@ class Main(QtWidgets.QMainWindow):
         var.historico = 0
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
+        propiedades.Propiedades.cargaTablaPropiedades(self)
         '''
         eventos de tablas
         '''

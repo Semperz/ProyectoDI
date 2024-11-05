@@ -249,11 +249,31 @@ class Conexion:
                 , 'habprop', 'banosprop', 'superprop', 'prealquilerprop', 'prevenprop'
                 , 'CPprop', 'descriprop', 'tipoperprop', 'estadoprop', 'nomeprop', 'movilprop']
             for i in range(len(columnas)):
-                    query.bindValue(":"+str(columnas[i]), str(propiedad[i]))
+                if columnas[i] == 'habprop' or columnas[i] == 'banosprop' or columnas[i] == 'movilprop':
+                    query.bindValue(":" + str(columnas[i]), int(propiedad[i]))
+                elif columnas[i] == 'tipoperprop':
+                    query.bindValue(":" + str(columnas[i]), ",".join((propiedad[i])))
+                else:
+                    query.bindValue(":" + str(columnas[i]), str(propiedad[i]))
             if query.exec():
                 return True
             else:
                 return False
         except sqlite3.IntegrityError:
             return False
+    @staticmethod
+    def listadoPropiedades():
+        try:
+            listado = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM propiedades ORDER BY idprop ASC")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
 
+        except Exception as e:
+            print("error listado en conexión", e)
+
+    # def bajaPropiedad(self):
