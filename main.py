@@ -33,7 +33,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resizeTablaClientes()
         eventos.Eventos.resizeTablaPropiedades()
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)
-
+        var.ui.tablaPropiedades.clicked.connect(propiedades.Propiedades.cargaOnePropiedad)
         '''
         zona de eventos del menubar
         '''

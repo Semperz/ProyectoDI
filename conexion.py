@@ -276,4 +276,17 @@ class Conexion:
         except Exception as e:
             print("error listado en conexión", e)
 
-    # def bajaPropiedad(self):
+    def datosOnePropiedad(ID):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM propiedades WHERE idprop = :ID")
+            query.bindValue(":ID", str(ID))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+                print(registro)
+            return registro
+        except Exception as error:
+            print("error datos un cliente", error)

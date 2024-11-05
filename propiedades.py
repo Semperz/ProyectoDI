@@ -145,3 +145,47 @@ class Propiedades():
                 index += 1
         except Exception as e:
             print("Error carga tabla clientes ", e)
+
+    def cargaOnePropiedad(self):
+        try:
+            fila = var.ui.tablaPropiedades.selectedItems()
+            datos =  [dato.text() for dato in fila]
+            registro = conexion.Conexion.datosOnePropiedad(str(datos[0]))
+            listado = [var.ui.txtFechaprop, var.ui.txtFechabajaprop, var.ui.txtDirprop, var.ui.cmbProvprop,
+             var.ui.cmbMuniprop, var.ui.cmbTipoprop,
+             var.ui.spnHabprop, var.ui.spnBanosprop, var.ui.txtSuperprop,
+             var.ui.txtPrecioalquilerprop, var.ui.txtPrecioventaprop, var.ui.txtCPprop,
+             var.ui.areatxtDescriprop, var.ui.chkAlquilerprop, var.ui.chkInterprop, var.ui.chkVentaprop,
+             var.ui.rbtDisponibleprop, var.ui.rbtVendidoprop, var.ui.rbtAlquiladoprop]
+            var.ui.lblIDprop.setText(registro[0])
+            for i in range(len(listado)):
+                if i == 3 or i == 4 or i == 5:
+                    listado[i].setCurrentText(registro[i + 1])
+                elif i == 6 or i == 7:
+                    listado[i].setValue(int(registro[i + 1]))
+                elif i == 13 or i == 14 or i == 15 :
+                    if 'Alquiler' in (registro[14]):
+                        listado[13].setChecked(True)
+                    else:
+                        listado[13].setChecked(False)
+                    if 'Intercambio' in (registro[14]):
+                        listado[14].setChecked(True)
+                    else:
+                        listado[14].setChecked(False)
+                    if 'Venta' in (registro[14]):
+                        listado[15].setChecked(True)
+                    else:
+                        listado[15].setChecked(False)
+                elif i == 16 or i == 17 or i == 18:
+                    if 'Disponible' in (registro[15]):
+                        listado[16].setChecked(True)
+                    if 'Vendido' in (registro[15]):
+                        listado[17].setChecked(True)
+                    if 'Alquilado' in (registro[15]):
+                        listado[18].setChecked(True)
+                else:
+                    listado[i].setText(str(registro[i + 1]))
+                var.ui.txtNomeprop.setText(registro[16])
+                var.ui.txtMovilprop.setText(registro[17])
+        except Exception as error:
+            print("error carga cliente",error)

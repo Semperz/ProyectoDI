@@ -1612,7 +1612,7 @@
              </spacer>
             </item>
             <item row="2" column="2">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="lblIDprop">
               <property name="minimumSize">
                <size>
                 <width>60</width>
