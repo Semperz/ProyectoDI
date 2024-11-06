@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets, QtGui, QtCore
 import eventos
 import conexion
+import propiedades
 import var
 from conexion import Conexion
 
@@ -97,6 +98,7 @@ class Propiedades():
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 Propiedades.cargaTablaPropiedades(self)
+                propiedades.Propiedades.clearCamposPropiedades()
             else:
                 QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir o hay datos mal puestos.")
         except Exception as error:
@@ -134,6 +136,7 @@ class Propiedades():
                 var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
                 var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
                 var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(registro[14]))
+                var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(registro[2]))
                 var.ui.tablaPropiedades.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 var.ui.tablaPropiedades.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaPropiedades.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
@@ -142,9 +145,10 @@ class Propiedades():
                 var.ui.tablaPropiedades.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 var.ui.tablaPropiedades.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 var.ui.tablaPropiedades.item(index, 7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaPropiedades.item(index, 8).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 index += 1
         except Exception as e:
-            print("Error carga tabla clientes ", e)
+            print("Error carga tabla propiedades ", e)
 
     def cargaOnePropiedad(self):
         try:
@@ -188,4 +192,59 @@ class Propiedades():
                 var.ui.txtNomeprop.setText(registro[16])
                 var.ui.txtMovilprop.setText(registro[17])
         except Exception as error:
-            print("error carga cliente",error)
+            print("error carga propiedad",error)
+
+    def bajaPropiedad(self):
+        try:
+            datos = [var.ui.txtFechabajaprop.text(), var.ui.lblIDprop.text()]
+            if conexion.Conexion.bajaPropiedad(datos):
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText('Propiedad dada de baja')
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Propiedades.cargaTablaPropiedades(self)
+                propiedades.Propiedades.clearCamposPropiedades()
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText('Error baja propiedad: Propiedad no existe o ya está dada de baja')
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Propiedades.cargaTablaPropiedades(self)
+        except Exception as error:
+            print("error baja propiedad", error)
+
+    @staticmethod
+    def clearCamposPropiedades():
+        var.ui.lblIDprop.setText(None)
+        var.ui.txtFechaprop.setText(None)
+        var.ui.txtFechabajaprop.setText(None)
+        var.ui.txtDirprop.setText(None)
+        var.ui.cmbProvprop.setCurrentIndex(0)
+        var.ui.cmbTipoprop.setCurrentIndex(0)
+        var.ui.spnHabprop.setValue(0)
+        var.ui.spnBanosprop.setValue(0)
+        var.ui.txtSuperprop.setText(None)
+        var.ui.txtPrecioalquilerprop.setText(None)
+        var.ui.txtPrecioventaprop.setText(None)
+        var.ui.txtCPprop.setText(None)
+        var.ui.areatxtDescriprop.setText(None)
+        var.ui.chkVentaprop.setChecked(False)
+        var.ui.chkInterprop.setChecked(False)
+        var.ui.chkAlquilerprop.setChecked(False)
+        var.ui.rbtDisponibleprop.setChecked(True)
+        var.ui.rbtAlquiladoprop.setChecked(False)
+        var.ui.rbtVendidoprop.setChecked(False)
+        var.ui.txtNomeprop.setText(None)
+        var.ui.txtMovilprop.setText(None)

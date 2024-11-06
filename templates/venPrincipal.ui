@@ -1823,6 +1823,11 @@
             <string>Tipo de operación</string>
            </property>
           </column>
+          <column>
+           <property name="text">
+            <string>Fecha Baja</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>

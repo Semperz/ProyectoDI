@@ -127,16 +127,8 @@ class Eventos:
                 header_item.setFont(font)
         except Exception as error:
             print("error en resize tabla clientes: ", error)
-    @staticmethod
-    def clearCampos():
-        var.ui.txtDnicli.setText(None)
-        var.ui.txtApelcli.setText(None)
-        var.ui.txtNomcli.setText(None)
-        var.ui.txtMovilcli.setText(None)
-        var.ui.txtEmailcli.setText(None)
-        var.ui.txtAltaCli.setText(None)
-        var.ui.txtDircli.setText(None)
-        var.ui.cmbProvcli.setCurrentIndex(0)
+
+
 
     def crearBackup(self):
         try:

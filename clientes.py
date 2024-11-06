@@ -48,10 +48,20 @@ class Clientes:
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 Clientes.cargaTablaClientes(self)
-                eventos.Eventos.clearCampos()
+                clientes.Clientes.clearCamposCliente()
         except Exception as e:
             print("error alta cliente",e)
 
+    @staticmethod
+    def clearCamposCliente():
+        var.ui.txtDnicli.setText(None)
+        var.ui.txtApelcli.setText(None)
+        var.ui.txtNomcli.setText(None)
+        var.ui.txtMovilcli.setText(None)
+        var.ui.txtEmailcli.setText(None)
+        var.ui.txtAltaCli.setText(None)
+        var.ui.txtDircli.setText(None)
+        var.ui.cmbProvcli.setCurrentIndex(0)
 
     def checkEmail(nuevo):
         try:

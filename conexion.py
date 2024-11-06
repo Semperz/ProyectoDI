@@ -286,7 +286,21 @@ class Conexion:
                 while query.next():
                     for i in range(query.record().count()):
                         registro.append(str(query.value(i)))
-                print(registro)
             return registro
         except Exception as error:
             print("error datos un cliente", error)
+
+
+    def bajaPropiedad(datos):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("UPDATE propiedades set bajaprop = :bajaprop "
+                          "where idprop = :idprop")
+            query.bindValue(":bajaprop", datetime.now().strftime("%d/%m/%Y"))
+            query.bindValue(":idprop", str(datos[1]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error baja propiedad", error)
