@@ -304,3 +304,51 @@ class Conexion:
                 return False
         except Exception as error:
             print("error baja propiedad", error)
+
+    def modifPropiedad(registro):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("select count(*) from propiedades where idprop = :idprop")
+            query.bindValue(":idprop", int(registro[0]))
+            if query.exec():
+                print("Hola")
+                if query.next() and query.value(0) > 0:
+                    if query.exec():
+                        print("cr7")
+                        query2 = QtSql.QSqlQuery()
+                        query2.prepare("UPDATE propiedades set fechaprop = :fechaprop, bajaprop = :bajaprop, dirprop = :dirprop, provpro = :provpro, "
+                                      " muniprop = :muniprop, tipoprop = :tipoprop, habprop = :habprop, banosprop = :banosprop, "
+                                      " superprop = :superprop, prealquilerprop = :prealquilerprop, prevenprop = :prevenprop, CPprop = :CPprop, "
+                                       "descriprop = :descriprop, tipoperprop = :tipoperprop, estadoprop = :estadoprop, nomeprop = :nomeprop, movilprop = :movilprop where idprop = :idprop")
+
+                        columnas = ['fechaprop', 'bajaprop', 'dirprop', 'provpro', 'muniprop', 'tipoprop'
+                            , 'habprop', 'banosprop', 'superprop', 'prealquilerprop', 'prevenprop'
+                            , 'CPprop', 'descriprop', 'tipoperprop', 'estadoprop', 'nomeprop', 'movilprop']
+
+                        for i in range(len(columnas)):
+                            if columnas[i] == 'habprop' or columnas[i] == 'banosprop' or columnas[i] == 'movilprop':
+                                query.bindValue(":" + str(columnas[i]), int(registro[i + 1]))
+                            elif columnas[i] == 'bajaprop':
+                                if registro[2] == "":
+                                    query2.bindValue(":bajaprop", QtCore.QVariant())
+                                else:
+                                    query2.bindValue(":" + str(columnas[i]), str(registro[i + 1]))
+                            elif columnas[i] == 'tipoperprop':
+                                query.bindValue(":" + str(columnas[i]), ",".join((registro[i + 1])))
+                            else:
+                                query.bindValue(":" + str(columnas[i]), str(registro[i + 1]))
+
+                        if query2.exec():
+                            print("Pepe")
+                            print(query2.numRowsAffected())
+                            return True
+                        else:
+                            print("Adios")
+                            return False
+                    else:
+                        print("Hasta luego")
+                        return False
+                else:
+                    return False
+        except Exception as error:
+            print("error modificar cliente", error)

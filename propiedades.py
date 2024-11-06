@@ -248,3 +248,58 @@ class Propiedades():
         var.ui.rbtVendidoprop.setChecked(False)
         var.ui.txtNomeprop.setText(None)
         var.ui.txtMovilprop.setText(None)
+
+
+    def modifProp(self):
+        try:
+            modifprop = [var.ui.lblIDprop.text(), var.ui.txtFechaprop.text(), var.ui.txtFechabajaprop.text(),
+                         var.ui.txtDirprop.text(), var.ui.cmbProvprop.currentText(),
+                         var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
+                         var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
+                         var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(),
+                         var.ui.txtCPprop.text(), var.ui.areatxtDescriprop.toPlainText()]
+            tipooper = []
+            if var.ui.chkAlquilerprop.isChecked():
+                tipooper.append(var.ui.chkAlquilerprop.text())
+            if var.ui.chkVentaprop.isChecked():
+                tipooper.append(var.ui.chkVentaprop.text())
+            if var.ui.chkInterprop.isChecked():
+                tipooper.append(var.ui.chkInterprop.text())
+            modifprop.append(tipooper)
+            if var.ui.rbtDisponibleprop.isChecked():
+                modifprop.append(var.ui.rbtDisponibleprop.text())
+            if var.ui.rbtAlquiladoprop.isChecked():
+                modifprop.append(var.ui.rbtAlquiladoprop.text())
+            if var.ui.rbtVendidoprop.isChecked():
+                modifprop.append(var.ui.rbtVendidoprop.text())
+
+            modifprop.append(var.ui.txtNomeprop.text())
+            modifprop.append(var.ui.txtMovilprop.text())
+            if conexion.Conexion.modifPropiedad(modifprop):
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText('Propiedad modificada')
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Propiedades.cargaTablaPropiedades(self)
+
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText('Error propiedad modificada')
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
+                Propiedades.cargaTablaPropiedades(self)
+            Propiedades.cargaTablaPropiedades(self)
+        except Exception as error:
+            print("error al modificar clientes",error)

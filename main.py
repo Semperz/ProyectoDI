@@ -54,6 +54,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnFechaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 0))
         var.ui.btnBajaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 1))
         var.ui.btnDelprop.clicked.connect(propiedades.Propiedades.bajaPropiedad)
+        var.ui.btnModifprop.clicked.connect(propiedades.Propiedades.modifProp)
         '''
         eventos de cajas de texto
         '''
