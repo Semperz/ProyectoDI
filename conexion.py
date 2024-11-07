@@ -6,8 +6,8 @@ from PyQt6 import QtSql, QtWidgets, QtCore
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6 import QtGui
 from mysql.connector import DATETIME
-
 import var
+
 
 
 class Conexion:
@@ -265,13 +265,23 @@ class Conexion:
     def listadoPropiedades():
         try:
             listado = []
-            query = QtSql.QSqlQuery()
-            query.prepare("SELECT * FROM propiedades ORDER BY idprop ASC")
-            if query.exec():
-                while query.next():
-                    fila = [query.value(i) for i in range(query.record().count())]
-                    listado.append(fila)
-            return listado
+            historicoprop = var.ui.chkHistoricoprop.isChecked()
+            if historicoprop:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM propiedades ORDER BY idprop ASC")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+            else:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM propiedades WHERE bajaprop IS NULL ORDER BY idprop ASC")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
 
         except Exception as e:
             print("error listado en conexión", e)

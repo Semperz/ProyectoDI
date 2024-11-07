@@ -302,4 +302,4 @@ class Propiedades():
                 Propiedades.cargaTablaPropiedades(self)
             Propiedades.cargaTablaPropiedades(self)
         except Exception as error:
-            print("error al modificar clientes",error)
+            print("error al modificar propiedades",error)

@@ -83,6 +83,7 @@ class Main(QtWidgets.QMainWindow):
         eventos checkBox
         '''
         var.ui.chkHistoriacli.stateChanged.connect(clientes.Clientes.historicoCli)
+        var.ui.chkHistoricoprop.stateChanged.connect(propiedades.Propiedades.cargaTablaPropiedades)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
