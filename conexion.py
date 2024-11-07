@@ -321,22 +321,21 @@ class Conexion:
                                       " superprop = :superprop, prealquilerprop = :prealquilerprop, prevenprop = :prevenprop, CPprop = :CPprop, "
                                        "descriprop = :descriprop, tipoperprop = :tipoperprop, estadoprop = :estadoprop, nomeprop = :nomeprop, movilprop = :movilprop where idprop = :idprop")
 
-                        columnas = ['fechaprop', 'bajaprop', 'dirprop', 'provpro', 'muniprop', 'tipoprop'
+                        columnas = ['idprop','fechaprop', 'bajaprop', 'dirprop', 'provpro', 'muniprop', 'tipoprop'
                             , 'habprop', 'banosprop', 'superprop', 'prealquilerprop', 'prevenprop'
                             , 'CPprop', 'descriprop', 'tipoperprop', 'estadoprop', 'nomeprop', 'movilprop']
-
                         for i in range(len(columnas)):
-                            if columnas[i] == 'habprop' or columnas[i] == 'banosprop' or columnas[i] == 'movilprop':
-                                query.bindValue(":" + str(columnas[i]), int(registro[i + 1]))
+                            if columnas[i] == 'idprop' or  columnas[i] == 'habprop' or columnas[i] == 'banosprop' or columnas[i] == 'movilprop':
+                                query2.bindValue(":" + str(columnas[i]), int(registro[i]))
                             elif columnas[i] == 'bajaprop':
                                 if registro[2] == "":
                                     query2.bindValue(":bajaprop", QtCore.QVariant())
                                 else:
-                                    query2.bindValue(":" + str(columnas[i]), str(registro[i + 1]))
+                                    query2.bindValue(":" + str(columnas[i]), str(registro[i]))
                             elif columnas[i] == 'tipoperprop':
-                                query.bindValue(":" + str(columnas[i]), ",".join((registro[i + 1])))
+                                query2.bindValue(":" + str(columnas[i]), ",".join((registro[i])))
                             else:
-                                query.bindValue(":" + str(columnas[i]), str(registro[i + 1]))
+                                query2.bindValue(":" + str(columnas[i]), str(registro[i]))
 
                         if query2.exec():
                             print("Pepe")

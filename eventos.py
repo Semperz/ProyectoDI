@@ -13,6 +13,7 @@ import clientes
 import conexion
 import conexionserver
 import eventos
+import propiedades
 import var
 
 
@@ -181,17 +182,19 @@ class Eventos:
 
 
     def limpiarPanel(self):
-        objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
-                    var.ui.txtNomcli,
-                    var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
-                    var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
-
-        for i, dato in enumerate(objetosPanelCli):
-            if i == 7 or i == 8:
-                dato.setCurrentIndex(0)
-            else:
-                dato.setText(None)
-        eventos.Eventos.cargarProv()
+        clientes.Clientes.clearCamposCliente()
+        propiedades.Propiedades.clearCamposPropiedades()
+        # objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
+        #             var.ui.txtNomcli,
+        #             var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
+        #             var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+        #
+        # for i, dato in enumerate(objetosPanelCli):
+        #     if i == 7 or i == 8:
+        #         dato.setCurrentIndex(0)
+        #     else:
+        #         dato.setText(None)
+        # eventos.Eventos.cargarProv()
     """
     Pagina propiedades
     """

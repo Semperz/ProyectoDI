@@ -591,6 +591,27 @@ class Ui_venPrincipal(object):
         self.lblIDprop.setText("")
         self.lblIDprop.setObjectName("lblIDprop")
         self.gridLayout_4.addWidget(self.lblIDprop, 2, 2, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(parent=self.tabPropiedades)
+        self.pushButton.setMinimumSize(QtCore.QSize(25, 25))
+        self.pushButton.setMaximumSize(QtCore.QSize(25, 25))
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"    background-color: #d7eff6;\n"
+"    font-weight: bold;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}")
+        self.pushButton.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoBuscarV2.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton.setIcon(icon2)
+        self.pushButton.setIconSize(QtCore.QSize(25, 25))
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout_4.addWidget(self.pushButton, 3, 13, 1, 1)
         self.verticalLayout_4.addLayout(self.gridLayout_4)
         spacerItem25 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         self.verticalLayout_4.addItem(spacerItem25)
@@ -683,14 +704,14 @@ class Ui_venPrincipal(object):
         self.actionRestaurar_Backup = QtGui.QAction(parent=venPrincipal)
         self.actionRestaurar_Backup.setObjectName("actionRestaurar_Backup")
         self.actionbarSalir = QtGui.QAction(parent=venPrincipal)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoSalir.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.actionbarSalir.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoSalir.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionbarSalir.setIcon(icon3)
         self.actionbarSalir.setObjectName("actionbarSalir")
         self.actionbarLimpiar = QtGui.QAction(parent=venPrincipal)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoReload.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.actionbarLimpiar.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoReload.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionbarLimpiar.setIcon(icon4)
         self.actionbarLimpiar.setObjectName("actionbarLimpiar")
         self.actionTipo_de_propiedades = QtGui.QAction(parent=venPrincipal)
         self.actionTipo_de_propiedades.setObjectName("actionTipo_de_propiedades")
