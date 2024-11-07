@@ -122,8 +122,8 @@ class Propiedades():
         try:
             listado = conexion.Conexion.listadoPropiedades()
             index = 0
+            var.ui.tablaPropiedades.setRowCount(len(listado))
             for registro in listado:
-                var.ui.tablaPropiedades.setRowCount(index + 1)
                 var.ui.tablaPropiedades.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                 var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(registro[5]))
                 var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(registro[6]))
@@ -303,3 +303,9 @@ class Propiedades():
             Propiedades.cargaTablaPropiedades(self)
         except Exception as error:
             print("error al modificar propiedades",error)
+
+    def filtroBusqueda(self):
+        try:
+            Propiedades.cargaTablaPropiedades(self)
+        except Exception as e:
+            print(e)

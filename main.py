@@ -55,6 +55,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 1))
         var.ui.btnDelprop.clicked.connect(propiedades.Propiedades.bajaPropiedad)
         var.ui.btnModifprop.clicked.connect(propiedades.Propiedades.modifProp)
+        var.ui.btnBuscartipoprop.clicked.connect(propiedades.Propiedades.filtroBusqueda)
         '''
         eventos de cajas de texto
         '''
@@ -83,7 +84,7 @@ class Main(QtWidgets.QMainWindow):
         eventos checkBox
         '''
         var.ui.chkHistoriacli.stateChanged.connect(clientes.Clientes.historicoCli)
-        var.ui.chkHistoricoprop.stateChanged.connect(propiedades.Propiedades.cargaTablaPropiedades)
+        var.ui.chkHistoricoprop.stateChanged.connect(propiedades.Propiedades.filtroBusqueda)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

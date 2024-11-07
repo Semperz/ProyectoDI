@@ -1650,6 +1650,9 @@
                 <height>25</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Búsqueda por tipo de propiedad y municipio seleccionado</string>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
     background-color: #d7eff6;
@@ -1675,6 +1678,9 @@ QPushButton:pressed {
                 <width>25</width>
                 <height>25</height>
                </size>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

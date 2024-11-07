@@ -263,10 +263,13 @@ class Conexion:
             return False
     @staticmethod
     def listadoPropiedades():
+        listado = []
+        historicoprop = var.ui.chkHistoricoprop.isChecked()
+        muniActual = var.ui.cmbMuniprop.currentText()
+        tipoProp = var.ui.cmbTipoprop.currentText()
+        searchBtn = var.ui.btnBuscartipoprop.isChecked()
         try:
-            listado = []
-            historicoprop = var.ui.chkHistoricoprop.isChecked()
-            if historicoprop:
+            if historicoprop and not searchBtn:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM propiedades ORDER BY idprop ASC")
                 if query.exec():
@@ -274,6 +277,30 @@ class Conexion:
                         fila = [query.value(i) for i in range(query.record().count())]
                         listado.append(fila)
                 return listado
+
+            elif historicoprop and searchBtn:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM propiedades WHERE muniprop = :muniprop AND tipoprop = :tipoprop ORDER BY idprop ASC")
+                query.bindValue(":muniprop", muniActual)
+                query.bindValue(":tipoprop", tipoProp)
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+
+            elif not historicoprop and searchBtn:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM propiedades WHERE bajaprop IS NULL AND muniprop = :muniprop AND tipoprop = :tipoprop "
+                              "ORDER BY idprop ASC")
+                query.bindValue(":muniprop", muniActual)
+                query.bindValue(":tipoprop", tipoProp)
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+
             else:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM propiedades WHERE bajaprop IS NULL ORDER BY idprop ASC")
