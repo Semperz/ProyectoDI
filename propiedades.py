@@ -309,3 +309,9 @@ class Propiedades():
             Propiedades.cargaTablaPropiedades(self)
         except Exception as e:
             print(e)
+
+    def filtroBusquedaHistorico(self):
+        try:
+            Propiedades.cargaTablaPropiedades(self)
+        except Exception as e:
+            print(e)
