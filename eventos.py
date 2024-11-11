@@ -243,3 +243,6 @@ class Eventos:
         listado = conexion.Conexion.listarMunicipios(provActual)
         #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMuniprop.addItems(listado)
+
+    def buscarPropiedadPorTipo(self):
+        propiedades.Propiedades.filtroBusqueda(self)

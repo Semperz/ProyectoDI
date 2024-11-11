@@ -143,7 +143,17 @@ class Ui_venPrincipal(object):
         self.btnAltaCli = QtWidgets.QPushButton(parent=self.pesClientes)
         self.btnAltaCli.setMinimumSize(QtCore.QSize(25, 25))
         self.btnAltaCli.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnAltaCli.setStyleSheet("")
+        self.btnAltaCli.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
         self.btnAltaCli.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(".\\templates\\../img/calendario.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -173,6 +183,17 @@ class Ui_venPrincipal(object):
         self.btnBajaCli = QtWidgets.QPushButton(parent=self.pesClientes)
         self.btnBajaCli.setMinimumSize(QtCore.QSize(25, 25))
         self.btnBajaCli.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnBajaCli.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
         self.btnBajaCli.setText("")
         self.btnBajaCli.setIcon(icon1)
         self.btnBajaCli.setIconSize(QtCore.QSize(29, 25))
@@ -496,6 +517,17 @@ class Ui_venPrincipal(object):
         self.btnBajaprop = QtWidgets.QPushButton(parent=self.tabPropiedades)
         self.btnBajaprop.setMinimumSize(QtCore.QSize(25, 25))
         self.btnBajaprop.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnBajaprop.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
         self.btnBajaprop.setText("")
         self.btnBajaprop.setIcon(icon1)
         self.btnBajaprop.setIconSize(QtCore.QSize(25, 25))
@@ -568,7 +600,17 @@ class Ui_venPrincipal(object):
         self.btnFechaprop = QtWidgets.QPushButton(parent=self.tabPropiedades)
         self.btnFechaprop.setMinimumSize(QtCore.QSize(25, 25))
         self.btnFechaprop.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnFechaprop.setStyleSheet("")
+        self.btnFechaprop.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
         self.btnFechaprop.setText("")
         self.btnFechaprop.setIcon(icon1)
         self.btnFechaprop.setIconSize(QtCore.QSize(25, 25))
@@ -595,15 +637,14 @@ class Ui_venPrincipal(object):
         self.btnBuscartipoprop.setMinimumSize(QtCore.QSize(25, 25))
         self.btnBuscartipoprop.setMaximumSize(QtCore.QSize(25, 25))
         self.btnBuscartipoprop.setStyleSheet("QPushButton {\n"
-"    background-color: #d7eff6;\n"
-"    font-weight: bold;\n"
+"    background-color: whitesmoke;\n"
 "    color: white;\n"
 "    border-radius: 5px;\n"
 "}\n"
 "\n"
-"QPushButton:pressed {\n"
-"    background-color:#0ea2ae;\n"
-"    transform: scale(0.95);\n"
+"\n"
+"QPushButton:checked {\n"
+"    background-color:#d7eff6;\n"
 "}")
         self.btnBuscartipoprop.setText("")
         icon2 = QtGui.QIcon()
@@ -719,6 +760,11 @@ class Ui_venPrincipal(object):
         self.actionbarLimpiar.setObjectName("actionbarLimpiar")
         self.actionTipo_de_propiedades = QtGui.QAction(parent=venPrincipal)
         self.actionTipo_de_propiedades.setObjectName("actionTipo_de_propiedades")
+        self.actionbarBuscar = QtGui.QAction(parent=venPrincipal)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(".\\templates\\../img/icoBuscar.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionbarBuscar.setIcon(icon5)
+        self.actionbarBuscar.setObjectName("actionbarBuscar")
         self.menuSalir.addAction(self.actSalir)
         self.menuHerramientas.addAction(self.actionCrear_Backup)
         self.menuHerramientas.addAction(self.actionRestaurar_Backup)
@@ -730,6 +776,8 @@ class Ui_venPrincipal(object):
         self.toolBar.addAction(self.actionbarLimpiar)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionbarSalir)
+        self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actionbarBuscar)
 
         self.retranslateUi(venPrincipal)
         self.panPrincipal.setCurrentIndex(1)
@@ -853,3 +901,5 @@ class Ui_venPrincipal(object):
         self.actionbarLimpiar.setToolTip(_translate("venPrincipal", "Limpiar"))
         self.actionbarLimpiar.setShortcut(_translate("venPrincipal", "Alt+R"))
         self.actionTipo_de_propiedades.setText(_translate("venPrincipal", "Tipo de propiedades"))
+        self.actionbarBuscar.setText(_translate("venPrincipal", "barBuscar"))
+        self.actionbarBuscar.setShortcut(_translate("venPrincipal", "Alt+B"))

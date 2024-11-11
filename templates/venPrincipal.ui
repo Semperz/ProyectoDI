@@ -420,7 +420,17 @@
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -507,6 +517,19 @@
                 <width>25</width>
                 <height>25</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1381,6 +1404,19 @@
                 <height>25</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -1559,7 +1595,17 @@
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1655,15 +1701,14 @@
               </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
-    background-color: #d7eff6;
-    font-weight: bold;
+    background-color: whitesmoke;
     color: white;
     border-radius: 5px;
 }
 
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
+
+QPushButton:checked {
+	background-color:#d7eff6;
 }</string>
               </property>
               <property name="text">
@@ -1952,6 +1997,8 @@ QPushButton:pressed {
    <addaction name="actionbarLimpiar"/>
    <addaction name="separator"/>
    <addaction name="actionbarSalir"/>
+   <addaction name="separator"/>
+   <addaction name="actionbarBuscar"/>
   </widget>
   <action name="actSalir">
    <property name="text">
@@ -2001,6 +2048,18 @@ QPushButton:pressed {
   <action name="actionTipo_de_propiedades">
    <property name="text">
     <string>Tipo de propiedades</string>
+   </property>
+  </action>
+  <action name="actionbarBuscar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/icoBuscar.ico</normaloff>../img/icoBuscar.ico</iconset>
+   </property>
+   <property name="text">
+    <string>barBuscar</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+B</string>
    </property>
   </action>
  </widget>
