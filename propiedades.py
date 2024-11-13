@@ -86,6 +86,11 @@ class Propiedades():
 
             propiedad.append(var.ui.txtNomeprop.text())
             propiedad.append(var.ui.txtMovilprop.text())
+
+            validarFechaBaja = Propiedades.checkFechaValida()
+            if (validarFechaBaja == False):
+                QtWidgets.QMessageBox.critical(None, 'Error',"La fecha de baja no puede ser anterior a la fecha de alta.")
+
             if conexion.Conexion.altaPropiedad(propiedad):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
@@ -275,6 +280,10 @@ class Propiedades():
 
             modifprop.append(var.ui.txtNomeprop.text())
             modifprop.append(var.ui.txtMovilprop.text())
+
+            validarFechaBaja = Propiedades.checkFechaValida()
+            if (validarFechaBaja == False):
+                QtWidgets.QMessageBox.critical(None, 'Error', "La fecha de baja no puede ser anterior a la fecha de alta.")
             if conexion.Conexion.modifPropiedad(modifprop):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
@@ -347,4 +356,12 @@ class Propiedades():
         except Exception as error:
             print("error al disponibilidad",error)
 
+    @staticmethod
+    def checkFechaValida():
+        if var.ui.txtBajaprop.text() == "":
+            return True
+        elif var.ui.txtBajaprop.text() < var.ui.txtAltaprop.text():
+            return False
+        else:
+            return True
 
