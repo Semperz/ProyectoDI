@@ -315,3 +315,36 @@ class Propiedades():
             Propiedades.cargaTablaPropiedades(self)
         except Exception as e:
             print(e)
+
+
+    def checkDisponibilidad(self):
+        try:
+            if var.ui.txtFechabajaprop.text() == "":
+                var.ui.rbtDisponibleprop.setEnabled(True)
+                var.ui.rbtVendidoprop.setEnabled(False)
+                var.ui.rbtAlquiladoprop.setEnabled(False)
+                var.ui.rbtDisponibleprop.setChecked(True)
+            else:
+                var.ui.rbtDisponibleprop.setEnabled(False)
+                var.ui.rbtVendidoprop.setEnabled(True)
+                var.ui.rbtAlquiladoprop.setEnabled(True)
+                var.ui.rbtVendidoprop.setChecked(True)
+
+
+            if var.ui.txtPrecioventaprop.text() == "":
+                var.ui.chkVentaprop.setChecked(False)
+                var.ui.chkVentaprop.setEnabled(False)
+            else:
+                var.ui.chkVentaprop.setChecked(True)
+                var.ui.chkVentaprop.setEnabled(True)
+
+            if var.ui.txtPrecioalquilerprop.text() == "":
+                var.ui.chkAlquilerprop.setChecked(False)
+                var.ui.chkAlquilerprop.setEnabled(False)
+            else:
+                var.ui.chkAlquilerprop.setChecked(True)
+                var.ui.chkAlquilerprop.setEnabled(True)
+        except Exception as error:
+            print("error al disponibilidad",error)
+
+

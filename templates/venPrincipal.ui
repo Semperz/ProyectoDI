@@ -897,6 +897,13 @@ QPushButton:pressed {
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="9">
+             <widget class="QLabel" name="lblMovilprop">
+              <property name="text">
+               <string>Móvil propietario:</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="10" colspan="3">
              <widget class="QLineEdit" name="txtMovilprop">
               <property name="minimumSize">
@@ -919,13 +926,6 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="0" column="9">
-             <widget class="QLabel" name="lblMovilprop">
-              <property name="text">
-               <string>Móvil propietario:</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="0" rowspan="5">
              <spacer name="horizontalSpacer_15">
               <property name="orientation">
@@ -935,6 +935,29 @@ QPushButton:pressed {
                <size>
                 <width>13</width>
                 <height>223</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="2">
+             <widget class="QLineEdit" name="txtPrecioventaprop">
+              <property name="placeholderText">
+               <string>Precio venta (€)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="17">
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>15</height>
                </size>
               </property>
              </spacer>
@@ -967,59 +990,8 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="2" column="13">
-             <widget class="QLineEdit" name="txtCPprop">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="17">
-             <spacer name="verticalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>15</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="2" column="11">
              <spacer name="horizontalSpacer_19">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="14">
-             <spacer name="horizontalSpacer_11">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -1044,15 +1016,40 @@ QPushButton:pressed {
               </property>
              </spacer>
             </item>
-            <item row="3" column="2">
-             <widget class="QLineEdit" name="txtPrecioventaprop">
-              <property name="placeholderText">
-               <string>Precio venta (€)</string>
+            <item row="2" column="14">
+             <spacer name="horizontalSpacer_11">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="13">
+             <widget class="QLineEdit" name="txtCPprop">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string/>
               </property>
              </widget>
-            </item>
-            <item row="2" column="7" colspan="4">
-             <widget class="QLineEdit" name="txtDirprop"/>
             </item>
             <item row="3" column="3" alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_2">
@@ -1074,13 +1071,6 @@ QPushButton:pressed {
               </property>
              </spacer>
             </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="lblID">
-              <property name="text">
-               <string>ID:</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="16">
              <spacer name="horizontalSpacer_18">
               <property name="orientation">
@@ -1093,6 +1083,13 @@ QPushButton:pressed {
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="lblID">
+              <property name="text">
+               <string>ID:</string>
+              </property>
+             </widget>
             </item>
             <item row="2" column="5">
              <spacer name="horizontalSpacer_10">
@@ -1109,6 +1106,9 @@ QPushButton:pressed {
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="2" column="7" colspan="4">
+             <widget class="QLineEdit" name="txtDirprop"/>
             </item>
             <item row="2" column="12" alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="lblCPprop">
@@ -1247,6 +1247,9 @@ QPushButton:pressed {
                 </item>
                 <item>
                  <widget class="QRadioButton" name="rbtVendidoprop">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1335,35 +1338,6 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="4" column="9">
-             <widget class="QLabel" name="lblProvprop">
-              <property name="text">
-               <string>Provincia:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="4" colspan="10">
-             <widget class="QTextEdit" name="areatxtDescriprop">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>625</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>625</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="0">
              <spacer name="horizontalSpacer_17">
               <property name="orientation">
@@ -1389,6 +1363,38 @@ QPushButton:pressed {
                <string>Propietario:</string>
               </property>
              </widget>
+            </item>
+            <item row="6" column="4" colspan="10">
+             <widget class="QTextEdit" name="areatxtDescriprop">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>625</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>625</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="9">
+             <widget class="QLabel" name="lblProvprop">
+              <property name="text">
+               <string>Provincia:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="6">
+             <widget class="QLineEdit" name="txtFechabajaprop"/>
             </item>
             <item row="5" column="7">
              <widget class="QPushButton" name="btnBajaprop">
@@ -1432,16 +1438,6 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="5" column="5">
-             <widget class="QLabel" name="lblFechabajaprop">
-              <property name="text">
-               <string>Fecha de baja: </string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="6">
-             <widget class="QLineEdit" name="txtFechabajaprop"/>
-            </item>
             <item row="5" column="9">
              <widget class="QLabel" name="lblMuniprop">
               <property name="sizePolicy">
@@ -1458,6 +1454,13 @@ QPushButton:pressed {
               </property>
               <property name="text">
                <string>Municipio:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="5">
+             <widget class="QLabel" name="lblFechabajaprop">
+              <property name="text">
+               <string>Fecha de baja: </string>
               </property>
              </widget>
             </item>
@@ -1499,6 +1502,13 @@ QPushButton:pressed {
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_4">
                 <item>
+                 <widget class="QCheckBox" name="chkInterprop">
+                  <property name="text">
+                   <string>Intercambio</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QCheckBox" name="chkVentaprop">
                   <property name="text">
                    <string>Venta</string>
@@ -1515,68 +1525,14 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QCheckBox" name="chkInterprop">
-                  <property name="text">
-                   <string>Intercambio</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
              </layout>
-            </item>
-            <item row="5" column="10" colspan="4">
-             <widget class="QComboBox" name="cmbMuniprop">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>250</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
             </item>
             <item row="6" column="2" alignment="Qt::AlignRight|Qt::AlignTop">
              <widget class="QLabel" name="lblDescriprop">
               <property name="text">
                <string>Descripción:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="2" alignment="Qt::AlignHCenter">
-             <widget class="QLineEdit" name="txtFechaprop">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -1625,6 +1581,75 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
+            <item row="5" column="10" colspan="4">
+             <widget class="QComboBox" name="cmbMuniprop">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="2" alignment="Qt::AlignHCenter">
+             <widget class="QLineEdit" name="txtFechaprop">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLabel" name="lblIDprop">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(128, 128, 128)</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="2">
              <widget class="QLineEdit" name="txtNomeprop">
               <property name="minimumSize">
@@ -1659,28 +1684,6 @@ QPushButton:pressed {
                </size>
               </property>
              </spacer>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="lblIDprop">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(128, 128, 128)</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
             </item>
             <item row="3" column="13">
              <widget class="QPushButton" name="btnBuscartipoprop">
@@ -1822,7 +1825,7 @@ QPushButton:checked {
                </size>
               </property>
               <property name="text">
-               <string>Eliminar</string>
+               <string>Baja</string>
               </property>
              </widget>
             </item>
@@ -1964,8 +1967,17 @@ QPushButton:checked {
     <property name="title">
      <string>Herramientas</string>
     </property>
+    <widget class="QMenu" name="menuExportar_Datos">
+     <property name="title">
+      <string>Exportar Datos</string>
+     </property>
+     <addaction name="actionExportar_Clientes_CSV"/>
+     <addaction name="actionExportar_Clientes_JSON"/>
+    </widget>
     <addaction name="actionCrear_Backup"/>
     <addaction name="actionRestaurar_Backup"/>
+    <addaction name="separator"/>
+    <addaction name="menuExportar_Datos"/>
    </widget>
    <widget class="QMenu" name="menuAyuda">
     <property name="title">
@@ -2009,10 +2021,16 @@ QPushButton:checked {
    <property name="text">
     <string>Crear Backup</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
   </action>
   <action name="actionRestaurar_Backup">
    <property name="text">
     <string>Restaurar Backup</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionbarSalir">
@@ -2060,6 +2078,16 @@ QPushButton:checked {
    </property>
    <property name="shortcut">
     <string>Alt+B</string>
+   </property>
+  </action>
+  <action name="actionExportar_Clientes_CSV">
+   <property name="text">
+    <string>Exportar Clientes CSV</string>
+   </property>
+  </action>
+  <action name="actionExportar_Clientes_JSON">
+   <property name="text">
+    <string>Exportar Clientes JSON</string>
    </property>
   </action>
  </widget>

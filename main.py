@@ -27,6 +27,14 @@ class Main(QtWidgets.QMainWindow):
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
+        propiedades.Propiedades.checkDisponibilidad(self)
+        '''
+        Eventos formulario
+        '''
+        var.ui.txtFechabajaprop.textChanged.connect(propiedades.Propiedades.checkDisponibilidad)
+        var.ui.txtPrecioventaprop.textChanged.connect(propiedades.Propiedades.checkDisponibilidad)
+        var.ui.txtPrecioalquilerprop.textChanged.connect(propiedades.Propiedades.checkDisponibilidad)
+
         '''
         eventos de tablas
         '''

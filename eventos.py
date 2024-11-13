@@ -184,6 +184,7 @@ class Eventos:
     def limpiarPanel(self):
         clientes.Clientes.clearCamposCliente()
         propiedades.Propiedades.clearCamposPropiedades()
+        propiedades.Propiedades.checkDisponibilidad(self)
         # objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
         #             var.ui.txtNomcli,
         #             var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
