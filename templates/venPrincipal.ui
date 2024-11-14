@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>C:/Users/a23sergiopg/.designer/img/icono.svg</normaloff>C:/Users/a23sergiopg/.designer/img/icono.svg</iconset>
+    <normaloff>../img/icono.svg</normaloff>../img/icono.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -1719,7 +1719,7 @@ QPushButton:checked {
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../img/icoBuscarV2.ico</normaloff>../img/icoBuscarV2.ico</iconset>
+                <normaloff>C:/Users/a23sergiopg/.designer/img/icoBuscarV2.ico</normaloff>C:/Users/a23sergiopg/.designer/img/icoBuscarV2.ico</iconset>
               </property>
               <property name="iconSize">
                <size>

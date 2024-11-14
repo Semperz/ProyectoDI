@@ -69,43 +69,51 @@ class Propiedades():
                          var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
                          var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
                          var.ui.areatxtDescriprop.toPlainText()]
-            tipooper = []
-            if var.ui.chkAlquilerprop.isChecked():
-                tipooper.append(var.ui.chkAlquilerprop.text())
-            if var.ui.chkVentaprop.isChecked():
-                tipooper.append(var.ui.chkVentaprop.text())
-            if var.ui.chkInterprop.isChecked():
-                tipooper.append(var.ui.chkInterprop.text())
-            propiedad.append(tipooper)
-            if var.ui.rbtDisponibleprop.isChecked():
-                propiedad.append(var.ui.rbtDisponibleprop.text())
-            if var.ui.rbtAlquiladoprop.isChecked():
-                propiedad.append(var.ui.rbtAlquiladoprop.text())
-            if var.ui.rbtVendidoprop.isChecked():
-                propiedad.append(var.ui.rbtVendidoprop.text())
-
-            propiedad.append(var.ui.txtNomeprop.text())
-            propiedad.append(var.ui.txtMovilprop.text())
 
             validarFechaBaja = Propiedades.checkFechaValida()
             if (validarFechaBaja == False):
-                QtWidgets.QMessageBox.critical(None, 'Error',"La fecha de baja no puede ser anterior a la fecha de alta.")
-
-            if conexion.Conexion.altaPropiedad(propiedad):
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
-                mbox.setWindowTitle('Aviso')
-                mbox.setText("Propiedad grabada en la base de datos")
-                mbox.setStandardButtons(
-                    QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
-                Propiedades.cargaTablaPropiedades(self)
-                propiedades.Propiedades.clearCamposPropiedades()
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La fecha de baja no puede ser anterior a la fecha de alta.")
+            elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La fecha de baja solo puede ser una fecha.")
+            elif not var.ui.txtPrecioventaprop.text().isdigit() or not var.ui.txtPrecioalquilerprop.text().isdigit():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "El precio solo puede ser un número.")
             else:
-                QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir o hay datos mal puestos.")
+                tipooper = []
+                if var.ui.chkAlquilerprop.isChecked():
+                    tipooper.append(var.ui.chkAlquilerprop.text())
+                if var.ui.chkVentaprop.isChecked():
+                    tipooper.append(var.ui.chkVentaprop.text())
+                if var.ui.chkInterprop.isChecked():
+                    tipooper.append(var.ui.chkInterprop.text())
+                propiedad.append(tipooper)
+                if var.ui.rbtDisponibleprop.isChecked():
+                    propiedad.append(var.ui.rbtDisponibleprop.text())
+                if var.ui.rbtAlquiladoprop.isChecked():
+                    propiedad.append(var.ui.rbtAlquiladoprop.text())
+                if var.ui.rbtVendidoprop.isChecked():
+                    propiedad.append(var.ui.rbtVendidoprop.text())
+
+                propiedad.append(var.ui.txtNomeprop.text())
+                propiedad.append(var.ui.txtMovilprop.text())
+
+                if conexion.Conexion.altaPropiedad(propiedad):
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                    mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setText("Propiedad grabada en la base de datos")
+                    mbox.setStandardButtons(
+                        QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                    mbox.exec()
+                    Propiedades.cargaTablaPropiedades(self)
+                    propiedades.Propiedades.clearCamposPropiedades()
+                else:
+                    QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir o hay datos mal puestos.")
         except Exception as error:
             print(error)
 
@@ -263,53 +271,63 @@ class Propiedades():
                          var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
                          var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(),
                          var.ui.txtCPprop.text(), var.ui.areatxtDescriprop.toPlainText()]
-            tipooper = []
-            if var.ui.chkAlquilerprop.isChecked():
-                tipooper.append(var.ui.chkAlquilerprop.text())
-            if var.ui.chkVentaprop.isChecked():
-                tipooper.append(var.ui.chkVentaprop.text())
-            if var.ui.chkInterprop.isChecked():
-                tipooper.append(var.ui.chkInterprop.text())
-            modifprop.append(tipooper)
-            if var.ui.rbtDisponibleprop.isChecked():
-                modifprop.append(var.ui.rbtDisponibleprop.text())
-            if var.ui.rbtAlquiladoprop.isChecked():
-                modifprop.append(var.ui.rbtAlquiladoprop.text())
-            if var.ui.rbtVendidoprop.isChecked():
-                modifprop.append(var.ui.rbtVendidoprop.text())
-
-            modifprop.append(var.ui.txtNomeprop.text())
-            modifprop.append(var.ui.txtMovilprop.text())
 
             validarFechaBaja = Propiedades.checkFechaValida()
             if (validarFechaBaja == False):
                 QtWidgets.QMessageBox.critical(None, 'Error', "La fecha de baja no puede ser anterior a la fecha de alta.")
-            if conexion.Conexion.modifPropiedad(modifprop):
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
-                mbox.setWindowTitle('Aviso')
-                mbox.setText('Propiedad modificada')
-                mbox.setStandardButtons(
-                    QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
-                Propiedades.cargaTablaPropiedades(self)
-
+            elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La fecha de baja solo puede ser una fecha.")
+            elif not var.ui.txtPrecioventaprop.text().isdigit() or not var.ui.txtPrecioalquilerprop.text().isdigit():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "El precio solo puede ser un número.")
             else:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
-                mbox.setWindowTitle('Aviso')
-                mbox.setText('Error propiedad modificada')
-                mbox.setStandardButtons(
-                    QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
+                tipooper = []
+                if var.ui.chkAlquilerprop.isChecked():
+                    tipooper.append(var.ui.chkAlquilerprop.text())
+                if var.ui.chkVentaprop.isChecked():
+                    tipooper.append(var.ui.chkVentaprop.text())
+                if var.ui.chkInterprop.isChecked():
+                    tipooper.append(var.ui.chkInterprop.text())
+                modifprop.append(tipooper)
+                if var.ui.rbtDisponibleprop.isChecked():
+                    modifprop.append(var.ui.rbtDisponibleprop.text())
+                if var.ui.rbtAlquiladoprop.isChecked():
+                    modifprop.append(var.ui.rbtAlquiladoprop.text())
+                if var.ui.rbtVendidoprop.isChecked():
+                    modifprop.append(var.ui.rbtVendidoprop.text())
+
+                modifprop.append(var.ui.txtNomeprop.text())
+                modifprop.append(var.ui.txtMovilprop.text())
+
+
+
+                if conexion.Conexion.modifPropiedad(modifprop):
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                    mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setText('Propiedad modificada')
+                    mbox.setStandardButtons(
+                        QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                    mbox.exec()
+                    Propiedades.cargaTablaPropiedades(self)
+
+                else:
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
+                    mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setText('Error propiedad modificada')
+                    mbox.setStandardButtons(
+                        QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                    mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                    mbox.exec()
+                    Propiedades.cargaTablaPropiedades(self)
                 Propiedades.cargaTablaPropiedades(self)
-            Propiedades.cargaTablaPropiedades(self)
         except Exception as error:
             print("error al modificar propiedades",error)
 
@@ -358,9 +376,9 @@ class Propiedades():
 
     @staticmethod
     def checkFechaValida():
-        if var.ui.txtBajaprop.text() == "":
+        if var.ui.txtFechabajaprop.text() == "":
             return True
-        elif var.ui.txtBajaprop.text() < var.ui.txtAltaprop.text():
+        elif var.ui.txtFechabajaprop.text() < var.ui.txtFechaprop.text():
             return False
         else:
             return True

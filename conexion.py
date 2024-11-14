@@ -348,10 +348,8 @@ class Conexion:
             query.prepare("select count(*) from propiedades where idprop = :idprop")
             query.bindValue(":idprop", int(registro[0]))
             if query.exec():
-                print("Hola")
                 if query.next() and query.value(0) > 0:
                     if query.exec():
-                        print("cr7")
                         query2 = QtSql.QSqlQuery()
                         query2.prepare("UPDATE propiedades set fechaprop = :fechaprop, bajaprop = :bajaprop, dirprop = :dirprop, provpro = :provpro, "
                                       " muniprop = :muniprop, tipoprop = :tipoprop, habprop = :habprop, banosprop = :banosprop, "
@@ -375,16 +373,25 @@ class Conexion:
                                 query2.bindValue(":" + str(columnas[i]), str(registro[i]))
 
                         if query2.exec():
-                            print("Pepe")
-                            print(query2.numRowsAffected())
                             return True
                         else:
-                            print("Adios")
                             return False
                     else:
-                        print("Hasta luego")
                         return False
                 else:
                     return False
         except Exception as error:
             print("error modificar cliente", error)
+    @staticmethod
+    def listadoAllPropiedades():
+        listado = []
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM propiedades ORDER BY idprop ASC")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("error listado en conexión", e)
