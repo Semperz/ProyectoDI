@@ -1719,7 +1719,7 @@ QPushButton:checked {
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>C:/Users/a23sergiopg/.designer/img/icoBuscarV2.ico</normaloff>C:/Users/a23sergiopg/.designer/img/icoBuscarV2.ico</iconset>
+                <normaloff>../img/icoBuscarV2.ico</normaloff>../img/icoBuscarV2.ico</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1983,6 +1983,7 @@ QPushButton:checked {
     <property name="title">
      <string>Ayuda</string>
     </property>
+    <addaction name="actionAcercade"/>
    </widget>
    <widget class="QMenu" name="menuGesti_n">
     <property name="title">
@@ -2088,6 +2089,11 @@ QPushButton:checked {
   <action name="actionExportar_Clientes_JSON">
    <property name="text">
     <string>Exportar Clientes JSON</string>
+   </property>
+  </action>
+  <action name="actionAcercade">
+   <property name="text">
+    <string>Acerca de</string>
    </property>
   </action>
  </widget>

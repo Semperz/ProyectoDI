@@ -1,6 +1,8 @@
+from calendar import calendar
 from datetime import datetime
 
 import propiedades
+from dlgAbout import Ui_windowAbout
 from dlgCalendar import *
 import eventos
 import var
@@ -32,3 +34,10 @@ class dlgGestionprop(QtWidgets.QDialog):
         self.ui.btnAltatipoprop.clicked.connect(propiedades.Propiedades.altaTipoPropiedad)
         self.ui.btnBajatipoprop.clicked.connect(propiedades.Propiedades.bajaTipoPropiedad)
 
+
+class dlgAboutprop(QtWidgets.QDialog):
+    def __init__(self):
+        super(dlgAboutprop, self).__init__()
+        self.ui = Ui_windowAbout()
+        self.ui.setupUi(self)
+        self.ui.btnCerrar.clicked.connect(eventos.Eventos.cerrarVentanaAbout)

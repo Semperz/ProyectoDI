@@ -10,3 +10,4 @@ global dlgabrir
 global btn
 global historico
 global dlggestion
+global dlgabout

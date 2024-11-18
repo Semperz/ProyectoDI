@@ -18,12 +18,13 @@ import eventos
 import propiedades
 import var
 
-
 #Establecer configuracion regional
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
+
+
 
     def mensajeSalir(self=None):
         mbox = QtWidgets.QMessageBox()
@@ -206,6 +207,19 @@ class Eventos:
             var.dlggestion.show()
         except Exception as error:
             print(error)
+
+    def abrirAboutprop(self):
+        try:
+            var.dlgabout.show()
+        except Exception as error:
+            print(error)
+
+    def cerrarVentanaAbout(self):
+        try:
+            var.dlgabout.close()
+        except Exception as error:
+            print(error)
+
 
     @staticmethod
     def resizeTablaPropiedades():

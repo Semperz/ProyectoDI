@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Gestión de propiedades</string>
   </property>
   <property name="windowIcon">
    <iconset>

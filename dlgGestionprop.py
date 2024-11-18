@@ -61,7 +61,7 @@ class Ui_dlgTipoProp(object):
 
     def retranslateUi(self, dlgTipoProp):
         _translate = QtCore.QCoreApplication.translate
-        dlgTipoProp.setWindowTitle(_translate("dlgTipoProp", "Dialog"))
+        dlgTipoProp.setWindowTitle(_translate("dlgTipoProp", "Gestión de propiedades"))
         self.lblGestionprop.setText(_translate("dlgTipoProp", "Gestión tipo de propiedad"))
         self.btnAltatipoprop.setText(_translate("dlgTipoProp", "Alta"))
         self.btnBajatipoprop.setText(_translate("dlgTipoProp", "Eliminar"))
