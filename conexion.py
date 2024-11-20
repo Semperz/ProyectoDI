@@ -88,8 +88,19 @@ class Conexion:
             return False
     @staticmethod
     def listadoClientes():
+        searchBtn = var.ui.btnBuscarcli.isChecked()
+        DniCliente = var.ui.txtDnicli.text()
+        listado = []
         try:
-            listado = []
+            if searchBtn:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM clientes WHERE dnicli = :dnicli ORDER BY apelcli, nomecli ASC")
+                query.bindValue(":dnicli", DniCliente)
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
             if var.historico == 1:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM clientes WHERE bajacli is NULL ORDER BY apelcli, nomecli ASC ")

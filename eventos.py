@@ -2,6 +2,7 @@ import csv
 import json
 import locale
 import os.path
+import subprocess
 import sys
 import time
 import re
@@ -116,6 +117,14 @@ class Eventos:
             return True
         else:
             return False
+
+    def validar_numero_decimal(string):
+        regex = r'^\d+(\.\d{1,2})?$'
+        if re.match(regex, string):
+            return True
+        else:
+            return False
+
     @staticmethod
     def resizeTablaClientes():
         try:
@@ -378,3 +387,4 @@ class Eventos:
                 mbox.exec()
         except Exception as e:
             print("error en exportar propiedades", e)
+

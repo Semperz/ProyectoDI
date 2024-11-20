@@ -61,6 +61,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(lambda: eventos.Eventos.abrirCalendar(0, 1))
         var.ui.btnModifcli.clicked.connect(clientes.Clientes.modifCliente)
         var.ui.btnDelcli.clicked.connect(clientes.Clientes.bajaCliente)
+        var.ui.btnBuscarcli.clicked.connect(clientes.Clientes.filtroBusquedaCliente)
 
         var.ui.btnGrabarprop.clicked.connect(propiedades.Propiedades.altaPropiedad)
         var.ui.btnFechaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 0))

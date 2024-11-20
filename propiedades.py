@@ -77,9 +77,15 @@ class Propiedades():
             elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "La fecha de baja solo puede ser una fecha.")
-            elif not var.ui.txtPrecioventaprop.text().isdigit() or not var.ui.txtPrecioalquilerprop.text().isdigit():
+            elif not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioventaprop.text()) or  not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioalquilerprop.text()):
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "El precio solo puede ser un número.")
+            elif not var.ui.txtCPprop.text().isdigit():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "El código postal solo puede ser un número.")
+            elif not eventos.Eventos.validar_numero_decimal(var.ui.txtSuperprop.text()):
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La superficie solo puede ser un número.")
             else:
                 tipooper = []
                 if var.ui.chkAlquilerprop.isChecked():
@@ -136,30 +142,35 @@ class Propiedades():
             listado = conexion.Conexion.listadoPropiedades()
             index = 0
             var.ui.tablaPropiedades.setRowCount(len(listado))
-            for registro in listado:
-                var.ui.tablaPropiedades.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
-                var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(registro[5]))
-                var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(registro[6]))
-                var.ui.tablaPropiedades.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[7])))
-                var.ui.tablaPropiedades.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[8])))
-                if registro[10] == '':
-                    registro[10] = '-'
-                if registro[11] == '':
-                    registro[11] = '-'
-                var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
-                var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
-                var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(registro[14]))
-                var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(registro[2]))
-                var.ui.tablaPropiedades.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaPropiedades.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaPropiedades.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaPropiedades.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaPropiedades.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaPropiedades.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaPropiedades.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tablaPropiedades.item(index, 7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                var.ui.tablaPropiedades.item(index, 8).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                index += 1
+            if not listado:
+                var.ui.tablaPropiedades.setRowCount(1)
+                var.ui.tablaPropiedades.setItem(0, 2, QtWidgets.QTableWidgetItem("No hay propiedades que mostrar"))
+                var.ui.tablaPropiedades.item(0, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+            else:
+                for registro in listado:
+                    var.ui.tablaPropiedades.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                    var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(registro[5]))
+                    var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(registro[6]))
+                    var.ui.tablaPropiedades.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[7])))
+                    var.ui.tablaPropiedades.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[8])))
+                    if registro[10] == '':
+                        registro[10] = '-'
+                    if registro[11] == '':
+                        registro[11] = '-'
+                    var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
+                    var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
+                    var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(registro[14]))
+                    var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(registro[2]))
+                    var.ui.tablaPropiedades.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tablaPropiedades.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                    var.ui.tablaPropiedades.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                    var.ui.tablaPropiedades.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tablaPropiedades.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tablaPropiedades.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tablaPropiedades.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tablaPropiedades.item(index, 7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                    var.ui.tablaPropiedades.item(index, 8).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                    index += 1
         except Exception as e:
             print("Error carga tabla propiedades ", e)
 
@@ -278,9 +289,17 @@ class Propiedades():
             elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "La fecha de baja solo puede ser una fecha.")
-            elif not var.ui.txtPrecioventaprop.text().isdigit() or not var.ui.txtPrecioalquilerprop.text().isdigit():
+            elif not eventos.Eventos.validar_numero_decimal(
+                    var.ui.txtPrecioventaprop.text()) or not eventos.Eventos.validar_numero_decimal(
+                    var.ui.txtPrecioalquilerprop.text()):
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "El precio solo puede ser un número.")
+            elif not var.ui.txtCPprop.text().isdigit():
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "El código postal solo puede ser un número.")
+            elif not eventos.Eventos.validar_numero_decimal(var.ui.txtSuperprop.text()):
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La superficie solo puede ser un número.")
             else:
                 tipooper = []
                 if var.ui.chkAlquilerprop.isChecked():

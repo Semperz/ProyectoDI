@@ -208,8 +208,11 @@ class Clientes:
         except (Exception) as error:
             print("error al historico cliente",error)
 
-
-
+    def filtroBusquedaCliente(self):
+        try:
+            Clientes.cargaTablaClientes(self)
+        except Exception as e:
+            print(e)
 
 
 

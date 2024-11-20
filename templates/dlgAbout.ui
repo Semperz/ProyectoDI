@@ -64,7 +64,7 @@
     <string>Cerrar</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -96,9 +96,19 @@
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="lblLink">
+      <property name="text">
+       <string>&lt;a href=&quot;https://www.youtube.com/watch?v=QOhmcbfwxnA&quot;&gt;IES de Teis&lt;/a&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>© Copyrights</string>
+       <string> Copyright © 2024-2025</string>
       </property>
      </widget>
     </item>
