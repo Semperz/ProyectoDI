@@ -23,9 +23,9 @@ class Main(QtWidgets.QMainWindow):
         var.dlggestion = dlgGestionprop()
         var.dlgabout = dlgAboutprop()
         self.setStyleSheet(styles.load_stylesheet())
-        conexion.Conexion.db_conexion(self)
+        #conexion.Conexion.db_conexion(self)
         var.historico = 0
-        #conexionserver.ConexionServer.crear_conexion(self)
+        conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
         propiedades.Propiedades.checkDisponibilidad(self)
@@ -85,7 +85,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.cargarProvprop()
         eventos.Eventos.cargarMuniprop()
         var.ui.cmbProvprop.currentIndexChanged.connect(eventos.Eventos.cargarMuniprop)
-        eventos.Eventos.cargarTipoprop(self)
+        #eventos.Eventos.cargarTipoprop(self)
 
         '''
         eventos del ToolBar

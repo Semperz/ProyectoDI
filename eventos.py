@@ -45,15 +45,15 @@ class Eventos:
     @staticmethod
     def cargarProv():
         var.ui.cmbProvcli.clear()
-        listado = conexion.Conexion.listarProvincias()
-        #listado = conexionserver.ConexionServer.listaProv()
+        #listado = conexion.Conexion.listarProvincias()
+        listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvcli.addItems(listado)
     @staticmethod
     def cargarMuni():
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
-        listado = conexion.Conexion.listarMunicipios(provActual)
-        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        #listado = conexion.Conexion.listarMunicipios(provActual)
+        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):

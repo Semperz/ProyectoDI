@@ -34,7 +34,9 @@ class Clientes:
                     return
                 else:
                     pass
-            if not conexion.Conexion.altaCliente(nuevoCli):
+
+            if not conexionserver.ConexionServer.altaCliente(nuevoCli):
+                    #conexion.Conexion.altaCliente(nuevoCli):
                 QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
             else:
                 mbox = QtWidgets.QMessageBox()
@@ -94,8 +96,8 @@ class Clientes:
 
     def cargaTablaClientes(self):
         try:
-            listado = conexion.Conexion.listadoClientes()
-            # listado = conexionserver.ConexionServer.listadoClientes()
+            #listado = conexion.Conexion.listadoClientes()
+            listado = conexionserver.ConexionServer.listadoClientes(self)
             index = 0
             for registro in listado:
                 var.ui.tablaClientes.setRowCount(index + 1)
@@ -122,7 +124,9 @@ class Clientes:
         try:
             fila = var.ui.tablaClientes.selectedItems()
             datos =  [dato.text() for dato in fila]
-            registro = conexion.Conexion.datosOneCliente(str(datos[0]))
+            #registro = conexion.Conexion.datosOneCliente(str(datos[0]))
+            registro = conexionserver.ConexionServer.datosOneCliente(str(datos[0]))
+            registro = [x if x != 'None' else '' for x in registro]
             listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
              var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
             for i in range(len(listado)):
