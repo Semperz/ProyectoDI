@@ -140,11 +140,18 @@ class Clientes:
 
     def modifCliente(self):
         try:
-            modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
-                        var.ui.txtNomcli.text(),
-                        var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
-                        var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
-            if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
+            # modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
+            #             var.ui.txtNomcli.text(),
+            #             var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
+            #             var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
+
+            modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
+                         var.ui.txtNomcli.text(),
+                         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
+                         var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
+                              var.ui.txtDnicli.text()]
+            if conexionserver.ConexionServer.modifCliente(modifcliserver):
+            # if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
@@ -175,7 +182,8 @@ class Clientes:
     def bajaCliente(self):
         try:
             datos = [var.ui.txtBajaCli.text(), var.ui.txtDnicli.text()]
-            if conexion.Conexion.bajaCliente(datos):
+            if conexionserver.ConexionServer.bajaCliente(datos):
+            #if conexion.Conexion.bajaCliente(datos):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))

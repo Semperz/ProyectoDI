@@ -1,7 +1,12 @@
+from datetime import datetime
+
 import mysql.connector
 from mysql.connector import Error
 import os
 from PyQt6 import QtSql, QtWidgets
+
+import var
+
 
 class ConexionServer():
     def crear_conexion(self):
@@ -66,16 +71,28 @@ class ConexionServer():
 
     def listadoClientes(self):
         try:
-            conexion = ConexionServer().crear_conexion()
-            listadoclientes = []
-            cursor = conexion.cursor()
-            cursor.execute("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
-            resultados = cursor.fetchall()
-            for fila in resultados:      # Procesar cada fila de los resultados y crea una lista con valores de la fila
-                listadoclientes.append(list(fila))  # Convierte la tupla en una lista y la añade a listadoclientes
-            cursor.close()    # Cerrar el cursor y la conexión si no los necesitas más
-            conexion.close()
-            return listadoclientes
+            if var.historico == 1:
+                conexion = ConexionServer().crear_conexion()
+                listadoclientes = []
+                cursor = conexion.cursor()
+                cursor.execute("SELECT * FROM clientes WHERE bajacli IS NULL ORDER BY apelcli, nomecli ASC")
+                resultados = cursor.fetchall()
+                for fila in resultados:      # Procesar cada fila de los resultados y crea una lista con valores de la fila
+                    listadoclientes.append(list(fila))  # Convierte la tupla en una lista y la añade a listadoclientes
+                cursor.close()    # Cerrar el cursor y la conexión si no los necesitas más
+                conexion.close()
+                return listadoclientes
+            else:
+                conexion = ConexionServer().crear_conexion()
+                listadoclientes = []
+                cursor = conexion.cursor()
+                cursor.execute("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
+                resultados = cursor.fetchall()
+                for fila in resultados:  # Procesar cada fila de los resultados y crea una lista con valores de la fila
+                    listadoclientes.append(list(fila))  # Convierte la tupla en una lista y la añade a listadoclientes
+                cursor.close()  # Cerrar el cursor y la conexión si no los necesitas más
+                conexion.close()
+                return listadoclientes
         except Exception as e:
             print("error listado en conexion", e)
 
@@ -114,3 +131,43 @@ class ConexionServer():
         except Exception as e:
             print("Error al obtener datos de un cliente:", e)
             return None  # Devolver None en caso de error
+
+
+    def bajaCliente(datos):
+        try:
+            conexion = ConexionServer().crear_conexion()
+            if conexion:
+                cursor = conexion.cursor()
+                query = '''UPDATE clientes set bajacli = %s where dnicli = %s'''
+                cursor.execute(query, (datetime.now().strftime("%d/%m/%Y"), datos[1]))
+                conexion.commit()
+                cursor.close()
+                conexion.close()
+                return True
+
+        except Exception as error:
+            print("error baja cliente", error)
+
+
+    def modifCliente(cliente):
+        try:
+            conexion = ConexionServer().crear_conexion()
+            cursor = conexion.cursor()
+            query = """
+                            select count(*) from clientes where dnicli = %s
+                            """
+            cursor.execute(query, (cliente[9],))
+            if cursor.fetchone()[0] > 0:
+                query = """
+                UPDATE clientes SET altacli = %s, apelcli = %s, nomecli = %s, dircli = %s,
+                 emailcli = %s, movilcli = %s, provcli = %s, municli = %s, bajacli = %s WHERE dnicli = %s
+                """
+                cursor.execute(query, cliente)          # Ejecutar la consulta pasando la lista directamente
+                conexion.commit()  # Confirmar la transacción
+                cursor.close()   # Cerrar el cursor y la conexión
+                conexion.close()
+                return True
+            else:
+                return False
+        except Error as e:
+            print(f"Error al insertar el cliente: {e}")
