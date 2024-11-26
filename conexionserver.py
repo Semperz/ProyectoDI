@@ -75,7 +75,8 @@ class ConexionServer():
                 conexion = ConexionServer().crear_conexion()
                 listadoclientes = []
                 cursor = conexion.cursor()
-                cursor.execute("SELECT * FROM clientes WHERE bajacli IS NULL ORDER BY apelcli, nomecli ASC")
+                cursor.execute("SELECT dnicli, altacli, apelcli, nomecli, emailcli, movilcli, dircli, provcli, municli, bajacli"
+                               " FROM clientes WHERE bajacli IS NULL ORDER BY apelcli, nomecli ASC")
                 resultados = cursor.fetchall()
                 for fila in resultados:      # Procesar cada fila de los resultados y crea una lista con valores de la fila
                     listadoclientes.append(list(fila))  # Convierte la tupla en una lista y la añade a listadoclientes
@@ -86,7 +87,8 @@ class ConexionServer():
                 conexion = ConexionServer().crear_conexion()
                 listadoclientes = []
                 cursor = conexion.cursor()
-                cursor.execute("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
+                cursor.execute("SELECT dnicli, altacli, apelcli, nomecli, emailcli, movilcli, dircli, provcli, municli, bajacli"
+                               " FROM clientes ORDER BY apelcli, nomecli ASC")
                 resultados = cursor.fetchall()
                 for fila in resultados:  # Procesar cada fila de los resultados y crea una lista con valores de la fila
                     listadoclientes.append(list(fila))  # Convierte la tupla en una lista y la añade a listadoclientes

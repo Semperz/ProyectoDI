@@ -24,8 +24,11 @@ class Clientes:
 
     def altaClientes(self):
         try:
-            nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
-                    var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+
+            nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),var.ui.txtDircli.text(),
+                    var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            # nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
+            #         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             camposObligatorios = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                                     var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             for i in range(len(camposObligatorios)):
@@ -35,7 +38,7 @@ class Clientes:
                 else:
                     pass
 
-            if not conexionserver.ConexionServer.altaCliente(nuevoCli):
+            if not conexionserver.ConexionServer.altaCliente(nuevoCliServer):
                     #conexion.Conexion.altaCliente(nuevoCli):
                 QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
             else:
@@ -127,13 +130,17 @@ class Clientes:
             #registro = conexion.Conexion.datosOneCliente(str(datos[0]))
             registro = conexionserver.ConexionServer.datosOneCliente(str(datos[0]))
             registro = [x if x != 'None' else '' for x in registro]
-            listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
-             var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
-            for i in range(len(listado)):
+            # listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+            #  var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+
+            listadoServer = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+                       var.ui.txtEmailcli, var.ui.txtDircli, var.ui.txtMovilcli , var.ui.cmbProvcli, var.ui.cmbMunicli,
+                       var.ui.txtBajaCli]
+            for i in range(len(listadoServer)):
                 if i == 7 or i == 8:
-                    listado[i].setCurrentText(registro[i])
+                    listadoServer[i].setCurrentText(registro[i])
                 else:
-                    listado[i].setText(registro[i])
+                    listadoServer[i].setText(registro[i])
             #Clientes.cargarCliente(registro)
         except Exception as error:
             print("error carga cliente",error)
@@ -147,7 +154,8 @@ class Clientes:
 
             modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
                          var.ui.txtNomcli.text(),
-                         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
+                              var.ui.txtDircli.text(),
+                         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(),
                          var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
                               var.ui.txtDnicli.text()]
             if conexionserver.ConexionServer.modifCliente(modifcliserver):
