@@ -25,7 +25,7 @@ class Clientes:
     def altaClientes(self):
         try:
 
-            nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),var.ui.txtDircli.text(),
+            nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             # nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
             #         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
@@ -152,9 +152,9 @@ class Clientes:
             #             var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
             #             var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
 
-            modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
-                         var.ui.txtNomcli.text(),
-                              var.ui.txtDircli.text(),
+            modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(),
+                         var.ui.txtNomcli.text().title(),
+                              var.ui.txtDircli.text().title(),
                          var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(),
                          var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
                               var.ui.txtDnicli.text()]

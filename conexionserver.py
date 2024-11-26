@@ -173,3 +173,40 @@ class ConexionServer():
                 return False
         except Error as e:
             print(f"Error al insertar el cliente: {e}")
+
+    @staticmethod
+    def listadoPropiedades():
+        filasProp = []
+        listado = []
+        historicoprop = var.ui.chkHistoricoprop.isChecked()
+        try:
+            if historicoprop:
+                conexion = ConexionServer().crear_conexion()
+                if conexion:
+                    cursor = conexion.cursor()
+                    query = "SELECT * FROM propiedades ORDER BY codigo ASC"
+                    cursor.execute(query)
+                    listado = cursor.fetchall()
+                    conexion.commit()  # Confirmar la transacción
+                    cursor.close()  # Cerrar el cursor y la conexión
+                    conexion.close()
+
+
+            else:
+                conexion = ConexionServer().crear_conexion()
+                if conexion:
+                    cursor = conexion.cursor()
+                    query = "SELECT * FROM propiedades WHERE bajaprop IS NULL ORDER BY codigo ASC"
+                    cursor.execute(query)
+                    listado = cursor.fetchall()
+                    conexion.commit()  # Confirmar la transacción
+                    cursor.close()  # Cerrar el cursor y la conexión
+                    conexion.close()
+
+            for row in listado:
+                filasProp.append(row)
+            return filasProp
+
+
+        except Exception as e:
+            print("error listado en conexión", e)

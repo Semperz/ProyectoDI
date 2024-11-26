@@ -1,4 +1,6 @@
 from PyQt6 import QtWidgets, QtGui, QtCore
+
+import conexionserver
 import eventos
 import conexion
 import propiedades
@@ -64,7 +66,7 @@ class Propiedades():
 
     def altaPropiedad(self):
         try:
-            propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text(), var.ui.cmbProvprop.currentText(),
+            propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text().title(), var.ui.cmbProvprop.currentText(),
                          var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
                          var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
                          var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
@@ -102,7 +104,7 @@ class Propiedades():
                 if var.ui.rbtVendidoprop.isChecked():
                     propiedad.append(var.ui.rbtVendidoprop.text())
 
-                propiedad.append(var.ui.txtNomeprop.text())
+                propiedad.append(var.ui.txtNomeprop.text().title())
                 propiedad.append(var.ui.txtMovilprop.text())
 
                 if conexion.Conexion.altaPropiedad(propiedad):
@@ -138,8 +140,9 @@ class Propiedades():
             print("error numero propiedad", e)
 
     def cargaTablaPropiedades(self):
-        try:
-            listado = conexion.Conexion.listadoPropiedades()
+         try:
+            listado = conexionserver.ConexionServer.listadoPropiedades()
+            #listado = conexion.Conexion.listadoPropiedades()
             index = 0
             var.ui.tablaPropiedades.setRowCount(len(listado))
             if not listado:
@@ -149,18 +152,22 @@ class Propiedades():
             else:
                 for registro in listado:
                     var.ui.tablaPropiedades.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
-                    var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(registro[5]))
-                    var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(registro[6]))
+                    var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[5])))
+                    var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[6])))
                     var.ui.tablaPropiedades.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[7])))
                     var.ui.tablaPropiedades.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[8])))
-                    if registro[10] == '':
+                    # if registro[10] == '':
+                    #     registro[10] = '-'
+                    # if registro[11] == '':
+                    #     registro[11] = '-'
+                    if registro[10] == []:
                         registro[10] = '-'
-                    if registro[11] == '':
+                    if registro[11] == []:
                         registro[11] = '-'
                     var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
                     var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
-                    var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(registro[14]))
-                    var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(registro[2]))
+                    var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(str(registro[14])))
+                    var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(str(registro[2])))
                     var.ui.tablaPropiedades.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                     var.ui.tablaPropiedades.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                     var.ui.tablaPropiedades.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
@@ -171,7 +178,7 @@ class Propiedades():
                     var.ui.tablaPropiedades.item(index, 7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                     var.ui.tablaPropiedades.item(index, 8).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                     index += 1
-        except Exception as e:
+         except Exception as e:
             print("Error carga tabla propiedades ", e)
 
     def cargaOnePropiedad(self):
