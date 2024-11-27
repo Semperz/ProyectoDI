@@ -250,7 +250,8 @@ class Eventos:
 
     def cargarTipoprop(self):
         try:
-            registro = conexion.Conexion.cargarTipoprop(self)
+            #registro = conexion.Conexion.cargarTipoprop(self)
+            registro = conexionserver.ConexionServer.cargarTipoprop(self)
             var.ui.cmbTipoprop.clear()
             var.ui.cmbTipoprop.addItems(registro)
         except Exception as e:

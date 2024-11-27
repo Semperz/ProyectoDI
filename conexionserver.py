@@ -123,7 +123,7 @@ class ConexionServer():
             if conexion:
                 cursor = conexion.cursor()
                 # Definir la consulta de selección
-                query = '''SELECT * FROM clientes WHERE dnicli = %s'''  # Usa %s para el placeholder
+                query = '''SELECT dnicli, altacli, apelcli, nomecli, emailcli, dircli, movilcli, provcli, municli, bajacli FROM clientes WHERE dnicli = %s'''  # Usa %s para el placeholder
                 cursor.execute(query, (dni,))  # Pasar 'dni' como una tupla
                 # Recuperar los datos de la consulta
                 for row in cursor.fetchall():
@@ -177,36 +177,57 @@ class ConexionServer():
     @staticmethod
     def listadoPropiedades():
         filasProp = []
-        listado = []
         historicoprop = var.ui.chkHistoricoprop.isChecked()
         try:
+            conexion = ConexionServer().crear_conexion()
             if historicoprop:
-                conexion = ConexionServer().crear_conexion()
-                if conexion:
                     cursor = conexion.cursor()
                     query = "SELECT * FROM propiedades ORDER BY codigo ASC"
                     cursor.execute(query)
-                    listado = cursor.fetchall()
+                    resultados = cursor.fetchall()
                     conexion.commit()  # Confirmar la transacción
-                    cursor.close()  # Cerrar el cursor y la conexión
-                    conexion.close()
-
-
             else:
-                conexion = ConexionServer().crear_conexion()
-                if conexion:
                     cursor = conexion.cursor()
                     query = "SELECT * FROM propiedades WHERE bajaprop IS NULL ORDER BY codigo ASC"
                     cursor.execute(query)
-                    listado = cursor.fetchall()
+                    resultados = cursor.fetchall()
                     conexion.commit()  # Confirmar la transacción
-                    cursor.close()  # Cerrar el cursor y la conexión
-                    conexion.close()
-
-            for row in listado:
-                filasProp.append(row)
+            for row in resultados:
+                filasProp.append(list(row))
+            cursor.close()  # Cerrar el cursor y la conexión
+            conexion.close()
             return filasProp
+
 
 
         except Exception as e:
             print("error listado en conexión", e)
+
+
+    def datosOnePropiedad(ID):
+        try:
+            registro = []
+            conexion = ConexionServer().crear_conexion()
+            if conexion:
+                cursor = conexion.cursor()
+                query = "SELECT * FROM propiedades WHERE codigo = %s"
+                cursor.execute(query, (ID,))
+                for row in cursor.fetchall():
+                    registro.extend([str(col) for col in row])
+                return registro
+        except Exception as error:
+            print("error datos una propiedad", error)
+
+
+    def cargarTipoprop(self):
+        try:
+            registro = []
+            conexion = ConexionServer().crear_conexion()
+            cursor = conexion.cursor()
+            query = "SELECT * FROM tipopropiedad order by tipo ASC"
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                registro.append(str(row))
+            return registro
+        except Exception as error:
+            print("error cargar tipo", error)

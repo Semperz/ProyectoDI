@@ -142,6 +142,7 @@ class Propiedades():
     def cargaTablaPropiedades(self):
          try:
             listado = conexionserver.ConexionServer.listadoPropiedades()
+            listado = [x if x != 'None' else '' for x in listado]
             #listado = conexion.Conexion.listadoPropiedades()
             index = 0
             var.ui.tablaPropiedades.setRowCount(len(listado))
@@ -156,13 +157,9 @@ class Propiedades():
                     var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[6])))
                     var.ui.tablaPropiedades.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[7])))
                     var.ui.tablaPropiedades.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[8])))
-                    # if registro[10] == '':
-                    #     registro[10] = '-'
-                    # if registro[11] == '':
-                    #     registro[11] = '-'
-                    if registro[10] == []:
+                    if registro[10] == '':
                         registro[10] = '-'
-                    if registro[11] == []:
+                    if registro[11] == '':
                         registro[11] = '-'
                     var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
                     var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
@@ -185,7 +182,10 @@ class Propiedades():
         try:
             fila = var.ui.tablaPropiedades.selectedItems()
             datos =  [dato.text() for dato in fila]
-            registro = conexion.Conexion.datosOnePropiedad(str(datos[0]))
+            registro = conexionserver.ConexionServer.datosOnePropiedad(str(datos[0]))
+            registro = ["" if x == 'None' else x for x in registro]
+            print(registro)
+            #registro = conexion.Conexion.datosOnePropiedad(str(datos[0]))
             listado = [var.ui.txtFechaprop, var.ui.txtFechabajaprop, var.ui.txtDirprop, var.ui.cmbProvprop,
              var.ui.cmbMuniprop, var.ui.cmbTipoprop,
              var.ui.spnHabprop, var.ui.spnBanosprop, var.ui.txtSuperprop,

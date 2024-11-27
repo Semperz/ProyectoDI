@@ -85,7 +85,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.cargarProvprop()
         eventos.Eventos.cargarMuniprop()
         var.ui.cmbProvprop.currentIndexChanged.connect(eventos.Eventos.cargarMuniprop)
-        #eventos.Eventos.cargarTipoprop(self)
+        eventos.Eventos.cargarTipoprop(self)
 
         '''
         eventos del ToolBar
