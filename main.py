@@ -23,9 +23,11 @@ class Main(QtWidgets.QMainWindow):
         var.dlggestion = dlgGestionprop()
         var.dlgabout = dlgAboutprop()
         self.setStyleSheet(styles.load_stylesheet())
-        #conexion.Conexion.db_conexion(self)
+        conexion.Conexion.db_conexion(self)
         var.historico = 0
-        conexionserver.ConexionServer.crear_conexion(self)
+        var.current_page_cli = 0
+        var.items_per_page_cli = 15
+        #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
         propiedades.Propiedades.checkDisponibilidad(self)
@@ -62,6 +64,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifcli.clicked.connect(clientes.Clientes.modifCliente)
         var.ui.btnDelcli.clicked.connect(clientes.Clientes.bajaCliente)
         var.ui.btnBuscarcli.clicked.connect(clientes.Clientes.filtroBusquedaCliente)
+        var.ui.btnSiguientecli.clicked.connect(clientes.Clientes.siguientePaginaClientes)
+        var.ui.btnAnteriorcli.clicked.connect(clientes.Clientes.anteriorPaginaClientes)
 
         var.ui.btnGrabarprop.clicked.connect(propiedades.Propiedades.altaPropiedad)
         var.ui.btnFechaprop.clicked.connect(lambda: eventos.Eventos.abrirCalendar(1, 0))

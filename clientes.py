@@ -27,8 +27,8 @@ class Clientes:
 
             nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),
                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
-            # nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
-            #         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
+                     var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             camposObligatorios = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                                     var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             for i in range(len(camposObligatorios)):
@@ -38,8 +38,8 @@ class Clientes:
                 else:
                     pass
 
-            if not conexionserver.ConexionServer.altaCliente(nuevoCliServer):
-                    #conexion.Conexion.altaCliente(nuevoCli):
+            #if not conexionserver.ConexionServer.altaCliente(nuevoCliServer):
+            if not conexion.Conexion.altaCliente(nuevoCli):
                 QtWidgets.QMessageBox.critical(None, 'Error', "Ha ocurrido un error")
             else:
                 mbox = QtWidgets.QMessageBox()
@@ -99,11 +99,15 @@ class Clientes:
 
     def cargaTablaClientes(self):
         try:
-            #listado = conexion.Conexion.listadoClientes()
-            listado = conexionserver.ConexionServer.listadoClientes(self)
-            index = 0
-            for registro in listado:
-                var.ui.tablaClientes.setRowCount(index + 1)
+            listado = conexion.Conexion.listadoClientes()
+            total_items = len(listado)
+            start_index = var.current_page_cli * var.items_per_page_cli
+            end_index = start_index + var.items_per_page_cli
+            paginated_list = listado[start_index:end_index]
+            #listado = conexionserver.ConexionServer.listadoClientes(self)
+
+            for index, registro in enumerate(paginated_list):
+                var.ui.tablaClientes.insertRow(index)
                 var.ui.tablaClientes.setItem(index, 0, QtWidgets.QTableWidgetItem(registro[0]))
                 var.ui.tablaClientes.setItem(index, 1, QtWidgets.QTableWidgetItem(registro[2]))
                 var.ui.tablaClientes.setItem(index, 2, QtWidgets.QTableWidgetItem(registro[3]))
@@ -118,48 +122,57 @@ class Clientes:
                 var.ui.tablaClientes.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaClientes.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tablaClientes.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                index += 1
+            var.ui.btnSiguientecli.setEnabled(end_index < total_items)
+            var.ui.btnAnteriorcli.setEnabled(var.current_page_cli > 0)
         except Exception as e:
             print("Error carga tabla clientes ", e)
+
+    def siguientePaginaClientes(self):
+        var.current_page_cli += 1
+        self.cargaTablaClientes()
+
+    def anteriorPaginaClientes(self):
+        var.current_page_cli -= 1
+        self.cargaTablaClientes()
 
 
     def cargaOneCliente(self):
         try:
             fila = var.ui.tablaClientes.selectedItems()
             datos =  [dato.text() for dato in fila]
-            #registro = conexion.Conexion.datosOneCliente(str(datos[0]))
-            registro = conexionserver.ConexionServer.datosOneCliente(str(datos[0]))
-            registro = [x if x != 'None' else '' for x in registro]
-            # listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
-            #  var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+            registro = conexion.Conexion.datosOneCliente(str(datos[0]))
+            #registro = conexionserver.ConexionServer.datosOneCliente(str(datos[0]))
+            #registro = [x if x != 'None' else '' for x in registro]
+            listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+              var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
 
-            listadoServer = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
-                       var.ui.txtEmailcli, var.ui.txtDircli, var.ui.txtMovilcli , var.ui.cmbProvcli, var.ui.cmbMunicli,
-                       var.ui.txtBajaCli]
-            for i in range(len(listadoServer)):
+            # listadoServer = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+            #            var.ui.txtEmailcli, var.ui.txtDircli, var.ui.txtMovilcli , var.ui.cmbProvcli, var.ui.cmbMunicli,
+            #            var.ui.txtBajaCli]
+            for i in range(len(listado)):
                 if i == 7 or i == 8:
-                    listadoServer[i].setCurrentText(registro[i])
+                    listado[i].setCurrentText(registro[i])
                 else:
-                    listadoServer[i].setText(registro[i])
+                    listado[i].setText(registro[i])
             #Clientes.cargarCliente(registro)
         except Exception as error:
             print("error carga cliente",error)
 
     def modifCliente(self):
         try:
-            # modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
-            #             var.ui.txtNomcli.text(),
-            #             var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
-            #             var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
+            modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
+                        var.ui.txtNomcli.text(),
+                        var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(),
+                        var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text()]
 
-            modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(),
-                         var.ui.txtNomcli.text().title(),
-                              var.ui.txtDircli.text().title(),
-                         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(),
-                         var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
-                              var.ui.txtDnicli.text()]
-            if conexionserver.ConexionServer.modifCliente(modifcliserver):
-            # if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
+            # modifcliserver = [var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(),
+            #              var.ui.txtNomcli.text().title(),
+            #                   var.ui.txtDircli.text().title(),
+            #              var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(),
+            #              var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
+            #                   var.ui.txtDnicli.text()]
+            #if conexionserver.ConexionServer.modifCliente(modifcliserver):
+            if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
@@ -190,8 +203,8 @@ class Clientes:
     def bajaCliente(self):
         try:
             datos = [var.ui.txtBajaCli.text(), var.ui.txtDnicli.text()]
-            if conexionserver.ConexionServer.bajaCliente(datos):
-            #if conexion.Conexion.bajaCliente(datos):
+            #if conexionserver.ConexionServer.bajaCliente(datos):
+            if conexion.Conexion.bajaCliente(datos):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))

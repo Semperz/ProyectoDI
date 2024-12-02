@@ -25,10 +25,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="1">
-     <spacer name="verticalSpacer_4">
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_5">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeType">
        <enum>QSizePolicy::Fixed</enum>
@@ -57,22 +57,6 @@
       </property>
      </spacer>
     </item>
-    <item row="0" column="2">
-     <spacer name="horizontalSpacer_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="panPrincipal">
       <property name="currentIndex">
@@ -87,6 +71,102 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="12" alignment="Qt::AlignRight|Qt::AlignVCenter">
+             <widget class="QLabel" name="lblFechaBajacli">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Fecha Baja: </string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="14">
+             <widget class="QPushButton" name="btnBajaCli">
+              <property name="minimumSize">
+               <size>
+                <width>25</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>25</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>29</width>
+                <height>25</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="lblAsterisk">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:rgb(255, 2, 2)</string>
+              </property>
+              <property name="text">
+               <string>*</string>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="1">
              <widget class="QLabel" name="lblAsterisk_2">
               <property name="font">
@@ -102,6 +182,22 @@
                <string>*</string>
               </property>
              </widget>
+            </item>
+            <item row="2" column="4">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item row="3" column="8">
              <spacer name="horizontalSpacer_3">
@@ -126,21 +222,24 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="4">
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
+            <item row="1" column="3">
+             <widget class="QLineEdit" name="txtApelcli">
+              <property name="minimumSize">
                <size>
-                <width>40</width>
-                <height>20</height>
+                <width>250</width>
+                <height>0</height>
                </size>
               </property>
-             </spacer>
+              <property name="maximumSize">
+               <size>
+                <width>350</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
             </item>
             <item row="1" column="7" colspan="7">
              <widget class="QLineEdit" name="txtNomcli">
@@ -158,13 +257,6 @@
               </property>
               <property name="styleSheet">
                <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="lblEmailcli">
-              <property name="text">
-               <string>Email:</string>
               </property>
              </widget>
             </item>
@@ -187,22 +279,10 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="3">
-             <widget class="QLineEdit" name="txtApelcli">
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>350</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
+            <item row="2" column="2">
+             <widget class="QLabel" name="lblEmailcli">
+              <property name="text">
+               <string>Email:</string>
               </property>
              </widget>
             </item>
@@ -213,10 +293,17 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="9">
-             <widget class="QLabel" name="lblProvcli">
+            <item row="1" column="6">
+             <widget class="QLabel" name="lblNomcli">
               <property name="text">
-               <string>Provincia:</string>
+               <string>Nombre:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="lblDnicli">
+              <property name="text">
+               <string>DNI/CIF:</string>
               </property>
              </widget>
             </item>
@@ -242,24 +329,10 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="6">
-             <widget class="QLabel" name="lblNomcli">
+            <item row="3" column="9">
+             <widget class="QLabel" name="lblProvcli">
               <property name="text">
-               <string>Nombre:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="lblDnicli">
-              <property name="text">
-               <string>DNI/CIF:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="6">
-             <widget class="QLabel" name="lblMovilcli">
-              <property name="text">
-               <string>Móvil:</string>
+               <string>Provincia:</string>
               </property>
              </widget>
             </item>
@@ -267,13 +340,6 @@
              <widget class="QLabel" name="lblFechaAltacli">
               <property name="text">
                <string>Fecha Alta:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="lblDircli">
-              <property name="text">
-               <string>Dirección:</string>
               </property>
              </widget>
             </item>
@@ -296,6 +362,20 @@
               </property>
              </widget>
             </item>
+            <item row="2" column="6">
+             <widget class="QLabel" name="lblMovilcli">
+              <property name="text">
+               <string>Móvil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QLabel" name="lblDircli">
+              <property name="text">
+               <string>Dirección:</string>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="10">
              <widget class="QComboBox" name="cmbProvcli">
               <property name="minimumSize">
@@ -315,13 +395,6 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="13">
-             <widget class="QLabel" name="lblMunicli">
-              <property name="text">
-               <string>Municipio:</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="15" rowspan="4">
              <spacer name="horizontalSpacer_9">
               <property name="orientation">
@@ -334,6 +407,26 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="0" column="0" rowspan="4">
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="13">
+             <widget class="QLabel" name="lblMunicli">
+              <property name="text">
+               <string>Municipio:</string>
+              </property>
+             </widget>
             </item>
             <item row="0" column="9" alignment="Qt::AlignLeft">
              <widget class="QLineEdit" name="txtAltaCli">
@@ -356,19 +449,6 @@
                <set>Qt::AlignCenter</set>
               </property>
              </widget>
-            </item>
-            <item row="0" column="0" rowspan="4">
-             <spacer name="horizontalSpacer_12">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
             <item row="3" column="11">
              <spacer name="horizontalSpacer_13">
@@ -482,118 +562,6 @@ QPushButton:pressed {
               </property>
              </spacer>
             </item>
-            <item row="0" column="14">
-             <widget class="QPushButton" name="btnBajaCli">
-              <property name="minimumSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: whitesmoke;
-    color: white;
-    border-radius: 5px;
-}
-
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
-}
-</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>29</width>
-                <height>25</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="12" alignment="Qt::AlignRight|Qt::AlignVCenter">
-             <widget class="QLabel" name="lblFechaBajacli">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>70</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Fecha Baja: </string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="lblAsterisk">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:rgb(255, 2, 2)</string>
-              </property>
-              <property name="text">
-               <string>*</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="7">
-             <widget class="QLabel" name="lblAsterisk_4">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:rgb(255, 2, 2)</string>
-              </property>
-              <property name="text">
-               <string>*</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="5">
              <widget class="QLabel" name="label_4">
               <property name="font">
@@ -626,8 +594,8 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="2" column="5">
-             <widget class="QLabel" name="lblAsterisk_5">
+            <item row="0" column="7">
+             <widget class="QLabel" name="lblAsterisk_4">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -730,6 +698,22 @@ QPushButton:checked {
                </spacer>
               </item>
              </layout>
+            </item>
+            <item row="2" column="5">
+             <widget class="QLabel" name="lblAsterisk_5">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:rgb(255, 2, 2)</string>
+              </property>
+              <property name="text">
+               <string>*</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -844,18 +828,21 @@ QPushButton:checked {
           </item>
          </layout>
         </item>
-        <item row="2" column="0">
-         <widget class="Line" name="line">
-          <property name="frameShadow">
-           <enum>QFrame::Sunken</enum>
-          </property>
-          <property name="lineWidth">
-           <number>3</number>
-          </property>
+        <item row="3" column="0">
+         <spacer name="verticalSpacer_2">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Vertical</enum>
           </property>
-         </widget>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item row="5" column="0">
          <spacer name="verticalSpacer_3">
@@ -873,24 +860,40 @@ QPushButton:checked {
           </property>
          </spacer>
         </item>
-        <item row="3" column="0">
-         <spacer name="verticalSpacer_2">
+        <item row="2" column="0">
+         <widget class="Line" name="line">
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>3</number>
+          </property>
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="lblCamposObligatorios">
+          <property name="styleSheet">
+           <string notr="true">color:rgb(255, 2, 2)</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
+          <property name="text">
+           <string>Campos obligatiorios: * </string>
           </property>
-         </spacer>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QTableWidget" name="tablaClientes">
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="autoScroll">
+           <bool>false</bool>
+          </property>
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
@@ -903,9 +906,22 @@ QPushButton:checked {
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
+          <property name="rowCount">
+           <number>10</number>
+          </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
           <column>
            <property name="text">
             <string>DNI/NIE</string>
@@ -943,15 +959,73 @@ QPushButton:checked {
           </column>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="lblCamposObligatorios">
-          <property name="styleSheet">
-           <string notr="true">color:rgb(255, 2, 2)</string>
-          </property>
-          <property name="text">
-           <string>Campos obligatiorios: * </string>
-          </property>
-         </widget>
+        <item row="6" column="0">
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignVCenter">
+           <widget class="QPushButton" name="btnAnteriorcli">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Anterior</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" alignment="Qt::AlignLeft">
+           <widget class="QPushButton" name="btnSiguientecli">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Siguiente</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_24">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="3">
+           <spacer name="horizontalSpacer_25">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1929,19 +2003,6 @@ QPushButton:checked {
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
-         <widget class="Line" name="line_2">
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="lineWidth">
-           <number>2</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="0">
          <widget class="QTableWidget" name="tablaPropiedades">
           <property name="editTriggers">
@@ -2006,12 +2067,103 @@ QPushButton:checked {
           </column>
          </widget>
         </item>
+        <item row="1" column="0">
+         <widget class="Line" name="line_2">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <spacer name="verticalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="0">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="2">
+           <widget class="QPushButton" name="btnSiguienteprop">
+            <property name="text">
+             <string>Siguiente</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_26">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="btnAnteriorprop">
+            <property name="text">
+             <string>Anterior</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <spacer name="horizontalSpacer_27">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
        </layout>
        <zorder>tablaPropiedades</zorder>
        <zorder>line_2</zorder>
        <zorder></zorder>
+       <zorder>verticalSpacer_8</zorder>
+       <zorder>gridLayoutWidget</zorder>
       </widget>
      </widget>
+    </item>
+    <item row="1" column="1">
+     <spacer name="verticalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>

@@ -45,15 +45,15 @@ class Eventos:
     @staticmethod
     def cargarProv():
         var.ui.cmbProvcli.clear()
-        #listado = conexion.Conexion.listarProvincias()
-        listado = conexionserver.ConexionServer.listaProv()
+        listado = conexion.Conexion.listarProvincias()
+        #listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvcli.addItems(listado)
     @staticmethod
     def cargarMuni():
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
-        #listado = conexion.Conexion.listarMunicipios(provActual)
-        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        listado = conexion.Conexion.listarMunicipios(provActual)
+        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):
@@ -250,8 +250,8 @@ class Eventos:
 
     def cargarTipoprop(self):
         try:
-            #registro = conexion.Conexion.cargarTipoprop(self)
-            registro = conexionserver.ConexionServer.cargarTipoprop(self)
+            registro = conexion.Conexion.cargarTipoprop(self)
+            #registro = conexionserver.ConexionServer.cargarTipoprop(self)
             var.ui.cmbTipoprop.clear()
             var.ui.cmbTipoprop.addItems(registro)
         except Exception as e:
@@ -260,15 +260,15 @@ class Eventos:
     @staticmethod
     def cargarProvprop():
         var.ui.cmbProvprop.clear()
-        #listado = conexion.Conexion.listarProvincias()
-        listado = conexionserver.ConexionServer.listaProv()
+        listado = conexion.Conexion.listarProvincias()
+        #listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvprop.addItems(listado)
     @staticmethod
     def cargarMuniprop():
         var.ui.cmbMuniprop.clear()
         provActual = var.ui.cmbProvprop.currentText()
-        #listado = conexion.Conexion.listarMunicipios(provActual)
-        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        listado = conexion.Conexion.listarMunicipios(provActual)
+        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMuniprop.addItems(listado)
 
     def buscarPropiedadPorTipo(self):
