@@ -66,10 +66,16 @@ class Propiedades():
 
     def altaPropiedad(self):
         try:
+            # propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text().title(), var.ui.cmbProvprop.currentText(),
+            #              var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
+            #              var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
+            #              var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
+            #              var.ui.areatxtDescriprop.toPlainText()]
+
             propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text().title(), var.ui.cmbProvprop.currentText(),
                          var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
-                         var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
-                         var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
+                         int(var.ui.spnHabprop.text()), int(var.ui.spnBanosprop.text()), float(var.ui.txtSuperprop.text()),
+                         float(var.ui.txtPrecioalquilerprop.text()), float(var.ui.txtPrecioventaprop.text()), int(var.ui.txtCPprop.text()),
                          var.ui.areatxtDescriprop.toPlainText()]
 
             validarFechaBaja = Propiedades.checkFechaValida()
@@ -107,7 +113,8 @@ class Propiedades():
                 propiedad.append(var.ui.txtNomeprop.text().title())
                 propiedad.append(var.ui.txtMovilprop.text())
 
-                if conexion.Conexion.altaPropiedad(propiedad):
+                #if conexion.Conexion.altaPropiedad(propiedad):
+                if conexionserver.ConexionServer.altaPropiedad(propiedad):
                     mbox = QtWidgets.QMessageBox()
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                     mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))

@@ -231,3 +231,24 @@ class ConexionServer():
             return registro
         except Exception as error:
             print("error cargar tipo", error)
+
+    def altaPropiedad(propiedad):
+        try:
+            conexion = ConexionServer().crear_conexion()
+            if conexion:
+                cursor = conexion.cursor()
+                query = '''
+                INSERT into propiedades (fechaprop, dirprop, provpro, muniprop, tipoprop, habprop, banosprop, superprop, 
+                         prealquilerprop, prevenprop, CPprop, descriprop, tipoperprop, estadoprop, nomeprop, movilprop )
+                          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                          '''
+                cursor.execute(query, propiedad)
+                conexion.commit()
+                cursor.close()
+                conexion.close()
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error alta propiedad", error)
+

@@ -260,15 +260,15 @@ class Eventos:
     @staticmethod
     def cargarProvprop():
         var.ui.cmbProvprop.clear()
-        listado = conexion.Conexion.listarProvincias()
-        #listado = conexionserver.ConexionServer.listaProv()
+        #listado = conexion.Conexion.listarProvincias()
+        listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvprop.addItems(listado)
     @staticmethod
     def cargarMuniprop():
         var.ui.cmbMuniprop.clear()
         provActual = var.ui.cmbProvprop.currentText()
-        listado = conexion.Conexion.listarMunicipios(provActual)
-        #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
+        #listado = conexion.Conexion.listarMunicipios(provActual)
+        listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMuniprop.addItems(listado)
 
     def buscarPropiedadPorTipo(self):
