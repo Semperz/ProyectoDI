@@ -74,8 +74,8 @@ class Propiedades():
 
             propiedad = [var.ui.txtFechaprop.text(), var.ui.txtDirprop.text().title(), var.ui.cmbProvprop.currentText(),
                          var.ui.cmbMuniprop.currentText(), var.ui.cmbTipoprop.currentText(),
-                         int(var.ui.spnHabprop.text()), int(var.ui.spnBanosprop.text()), float(var.ui.txtSuperprop.text()),
-                         float(var.ui.txtPrecioalquilerprop.text()), float(var.ui.txtPrecioventaprop.text()), int(var.ui.txtCPprop.text()),
+                         var.ui.spnHabprop.text(), var.ui.spnBanosprop.text(), var.ui.txtSuperprop.text(),
+                         var.ui.txtPrecioalquilerprop.text(), var.ui.txtPrecioventaprop.text(), var.ui.txtCPprop.text(),
                          var.ui.areatxtDescriprop.toPlainText()]
 
             validarFechaBaja = Propiedades.checkFechaValida()
@@ -85,7 +85,7 @@ class Propiedades():
             elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "La fecha de baja solo puede ser una fecha.")
-            elif not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioventaprop.text()) or  not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioalquilerprop.text()):
+            elif not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioventaprop.text()) or not eventos.Eventos.validar_numero_decimal(var.ui.txtPrecioalquilerprop.text()) or not '':
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "El precio solo puede ser un número.")
             elif not var.ui.txtCPprop.text().isdigit():
@@ -148,28 +148,32 @@ class Propiedades():
 
     def cargaTablaPropiedades(self):
          try:
+            var.ui.tablaPropiedades.setRowCount(0)
             #listado = conexionserver.ConexionServer.listadoPropiedades()
             #listado = [x if x != 'None' else '' for x in listado]
             listado = conexion.Conexion.listadoPropiedades()
-            index = 0
-            var.ui.tablaPropiedades.setRowCount(len(listado))
+            total_items = len(listado)
+            start_index = var.current_page_prop * var.items_per_page_prop
+            end_index = start_index + var.items_per_page_prop
+            paginated_list = listado[start_index:end_index] if listado else []
+            var.ui.tablaPropiedades.setRowCount(len(paginated_list))
             if not listado:
                 var.ui.tablaPropiedades.setRowCount(1)
                 var.ui.tablaPropiedades.setItem(0, 2, QtWidgets.QTableWidgetItem("No hay propiedades que mostrar"))
                 var.ui.tablaPropiedades.item(0, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
             else:
-                for registro in listado:
+                for index,registro in enumerate(paginated_list):
                     var.ui.tablaPropiedades.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                     var.ui.tablaPropiedades.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[5])))
                     var.ui.tablaPropiedades.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[6])))
                     var.ui.tablaPropiedades.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[7])))
                     var.ui.tablaPropiedades.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[8])))
-                    if registro[10] == '':
+                    if registro[10] == '' or registro[10] is None or registro == 0.0:
                         registro[10] = '-'
-                    if registro[11] == '':
+                    if registro[11] == '' or registro[10] is None or registro == 0.0:
                         registro[11] = '-'
-                    var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10])+ " €"))
-                    var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11])+ " €"))
+                    var.ui.tablaPropiedades.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[10]) + " €"))
+                    var.ui.tablaPropiedades.setItem(index, 6, QtWidgets.QTableWidgetItem(str(registro[11]) + " €"))
                     var.ui.tablaPropiedades.setItem(index, 7, QtWidgets.QTableWidgetItem(str(registro[14])))
                     var.ui.tablaPropiedades.setItem(index, 8, QtWidgets.QTableWidgetItem(str(registro[2])))
                     var.ui.tablaPropiedades.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -181,9 +185,22 @@ class Propiedades():
                     var.ui.tablaPropiedades.item(index, 6).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                     var.ui.tablaPropiedades.item(index, 7).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                     var.ui.tablaPropiedades.item(index, 8).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
-                    index += 1
+                var.ui.btnSiguienteprop.setEnabled(end_index < total_items)
+                var.ui.btnAnteriorprop.setEnabled(var.current_page_prop > 0)
          except Exception as e:
             print("Error carga tabla propiedades ", e)
+
+
+    def siguientePaginaProp(self):
+        var.current_page_prop += 1
+        Propiedades.cargaTablaPropiedades(self)
+
+
+    def anteriorPaginaProp(self):
+        if var.current_page_prop > 0:
+            var.current_page_prop -= 1
+        Propiedades.cargaTablaPropiedades(self)
+
 
     def cargaOnePropiedad(self):
         try:
@@ -299,6 +316,7 @@ class Propiedades():
             validarFechaBaja = Propiedades.checkFechaValida()
             if (validarFechaBaja == False):
                 QtWidgets.QMessageBox.critical(None, 'Error', "La fecha de baja no puede ser anterior a la fecha de alta.")
+
             elif var.ui.txtFechabajaprop.text().isalpha() or var.ui.txtFechaprop.text().isalpha():
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "La fecha de baja solo puede ser una fecha.")

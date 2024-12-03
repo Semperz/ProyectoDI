@@ -26,7 +26,9 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_conexion(self)
         var.historico = 0
         var.current_page_cli = 0
+        var.current_page_prop = 0
         var.items_per_page_cli = 15
+        var.items_per_page_prop = 15
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
@@ -73,6 +75,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnDelprop.clicked.connect(propiedades.Propiedades.bajaPropiedad)
         var.ui.btnModifprop.clicked.connect(propiedades.Propiedades.modifProp)
         var.ui.btnBuscartipoprop.clicked.connect(propiedades.Propiedades.filtroBusqueda)
+        var.ui.btnSiguienteprop.clicked.connect(propiedades.Propiedades.siguientePaginaProp)
+        var.ui.btnAnteriorprop.clicked.connect(propiedades.Propiedades.anteriorPaginaProp)
         '''
         eventos de cajas de texto
         '''

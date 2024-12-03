@@ -99,6 +99,7 @@ class Clientes:
 
     def cargaTablaClientes(self):
         try:
+            var.ui.tablaClientes.setRowCount(0)
             listado = conexion.Conexion.listadoClientes()
             total_items = len(listado)
             start_index = var.current_page_cli * var.items_per_page_cli
@@ -129,11 +130,13 @@ class Clientes:
 
     def siguientePaginaClientes(self):
         var.current_page_cli += 1
-        self.cargaTablaClientes()
+        Clientes.cargaTablaClientes(self)
+
 
     def anteriorPaginaClientes(self):
-        var.current_page_cli -= 1
-        self.cargaTablaClientes()
+        if var.current_page_cli > 0:
+            var.current_page_cli -= 1
+        Clientes.cargaTablaClientes(self)
 
 
     def cargaOneCliente(self):

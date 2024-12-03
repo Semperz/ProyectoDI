@@ -60,7 +60,7 @@
     <item row="0" column="1">
      <widget class="QTabWidget" name="panPrincipal">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pesClientes">
        <attribute name="title">
@@ -2100,6 +2100,18 @@ QPushButton:checked {
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="2">
            <widget class="QPushButton" name="btnSiguienteprop">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
             <property name="text">
              <string>Siguiente</string>
             </property>
@@ -2120,6 +2132,18 @@ QPushButton:checked {
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="btnAnteriorprop">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
             <property name="text">
              <string>Anterior</string>
             </property>
@@ -2145,7 +2169,6 @@ QPushButton:checked {
        <zorder>line_2</zorder>
        <zorder></zorder>
        <zorder>verticalSpacer_8</zorder>
-       <zorder>gridLayoutWidget</zorder>
       </widget>
      </widget>
     </item>
