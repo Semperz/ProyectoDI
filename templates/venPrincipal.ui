@@ -2170,6 +2170,11 @@ QPushButton:checked {
        <zorder></zorder>
        <zorder>verticalSpacer_8</zorder>
       </widget>
+      <widget class="QWidget" name="tabExamen">
+       <attribute name="title">
+        <string>Examen</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
     <item row="1" column="1">
