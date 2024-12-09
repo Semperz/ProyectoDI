@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets, QtGui, QtCore
-
+from datetime import datetime
 import conexionserver
 import eventos
 import conexion
@@ -426,10 +426,17 @@ class Propiedades():
 
     @staticmethod
     def checkFechaValida():
-        if var.ui.txtFechabajaprop.text() == "":
-            return True
-        elif var.ui.txtFechabajaprop.text() < var.ui.txtFechaprop.text():
-            return False
-        else:
-            return True
+        try:
+            if var.ui.txtFechabajaprop.text() == "" or var.ui.txtFechabajaprop.text() is None:
+                return True
+            else:
+                fechaBaja = datetime.strptime(var.ui.txtFechabajaprop.text(), "%d/%m/%Y")
+                fechaAlta = datetime.strptime(var.ui.txtFechaprop.text(), "%d/%m/%Y")
+                if fechaBaja < fechaAlta:
+                    return False
+                else:
+                    return True
+
+        except Exception as e:
+            print("error check fecha baja", e)
 

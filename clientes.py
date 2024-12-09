@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from PyQt6 import QtWidgets, QtGui, QtCore
 
 import clientes
@@ -25,8 +27,8 @@ class Clientes:
     def altaClientes(self):
         try:
 
-            nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),
-                    var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
+            # nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),
+            #         var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             nuevoCli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
                      var.ui.txtEmailcli.text(), var.ui.txtMovilcli.text(), var.ui.txtDircli.text(), var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText()]
             camposObligatorios = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(), var.ui.txtNomcli.text(),
@@ -175,7 +177,12 @@ class Clientes:
             #              var.ui.cmbProvcli.currentText(), var.ui.cmbMunicli.currentText(), var.ui.txtBajaCli.text(),
             #                   var.ui.txtDnicli.text()]
             #if conexionserver.ConexionServer.modifCliente(modifcliserver):
-            if conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
+            validarFechaBaja = Clientes.checkFechaValidaCli()
+            if (validarFechaBaja == False):
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "La fecha de baja no puede ser anterior a la fecha de alta.")
+
+            elif conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
@@ -246,11 +253,27 @@ class Clientes:
 
     def filtroBusquedaCliente(self):
         try:
+
             Clientes.cargaTablaClientes(self)
         except Exception as e:
             print(e)
 
 
+    @staticmethod
+    def checkFechaValidaCli():
+        try:
+            if var.ui.txtBajaCli.text() == "" or var.ui.txtBajaCli.text() is None:
+                return True
+            else:
+                fechaBaja = datetime.strptime(var.ui.txtBajaCli.text(), "%d/%m/%Y")
+                fechaAlta = datetime.strptime(var.ui.txtAltaCli.text(), "%d/%m/%Y")
+                if fechaBaja < fechaAlta:
+                    return False
+                else:
+                    return True
+
+        except Exception as e:
+            print("error check fecha baja", e)
 
 
 

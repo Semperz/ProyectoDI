@@ -60,7 +60,7 @@
     <item row="0" column="1">
      <widget class="QTabWidget" name="panPrincipal">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pesClientes">
        <attribute name="title">
@@ -71,35 +71,132 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="12" alignment="Qt::AlignRight|Qt::AlignVCenter">
-             <widget class="QLabel" name="lblFechaBajacli">
+            <item row="0" column="0" rowspan="4">
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="13">
+             <widget class="QLabel" name="lblMunicli">
+              <property name="text">
+               <string>Municipio:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="11">
+             <spacer name="horizontalSpacer_13">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="10">
+             <widget class="QComboBox" name="cmbProvcli">
               <property name="minimumSize">
                <size>
-                <width>80</width>
-                <height>20</height>
+                <width>150</width>
+                <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>70</width>
-                <height>20</height>
+                <width>150</width>
+                <height>16777215</height>
                </size>
               </property>
-              <property name="text">
-               <string>Fecha Baja: </string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="4">
-             <spacer name="horizontalSpacer">
+            <item row="0" column="15" rowspan="4">
+             <spacer name="horizontalSpacer_9">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="5">
+             <widget class="QLabel" name="label_4">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:rgb(255, 2, 2)</string>
+              </property>
+              <property name="text">
+               <string>*</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="14">
+             <widget class="QComboBox" name="cmbMunicli">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="13">
+             <widget class="QLineEdit" name="txtBajaCli">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="12">
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -167,6 +264,51 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
+            <item row="0" column="12" alignment="Qt::AlignRight|Qt::AlignVCenter">
+             <widget class="QLabel" name="lblFechaBajacli">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Fecha Baja: </string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="14" alignment="Qt::AlignHCenter">
+             <widget class="QCheckBox" name="chkHistoriacli">
+              <property name="text">
+               <string>Historico</string>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="1">
              <widget class="QLabel" name="lblAsterisk_2">
               <property name="font">
@@ -215,13 +357,6 @@ QPushButton:pressed {
               </property>
              </spacer>
             </item>
-            <item row="1" column="14" alignment="Qt::AlignHCenter">
-             <widget class="QCheckBox" name="chkHistoriacli">
-              <property name="text">
-               <string>Historico</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="3">
              <widget class="QLineEdit" name="txtApelcli">
               <property name="minimumSize">
@@ -233,6 +368,39 @@ QPushButton:pressed {
               <property name="maximumSize">
                <size>
                 <width>350</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(229, 255, 255);</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLabel" name="lblApelcli">
+              <property name="text">
+               <string>Apellidos:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLabel" name="lblEmailcli">
+              <property name="text">
+               <string>Email:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLineEdit" name="txtEmailcli">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -257,46 +425,6 @@ QPushButton:pressed {
               </property>
               <property name="styleSheet">
                <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLineEdit" name="txtEmailcli">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>200</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="lblEmailcli">
-              <property name="text">
-               <string>Email:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="lblApelcli">
-              <property name="text">
-               <string>Apellidos:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="6">
-             <widget class="QLabel" name="lblNomcli">
-              <property name="text">
-               <string>Nombre:</string>
               </property>
              </widget>
             </item>
@@ -329,6 +457,13 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
+            <item row="1" column="6">
+             <widget class="QLabel" name="lblNomcli">
+              <property name="text">
+               <string>Nombre:</string>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="9">
              <widget class="QLabel" name="lblProvcli">
               <property name="text">
@@ -336,10 +471,17 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="0" column="8" alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="lblFechaAltacli">
+            <item row="3" column="2">
+             <widget class="QLabel" name="lblDircli">
               <property name="text">
-               <string>Fecha Alta:</string>
+               <string>Dirección:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="6">
+             <widget class="QLabel" name="lblMovilcli">
+              <property name="text">
+               <string>Móvil:</string>
               </property>
              </widget>
             </item>
@@ -362,240 +504,8 @@ QPushButton:pressed {
               </property>
              </widget>
             </item>
-            <item row="2" column="6">
-             <widget class="QLabel" name="lblMovilcli">
-              <property name="text">
-               <string>Móvil:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="lblDircli">
-              <property name="text">
-               <string>Dirección:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="10">
-             <widget class="QComboBox" name="cmbProvcli">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="15" rowspan="4">
-             <spacer name="horizontalSpacer_9">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="0" rowspan="4">
-             <spacer name="horizontalSpacer_12">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="3" column="13">
-             <widget class="QLabel" name="lblMunicli">
-              <property name="text">
-               <string>Municipio:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="9" alignment="Qt::AlignLeft">
-             <widget class="QLineEdit" name="txtAltaCli">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>4</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="11">
-             <spacer name="horizontalSpacer_13">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="10" alignment="Qt::AlignLeft">
-             <widget class="QPushButton" name="btnAltaCli">
-              <property name="minimumSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: whitesmoke;
-    color: white;
-    border-radius: 5px;
-}
-
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
-}
-</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="checkable">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="14">
-             <widget class="QComboBox" name="cmbMunicli">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>200</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(229, 255, 255);</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="13">
-             <widget class="QLineEdit" name="txtBajaCli">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="12">
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="5">
-             <widget class="QLabel" name="label_4">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:rgb(255, 2, 2)</string>
-              </property>
-              <property name="text">
-               <string>*</string>
-              </property>
-             </widget>
-            </item>
             <item row="3" column="1">
              <widget class="QLabel" name="lblAsterisk_3">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:rgb(255, 2, 2)</string>
-              </property>
-              <property name="text">
-               <string>*</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="7">
-             <widget class="QLabel" name="lblAsterisk_4">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -714,6 +624,100 @@ QPushButton:checked {
                <string>*</string>
               </property>
              </widget>
+            </item>
+            <item row="0" column="8">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLabel" name="lblAsterisk_4">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color:rgb(255, 2, 2)</string>
+                </property>
+                <property name="text">
+                 <string>*</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblFechaAltacli">
+                <property name="text">
+                 <string>Fecha Alta:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="txtAltaCli">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>4</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(229, 255, 255);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnAltaCli">
+                <property name="minimumSize">
+                 <size>
+                  <width>25</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>25</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>25</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
@@ -2345,7 +2349,6 @@ QPushButton:checked {
   </action>
  </widget>
  <tabstops>
-  <tabstop>txtAltaCli</tabstop>
   <tabstop>txtApelcli</tabstop>
   <tabstop>txtNomcli</tabstop>
   <tabstop>txtEmailcli</tabstop>
@@ -2354,7 +2357,6 @@ QPushButton:checked {
   <tabstop>cmbProvcli</tabstop>
   <tabstop>cmbMunicli</tabstop>
   <tabstop>chkHistoriacli</tabstop>
-  <tabstop>btnAltaCli</tabstop>
   <tabstop>btnGrabarcli</tabstop>
   <tabstop>btnModifcli</tabstop>
   <tabstop>btnDelcli</tabstop>

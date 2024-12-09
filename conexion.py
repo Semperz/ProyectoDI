@@ -9,7 +9,6 @@ from mysql.connector import DATETIME
 import var
 
 
-
 class Conexion:
 
     '''
@@ -90,6 +89,7 @@ class Conexion:
     def listadoClientes():
         searchBtn = var.ui.btnBuscarcli.isChecked()
         DniCliente = var.ui.txtDnicli.text()
+        historicocli = var.ui.chkHistoriacli.isChecked()
         listado = []
         try:
             if searchBtn:
@@ -101,7 +101,7 @@ class Conexion:
                         fila = [query.value(i) for i in range(query.record().count())]
                         listado.append(fila)
                 return listado
-            if var.historico == 1:
+            if not historicocli:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM clientes WHERE bajacli is NULL ORDER BY apelcli, nomecli ASC ")
                 if query.exec():
@@ -109,7 +109,7 @@ class Conexion:
                         fila = [query.value(i) for i in range(query.record().count())]
                         listado.append(fila)
                 return listado
-            elif var.historico == 0:
+            elif historicocli:
                 query = QtSql.QSqlQuery()
                 query.prepare("SELECT * FROM clientes ORDER BY apelcli, nomecli ASC")
                 if query.exec():
