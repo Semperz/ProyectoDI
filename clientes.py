@@ -251,10 +251,24 @@ class Clientes:
         except (Exception) as error:
             print("error al historico cliente",error)
 
+    def cargaOneClienteBusqueda(self):
+        try:
+            dni = var.ui.txtDnicli.text()
+            registro = conexion.Conexion.datosOneCliente(str(dni))
+            listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+              var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+            for i in range(len(listado)):
+                if i == 7 or i == 8:
+                    listado[i].setCurrentText(registro[i])
+                else:
+                    listado[i].setText(registro[i])
+        except Exception as error:
+            print("error carga cliente",error)
+
     def filtroBusquedaCliente(self):
         try:
-
             Clientes.cargaTablaClientes(self)
+            Clientes.cargaOneClienteBusqueda(self)
         except Exception as e:
             print(e)
 
