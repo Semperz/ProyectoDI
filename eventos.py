@@ -271,8 +271,19 @@ class Eventos:
         #listado = conexionserver.ConexionServer.listaMuniProv(provActual)
         var.ui.cmbMuniprop.addItems(listado)
 
-    def buscarPropiedadPorTipo(self):
-        propiedades.Propiedades.filtroBusqueda(self)
+    def buscarPorFiltro(self):
+        if var.ui.panPrincipal.currentIndex() == 0:
+            checked = var.ui.btnBuscarcli.isChecked()
+            var.ui.btnBuscarcli.setChecked(not checked)
+            clientes.Clientes.cargaTablaClientes(self)
+            clientes.Clientes.cargaOneClienteBusqueda(self)
+        elif var.ui.panPrincipal.currentIndex() == 1:
+            checked = var.ui.btnBuscartipoprop.isChecked()
+            var.ui.btnBuscartipoprop.setChecked(not checked)
+            propiedades.Propiedades.filtroBusqueda(self)
+
+
+
 
 
     def exportCSVprop(self):

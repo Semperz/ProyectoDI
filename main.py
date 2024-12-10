@@ -100,7 +100,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.actionbarSalir.triggered.connect(eventos.Eventos.mensajeSalir)
         var.ui.actionbarLimpiar.triggered.connect(eventos.Eventos.limpiarPanel)
-        var.ui.actionbarBuscar.triggered.connect(eventos.Eventos.buscarPropiedadPorTipo)
+        var.ui.actionbarBuscar.triggered.connect(eventos.Eventos.buscarPorFiltro)
 
         '''
         eventos checkBox

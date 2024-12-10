@@ -253,7 +253,7 @@ class Clientes:
 
     def cargaOneClienteBusqueda(self):
         try:
-            dni = var.ui.txtDnicli.text()
+            dni = var.ui.txtDnicli.text().upper()
             registro = conexion.Conexion.datosOneCliente(str(dni))
             listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
               var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]

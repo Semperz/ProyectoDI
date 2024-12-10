@@ -40,8 +40,16 @@ class Conexion:
                                                QtWidgets.QMessageBox.StandardButton.Cancel)
                 return False
             else:
-                QtWidgets.QMessageBox.information(None, 'Aviso', 'Conexión Base de Datos realizada',
-                                               QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowTitle('Aviso')
+                mbox.setText('Conexión Base de Datos realizada')
+                mbox.setStandardButtons(
+                    QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                mbox.exec()
                 return True
         else:
             QtWidgets.QMessageBox.critical(None, 'Error', 'No se pudo abrir la base de datos.',
@@ -88,7 +96,7 @@ class Conexion:
     @staticmethod
     def listadoClientes():
         searchBtn = var.ui.btnBuscarcli.isChecked()
-        DniCliente = var.ui.txtDnicli.text()
+        DniCliente = var.ui.txtDnicli.text().upper()
         historicocli = var.ui.chkHistoriacli.isChecked()
         listado = []
         try:
