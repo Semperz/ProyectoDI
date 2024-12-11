@@ -305,7 +305,7 @@ class Eventos:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error al exportar a CSV')
                 mbox.setStandardButtons(
@@ -335,7 +335,7 @@ class Eventos:
                 shutil.move(fichero, directorio)
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Exportado correctamente a CSV')
                 mbox.setStandardButtons(
@@ -347,7 +347,7 @@ class Eventos:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error al exportar a CSV')
                 mbox.setStandardButtons(
@@ -377,7 +377,7 @@ class Eventos:
                 shutil.move(fichero, directorio)
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Exportado correctamente a JSON')
                 mbox.setStandardButtons(
@@ -389,7 +389,7 @@ class Eventos:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error al exportar a JSON')
                 mbox.setStandardButtons(
