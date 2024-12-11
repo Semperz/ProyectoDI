@@ -185,7 +185,7 @@ class Clientes:
             elif conexion.Conexion.modifCliente(modifcli) and not conexion.Conexion.modifCliente(modifcli[0]):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Cliente modificado')
                 mbox.setStandardButtons(
@@ -197,7 +197,7 @@ class Clientes:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error cliente modificado')
                 mbox.setStandardButtons(
@@ -217,7 +217,7 @@ class Clientes:
             if conexion.Conexion.bajaCliente(datos):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Cliente dado de baja')
                 mbox.setStandardButtons(
@@ -229,7 +229,7 @@ class Clientes:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error baja cliente: Cliente no existe o ya está dado de baja')
                 mbox.setStandardButtons(

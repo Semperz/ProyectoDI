@@ -2,7 +2,7 @@ import csv
 import json
 import locale
 import os.path
-import subprocess
+
 import sys
 import time
 import re

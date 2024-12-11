@@ -16,7 +16,7 @@ class Propiedades():
             if registro:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Propiedad añadida a la base de datos')
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok)
@@ -27,7 +27,7 @@ class Propiedades():
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Propiedad Existe')
                 mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
@@ -43,7 +43,7 @@ class Propiedades():
             if registro:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Propiedad eliminada de la base de datos')
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok)
@@ -53,7 +53,7 @@ class Propiedades():
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Propiedad no existente')
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok)
@@ -254,7 +254,7 @@ class Propiedades():
             if conexion.Conexion.bajaPropiedad(datos):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Propiedad dada de baja')
                 mbox.setStandardButtons(
@@ -267,7 +267,7 @@ class Propiedades():
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Error baja propiedad: Propiedad no existe o ya está dada de baja')
                 mbox.setStandardButtons(
@@ -355,7 +355,7 @@ class Propiedades():
                 if conexion.Conexion.modifPropiedad(modifprop):
                     mbox = QtWidgets.QMessageBox()
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                    mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                    mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                     mbox.setWindowTitle('Aviso')
                     mbox.setText('Propiedad modificada')
                     mbox.setStandardButtons(
@@ -368,7 +368,7 @@ class Propiedades():
                 else:
                     mbox = QtWidgets.QMessageBox()
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                    mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                    mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                     mbox.setWindowTitle('Aviso')
                     mbox.setText('Error propiedad modificada')
                     mbox.setStandardButtons(

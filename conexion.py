@@ -42,7 +42,7 @@ class Conexion:
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/logo.svg'))
+                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
                 mbox.setWindowTitle('Aviso')
                 mbox.setText('Conexión Base de Datos realizada')
                 mbox.setStandardButtons(
