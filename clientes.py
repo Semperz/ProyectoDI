@@ -255,13 +255,20 @@ class Clientes:
         try:
             dni = var.ui.txtDnicli.text().upper()
             registro = conexion.Conexion.datosOneCliente(str(dni))
-            listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
-              var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
-            for i in range(len(listado)):
-                if i == 7 or i == 8:
-                    listado[i].setCurrentText(registro[i])
-                else:
-                    listado[i].setText(registro[i])
+            if registro == []:
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "No existe esa persona.")
+                var.ui.btnBuscarcli.setChecked(False)
+                Clientes.cargaTablaClientes(self)
+
+            else:
+                listado = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
+                  var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli, var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
+                for i in range(len(listado)):
+                    if i == 7 or i == 8:
+                        listado[i].setCurrentText(registro[i])
+                    else:
+                        listado[i].setText(registro[i])
         except Exception as error:
             print("error carga cliente",error)
 
