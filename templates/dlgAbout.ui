@@ -98,7 +98,7 @@
     <item>
      <widget class="QLabel" name="lblLink">
       <property name="text">
-       <string>&lt;a href=&quot;https://www.youtube.com/watch?v=QOhmcbfwxnA&quot;&gt;IES de Teis&lt;/a&gt;</string>
+       <string>&lt;a href=&quot;https://www.edu.xunta.gal/centros/iesteis/&quot;&gt;IES de Teis&lt;/a&gt;</string>
       </property>
       <property name="openExternalLinks">
        <bool>true</bool>

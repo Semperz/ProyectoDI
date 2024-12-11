@@ -61,5 +61,5 @@ class Ui_windowAbout(object):
         self.label.setText(_translate("windowAbout", "InmoTeis"))
         self.label_2.setText(_translate("windowAbout", "Autor: Sergio Prieto García"))
         self.label_3.setText(_translate("windowAbout", "Versión: 0.0.1"))
-        self.lblLink.setText(_translate("windowAbout", "<a href=\"https://www.youtube.com/watch?v=QOhmcbfwxnA\">IES de Teis</a>"))
+        self.lblLink.setText(_translate("windowAbout", "<a href=\"https://www.edu.xunta.gal/centros/iesteis/\">IES de Teis</a>"))
         self.label_4.setText(_translate("windowAbout", " Copyright © 2024-2025"))
