@@ -12,6 +12,7 @@ from PyQt6 import QtWidgets, QtGui
 import zipfile
 import shutil
 
+import vendedores
 import clientes
 import conexion
 import conexionserver
@@ -96,6 +97,10 @@ class Eventos:
                     var.ui.txtFechaprop.setText(str(data))
             elif var.panel == 1 and var.btn == 1:
                     var.ui.txtFechabajaprop.setText(str(data))
+            elif var.panel == 2 and var.btn == 0:
+                    var.ui.txtAltaven.setText(str(data))
+            elif var.panel == 2 and var.btn == 1:
+                    var.ui.txtBajaven.setText(str(data))
             time.sleep(0.2)
             var.uicalendar.hide()
             return data
@@ -197,6 +202,7 @@ class Eventos:
         clientes.Clientes.clearCamposCliente()
         propiedades.Propiedades.clearCamposPropiedades()
         propiedades.Propiedades.checkDisponibilidad(self)
+        vendedores.Vendedores.clearCamposVendedores()
         # objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
         #             var.ui.txtNomcli,
         #             var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
@@ -281,6 +287,10 @@ class Eventos:
             checked = var.ui.btnBuscartipoprop.isChecked()
             var.ui.btnBuscartipoprop.setChecked(not checked)
             propiedades.Propiedades.filtroBusqueda(self)
+        elif var.ui.panPrincipal.currentIndex() == 2:
+            checked = var.ui.btnBuscarven.isChecked()
+            var.ui.btnBuscarven.setChecked(not checked)
+            vendedores.Vendedores.filtroBusquedaVendedor(self)
 
 
 

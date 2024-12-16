@@ -414,3 +414,158 @@ class Conexion:
             return listado
         except Exception as e:
             print("error listado en conexión", e)
+
+
+
+    '''
+    Pestaña vendedores
+    '''
+
+
+    def altaVendedor(nuevoVen):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT into vendedor (dniVendedor, altaVendedor, nombreVendedor, mailVendedor, movilVendedor, "
+                          " delegacionVendedor) VALUES (:dniVendedor, :altaVendedor, :nombreVendedor, :mailVendedor, "
+                          " :movilVendedor, :delegacionVendedor)")
+            columnas = ['dniVendedor', 'altaVendedor', 'nombreVendedor',
+                        'mailVendedor', 'movilVendedor', 'delegacionVendedor']
+            for i in range(len(columnas)):
+                query.bindValue(":"+str(columnas[i]), nuevoVen[i])
+            if query.exec():
+                return True
+            else:
+                return False
+        except sqlite3.IntegrityError:
+            return False
+
+    @staticmethod
+    def listadoVendedores():
+        searchBtn = var.ui.btnBuscarven.isChecked()
+        movilven = var.ui.txtMovilven.text()
+        historicoven = var.ui.chkHistoricoven.isChecked()
+        listado = []
+        try:
+            if searchBtn:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM vendedor WHERE movilVendedor = :movilVendedor ORDER BY idVendedor ASC")
+                query.bindValue(":movilVendedor", movilven)
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                return listado
+            if not historicoven:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM vendedor WHERE bajaVendedor is NULL ORDER BY idVendedor ASC ")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                print(listado)
+                return listado
+            elif historicoven:
+                query = QtSql.QSqlQuery()
+                query.prepare("SELECT * FROM vendedor ORDER BY idVendedor ASC")
+                if query.exec():
+                    while query.next():
+                        fila = [query.value(i) for i in range(query.record().count())]
+                        listado.append(fila)
+                print(listado)
+                return listado
+
+        except Exception as e:
+            print("error listado en conexión", e)
+
+    @staticmethod
+    def listarDNIven():
+        try:
+            listaDNIs = []
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "SELECT dniVendedor FROM vendedor")
+            if query.exec():
+                while query.next():
+                    listaDNIs.append(query.value(0))
+                print(listaDNIs)
+                return listaDNIs
+            else:
+                return []
+        except sqlite3.IntegrityError:
+            return False
+
+    def modifVendedor(modifVen):
+
+        try:
+
+            query2 = QtSql.QSqlQuery()
+            query2.prepare("UPDATE vendedor set altaVendedor = :altaVendedor, nombreVendedor = :nombreVendedor, "
+                          " mailVendedor = :emailVendedor, movilVendedor = :movilVendedor, delegacionVendedor = :delegacionVendedor, "
+                          " bajaVendedor = :bajaVendedor where dniVendedor = :dniVendedor")
+            query2.bindValue(":dniVendedor", str(modifVen[0]))
+            query2.bindValue(":altaVendedor", str(modifVen[1]))
+            query2.bindValue(":nombreVendedor", str(modifVen[2]))
+            query2.bindValue(":emailVendedor", str(modifVen[3]))
+            query2.bindValue(":movilVendedor", str(modifVen[4]))
+            query2.bindValue(":delegacionVendedor", str(modifVen[5]))
+            if modifVen[6] == "":
+                query2.bindValue(":bajaVendedor", QtCore.QVariant())
+            else:
+                query2.bindValue(":bajaVendedor", str(modifVen[6]))
+            if query2.exec() and  query2.numRowsAffected()>0:
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error modificar vendedor", error)
+
+
+    def datosOneVendedor(idVen):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT dniVendedor, nombreVendedor, altaVendedor, bajaVendedor, movilVendedor, mailVendedor, delegacionVendedor"
+                          " FROM vendedor WHERE idVendedor = :ID")
+            query.bindValue(":ID", str(idVen))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+            print(registro)
+            return registro
+        except Exception as error:
+            print("error datos un vendedor", error)
+
+    def datosOneVendedorMovil(movilVen):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT dniVendedor, nombreVendedor, altaVendedor, bajaVendedor, movilVendedor, mailVendedor, delegacionVendedor"
+                          " FROM vendedor WHERE movilVendedor = :movil")
+            query.bindValue(":movil", str(movilVen))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+            print(registro)
+            return registro
+        except Exception as error:
+            print("error datos un vendedor", error)
+
+
+    def bajaVendedor(datos):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("UPDATE vendedor set bajaVendedor = :bajaVendedor "
+                          "where dniVendedor = :dniVendedor")
+            query.bindValue(":bajaVendedor", datetime.now().strftime("%d/%m/%Y"))
+            query.bindValue(":dniVendedor", str(datos[1]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error baja cliente", error)
+
+
+

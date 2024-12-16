@@ -2,6 +2,7 @@ from calendar import Calendar
 
 import conexionserver
 import propiedades
+import vendedores
 from propiedades import Propiedades
 from venAux import *
 import clientes
@@ -31,6 +32,7 @@ class Main(QtWidgets.QMainWindow):
         var.items_per_page_prop = 15
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
+        vendedores.Vendedores.cargarTablaVendedores(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
         propiedades.Propiedades.checkDisponibilidad(self)
         '''
@@ -45,6 +47,9 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos.Eventos.resizeTablaClientes()
         eventos.Eventos.resizeTablaPropiedades()
+        vendedores.Vendedores.resizeTablaVendedores()
+
+        var.ui.tablaVendedores.clicked.connect(vendedores.Vendedores.cargaOneVendedor)
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)
         var.ui.tablaPropiedades.clicked.connect(propiedades.Propiedades.cargaOnePropiedad)
         '''
@@ -60,6 +65,13 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos de botones
         '''
+        var.ui.btnAltaven.clicked.connect(vendedores.Vendedores.altaVendedores)
+        var.ui.btnFechaaltaven.clicked.connect(lambda: eventos.Eventos.abrirCalendar(2,0))
+        var.ui.btnFechabajaven.clicked.connect(lambda: eventos.Eventos.abrirCalendar(2,1))
+        var.ui.btnBajaven.clicked.connect(vendedores.Vendedores.bajaVendedor)
+        var.ui.btnModifven.clicked.connect(vendedores.Vendedores.modifVendedor)
+        var.ui.btnBuscarven.clicked.connect(vendedores.Vendedores.filtroBusquedaVendedor)
+
         var.ui.btnGrabarcli.clicked.connect(clientes.Clientes.altaClientes)
         var.ui.btnAltaCli.clicked.connect(lambda: eventos.Eventos.abrirCalendar(0, 0))
         var.ui.btnBajaCli.clicked.connect(lambda: eventos.Eventos.abrirCalendar(0, 1))
@@ -80,6 +92,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos de cajas de texto
         '''
+        var.ui.txtDniven.editingFinished.connect(lambda: vendedores.Vendedores.checkDNIven(var.ui.txtDniven.text()))
+
         var.ui.txtDnicli.editingFinished.connect(lambda: clientes.Clientes.checkDNI(var.ui.txtDnicli.text()))
         var.ui.txtEmailcli.editingFinished.connect(lambda: clientes.Clientes.checkEmail(var.ui.txtEmailcli.text()))
         var.ui.txtMovilcli.editingFinished.connect(lambda: clientes.Clientes.checkNumero(var.ui.txtMovilcli.text()))
@@ -89,6 +103,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos.Eventos.cargarProv()
         eventos.Eventos.cargarMuni()
+        vendedores.Vendedores.cargarDelegacionven()
         var.ui.cmbProvcli.currentIndexChanged.connect(eventos.Eventos.cargarMuni)
         eventos.Eventos.cargarProvprop()
         eventos.Eventos.cargarMuniprop()
@@ -105,6 +120,8 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos checkBox
         '''
+        var.ui.chkHistoricoven.stateChanged.connect(vendedores.Vendedores.historicoVen)
+
         var.ui.chkHistoriacli.stateChanged.connect(clientes.Clientes.historicoCli)
         var.ui.chkHistoricoprop.stateChanged.connect(propiedades.Propiedades.filtroBusquedaHistorico)
 
