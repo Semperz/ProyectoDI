@@ -115,7 +115,36 @@ class Vendedores:
         except Exception as e:
             print("Error carga tabla vendedores ", e)
 
-    #No funciona bien
+    def checkEmail(nuevo):
+        try:
+            mail = str(var.ui.txtEmailven.text())
+            if eventos.Eventos.validarMail(mail):
+                var.ui.txtEmailven.setStyleSheet('background-color: rgb(229, 255, 255);')
+                var.ui.txtEmailven.setText(mail.lower())
+
+            else:
+                var.ui.txtEmailven.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
+                var.ui.txtEmailven.setText(None)
+                var.ui.txtEmailven.setFocus()
+
+        except Exception as error:
+            print("error check vendedor", error)
+
+    def checkNumero(nuevo):
+        try:
+            telefono = str(var.ui.txtMovilven.text())
+            if eventos.Eventos.validarTelefono(telefono):
+                var.ui.txtMovilven.setStyleSheet('background-color: rgb(229, 255, 255);')
+                var.ui.txtMovilven.setText(telefono.lower())
+
+            else:
+                var.ui.txtMovilven.setStyleSheet('background-color:#FFC0CB; font-style: italic;')
+                var.ui.txtMovilven.setText(None)
+                var.ui.txtMovilven.setFocus()
+        except Exception as e:
+            print("error check vendedor", e)
+
+
     def modifVendedor(self):
         try:
             modifVen = [var.ui.txtDniven.text(), var.ui.txtAltaven.text(), var.ui.txtNomven.text(),

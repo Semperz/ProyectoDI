@@ -93,6 +93,8 @@ class Main(QtWidgets.QMainWindow):
         eventos de cajas de texto
         '''
         var.ui.txtDniven.editingFinished.connect(lambda: vendedores.Vendedores.checkDNIven(var.ui.txtDniven.text()))
+        var.ui.txtEmailven.editingFinished.connect(lambda: vendedores.Vendedores.checkEmail(var.ui.txtEmailven.text()))
+        var.ui.txtMovilven.editingFinished.connect(lambda: vendedores.Vendedores.checkNumero(var.ui.txtMovilven.text()))
 
         var.ui.txtDnicli.editingFinished.connect(lambda: clientes.Clientes.checkDNI(var.ui.txtDnicli.text()))
         var.ui.txtEmailcli.editingFinished.connect(lambda: clientes.Clientes.checkEmail(var.ui.txtEmailcli.text()))
