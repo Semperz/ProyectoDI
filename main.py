@@ -1,9 +1,9 @@
 from calendar import Calendar
 
 import conexionserver
+import informes
 import propiedades
 import vendedores
-from propiedades import Propiedades
 from venAux import *
 import clientes
 import conexion
@@ -62,6 +62,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionExportar_Clientes_CSV.triggered.connect(eventos.Eventos.exportCSVprop)
         var.ui.actionExportar_Clientes_JSON.triggered.connect(eventos.Eventos.exportJSONprop)
         var.ui.actionAcercade.triggered.connect(eventos.Eventos.abrirAboutprop)
+
+        var.ui.actionListado_Clientes.triggered.connect(informes.Informes.reportClientes)
         '''
         eventos de botones
         '''

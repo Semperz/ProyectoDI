@@ -99,7 +99,6 @@ class Vendedores:
         try:
             var.ui.tablaVendedores.setRowCount(0)
             listado = conexion.Conexion.listadoVendedores()
-            print(listado)
             for index, registro in enumerate(listado):
                 var.ui.tablaVendedores.insertRow(index)
                 var.ui.tablaVendedores.setItem(index, 0, QtWidgets.QTableWidgetItem(" " + " " +str(registro[0]) + " " + " "))

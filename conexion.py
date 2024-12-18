@@ -462,7 +462,6 @@ class Conexion:
                     while query.next():
                         fila = [query.value(i) for i in range(query.record().count())]
                         listado.append(fila)
-                print(listado)
                 return listado
             elif historicoven:
                 query = QtSql.QSqlQuery()
@@ -471,7 +470,6 @@ class Conexion:
                     while query.next():
                         fila = [query.value(i) for i in range(query.record().count())]
                         listado.append(fila)
-                print(listado)
                 return listado
 
         except Exception as e:
@@ -487,7 +485,6 @@ class Conexion:
             if query.exec():
                 while query.next():
                     listaDNIs.append(query.value(0))
-                print(listaDNIs)
                 return listaDNIs
             else:
                 return []
@@ -531,7 +528,6 @@ class Conexion:
                 while query.next():
                     for i in range(query.record().count()):
                         registro.append(str(query.value(i)))
-            print(registro)
             return registro
         except Exception as error:
             print("error datos un vendedor", error)
@@ -547,7 +543,6 @@ class Conexion:
                 while query.next():
                     for i in range(query.record().count()):
                         registro.append(str(query.value(i)))
-            print(registro)
             return registro
         except Exception as error:
             print("error datos un vendedor", error)

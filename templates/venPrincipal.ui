@@ -2809,9 +2809,17 @@ QPushButton:checked {
     </property>
     <addaction name="actionTipo_de_propiedades"/>
    </widget>
+   <widget class="QMenu" name="menuInformes">
+    <property name="title">
+     <string>Informes</string>
+    </property>
+    <addaction name="actionListado_Clientes"/>
+    <addaction name="actionListado_Propiedades"/>
+   </widget>
    <addaction name="menuSalir"/>
    <addaction name="menuGesti_n"/>
    <addaction name="menuHerramientas"/>
+   <addaction name="menuInformes"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -2912,6 +2920,16 @@ QPushButton:checked {
   <action name="actionAcercade">
    <property name="text">
     <string>Acerca de</string>
+   </property>
+  </action>
+  <action name="actionListado_Clientes">
+   <property name="text">
+    <string>Listado Clientes</string>
+   </property>
+  </action>
+  <action name="actionListado_Propiedades">
+   <property name="text">
+    <string>Listado Propiedades</string>
    </property>
   </action>
  </widget>
