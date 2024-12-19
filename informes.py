@@ -85,7 +85,7 @@ class Informes:
                 var.report.drawString(55, 755, 'Avda. Galicia - 101')
                 var.report.drawString(55, 740, 'Vigo - 36216 - España')
                 var.report.drawString(55, 725, 'Teléfono: 986 132 456')
-                var.report.drawString(55, 710, 'e-mail: cartesteisr@mail.com')
+                var.report.drawString(55, 710, 'e-mail: inmoteis@gmail.com')
             else:
                 print(f'Error: No se pudo cargar la imagen en {ruta_logo_png}')
         except Exception as error:
