@@ -64,6 +64,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionAcercade.triggered.connect(eventos.Eventos.abrirAboutprop)
 
         var.ui.actionListado_Clientes.triggered.connect(informes.Informes.reportClientes)
+        var.ui.actionListado_Propiedades.triggered.connect(informes.Informes.reportPropiedades)
         '''
         eventos de botones
         '''

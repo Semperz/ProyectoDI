@@ -11,16 +11,20 @@ import var
 
 class Conexion:
 
-    '''
-
-    méttodo de una clase que no depende de una instancia específica de esa clase.
-    Se puede llamarlo directamente a través de la clase, sin necesidad de crear un objeto de esa clase. 
-    Es útil en comportamientos o funcionalidades que son más a una clase en general que a una instancia en particular.
-    
-    '''
 
     @staticmethod
     def db_conexion(self):
+        """
+
+        :param None
+        :type None
+        :return: False or True
+        :rtype: Boolean
+
+        Módulo de conexión a la base de datos
+        Si exito True, else False
+
+        """
         # Verifica si el archivo de base de datos existe
         if not os.path.isfile('bbdd.sqlite'):
             QtWidgets.QMessageBox.critical(None, 'Error', 'El archivo de la base de datos no existe.',
@@ -58,6 +62,12 @@ class Conexion:
 
     @staticmethod
     def listarProvincias():
+        """
+        :return: lista provincias
+        :rtype: bytearray
+
+        Metodo que devuelve una lista de provincias
+        """
         listaProv = []
         query = QtSql.QSqlQuery()
         query.prepare("SELECT * FROM provincias")
@@ -67,6 +77,15 @@ class Conexion:
         return listaProv
     @staticmethod
     def listarMunicipios(provincia):
+        """
+
+        :param provincia:
+        :type provincia: str
+        :return: lista municipios
+        :rtype: bytearray
+
+        Metodo que devuelve una lista de municipios de una provincia
+        """
         listaMuni = []
         query = QtSql.QSqlQuery()
         query.prepare("SELECT * FROM municipios"
@@ -78,6 +97,13 @@ class Conexion:
         return listaMuni
 
     def altaCliente(nuevoCli):
+        """
+
+        :return: true o false
+        :rtype: boolean
+
+        Metodo que da de alta un cliente en la base de datos
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into clientes (dnicli, altacli, apelcli, nomecli, emailcli, movilcli, "
@@ -95,6 +121,12 @@ class Conexion:
             return False
     @staticmethod
     def listadoClientes():
+        """
+
+        :return: listado de clientes
+        :rtype: bytearray
+
+        """
         searchBtn = var.ui.btnBuscarcli.isChecked()
         DniCliente = var.ui.txtDnicli.text().upper()
         historicocli = var.ui.chkHistoriacli.isChecked()
@@ -130,6 +162,14 @@ class Conexion:
             print("error listado en conexión", e)
 
     def datosOneCliente(DNI):
+        """
+        :param dni cliente
+        :type dni: str
+        :return: datos de un cliente
+        :rtype: bytearray
+
+        Devuelve los datos de un cliente
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()
