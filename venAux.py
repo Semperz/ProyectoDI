@@ -1,8 +1,10 @@
 from calendar import calendar
 from datetime import datetime
 
+import informes
 import propiedades
 from dlgAbout import Ui_windowAbout
+from dlgBuscaLocal import Ui_dlgBuscaLocal
 from dlgCalendar import *
 import eventos
 import var
@@ -41,3 +43,10 @@ class dlgAboutprop(QtWidgets.QDialog):
         self.ui = Ui_windowAbout()
         self.ui.setupUi(self)
         self.ui.btnCerrar.clicked.connect(eventos.Eventos.cerrarVentanaAbout)
+
+class dlgBuscaLocal(QtWidgets.QDialog):
+    def __init__(self):
+        super(dlgBuscaLocal, self).__init__()
+        self.ui = Ui_dlgBuscaLocal()
+        self.ui.setupUi(self)
+        self.ui.btnGenInforme.clicked.connect(informes.Informes.reportPropiedades)

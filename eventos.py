@@ -223,6 +223,12 @@ class Eventos:
         except Exception as error:
             print(error)
 
+    def abrirBuscaLocal(self):
+        try:
+            var.dlgbuscalocal.show()
+        except Exception as error:
+            print(error)
+
     def abrirAboutprop(self):
         try:
             var.dlgabout.show()

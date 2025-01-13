@@ -23,6 +23,7 @@ class Main(QtWidgets.QMainWindow):
         var.dlgabrir = FileDialogAbrir()
         var.dlggestion = dlgGestionprop()
         var.dlgabout = dlgAboutprop()
+        var.dlgbuscalocal = dlgBuscaLocal()
         self.setStyleSheet(styles.load_stylesheet())
         conexion.Conexion.db_conexion(self)
         var.historico = 0
@@ -64,7 +65,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionAcercade.triggered.connect(eventos.Eventos.abrirAboutprop)
 
         var.ui.actionListado_Clientes.triggered.connect(informes.Informes.reportClientes)
-        var.ui.actionListado_Propiedades.triggered.connect(informes.Informes.reportPropiedades)
+        var.ui.actionListado_Propiedades.triggered.connect(eventos.Eventos.abrirBuscaLocal)
         '''
         eventos de botones
         '''

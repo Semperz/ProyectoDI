@@ -11,7 +11,7 @@ global btn
 global historico
 global dlggestion
 global dlgabout
-
+global dlgbuscalocal
 global current_page_cli
 global current_page_prop
 global items_per_page_cli
