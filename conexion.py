@@ -3,9 +3,7 @@ import sqlite3
 from datetime import datetime
 
 from PyQt6 import QtSql, QtWidgets, QtCore
-from PyQt6.QtWidgets import QMessageBox
 from PyQt6 import QtGui
-from mysql.connector import DATETIME
 import var
 
 
@@ -92,6 +90,24 @@ class Conexion:
                       " WHERE fk_idprov = (SELECT idprov FROM provincias WHERE provincia = :provincia)")
         query.bindValue(":provincia", provincia)
         if query.exec():
+            while query.next():
+                listaMuni.append(query.value(1))
+        return listaMuni
+
+    @staticmethod
+    def listarMuniSinProv():
+        """
+
+        :return: lista municipios
+        :rtype: bytearray
+        """
+
+        listaMuni = []
+        query = QtSql.QSqlQuery()
+        query.prepare("SELECT * FROM municipios")
+        if not query.exec():
+            print("Error ejecutando la consulta:", query.lastError().text())
+        else:
             while query.next():
                 listaMuni.append(query.value(1))
         return listaMuni

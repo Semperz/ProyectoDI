@@ -16,7 +16,6 @@ import vendedores
 import clientes
 import conexion
 import conexionserver
-import eventos
 import propiedades
 import var
 
@@ -191,7 +190,7 @@ class Eventos:
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
                 conexion.Conexion.db_conexion(self)
-                eventos.Eventos.cargarProv()
+                Eventos.cargarProv()
                 #conexionserver.ConexionServer.listadoClientes(self)
                 clientes.Clientes.cargaTablaClientes(self)
         except Exception as error:

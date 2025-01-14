@@ -98,8 +98,8 @@ class Informes:
         except Exception as e:
             print(e)
 
-    @staticmethod
-    def reportPropiedades():
+
+    def reportPropiedades(localidad):
         try:
             Informes.total_paginas = 1
             rootPath = '.\\informes'
@@ -110,9 +110,9 @@ class Informes:
             nompdfcli = fecha + "_listadopropiedades.pdf"
             pdf_path = os.path.join(rootPath, nompdfcli)
             var.report = canvas.Canvas(pdf_path)
-            titulo = "Listado Propiedades"
+            titulo = "Listado Propiedades de " + localidad
             Informes.topInforme(titulo)
-            items = ['CODIGO', 'TIPO','LOCALIDAD' ,'OPERACIÓN', 'VENTA (€)', 'ALQUILER (€)', 'DISPONIBILIDAD']
+            items = ['CODIGO', 'TIPO','DIRECCIÓN' ,'OPERACIÓN', 'VENTA (€)', 'ALQUILER (€)', 'DISPONIBILIDAD']
             var.report.setFont('Helvetica-Bold', size=10)
             var.report.drawString(55, 650, str(items[0]))
             var.report.drawString(110, 650, str(items[1]))
@@ -122,6 +122,11 @@ class Informes:
             var.report.drawString(360, 650, str(items[5]))
             var.report.drawString(440, 650, str(items[6]))
             var.report.line(50, 645, 525, 645)
+
+            query = QtSql.QSqlQuery()
+            query.prepare('select idprop, tipoprop, dirprop, tipoperprop, prevenprop, prealquilerprop, estadoprop from propiedades'
+                          ' order by idprop')
+
             Informes.footInforme(titulo)
             var.report.save()
             for file in os.listdir(rootPath):
@@ -160,7 +165,7 @@ class Informes:
                 var.report.line(50, 800, 525, 800)
                 var.report.setFont('Helvetica-Bold', size=14)
                 var.report.drawString(55, 785, 'Inmobiliaria Teis')
-                var.report.drawString(230, 680, titulo)
+                var.report.drawCentredString(300, 675, titulo)
                 var.report.line(50, 665, 525, 665)
 
                 # Dibuja la imagen en el informe

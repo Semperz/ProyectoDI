@@ -1,6 +1,8 @@
-from calendar import calendar
 from datetime import datetime
 
+from PyQt6.QtWidgets import QCompleter
+
+import conexion
 import informes
 import propiedades
 from dlgAbout import Ui_windowAbout
@@ -49,4 +51,29 @@ class dlgBuscaLocal(QtWidgets.QDialog):
         super(dlgBuscaLocal, self).__init__()
         self.ui = Ui_dlgBuscaLocal()
         self.ui.setupUi(self)
-        self.ui.btnGenInforme.clicked.connect(informes.Informes.reportPropiedades)
+        # Inicializa el combo box con un elemento vacío
+        self.ui.fcbLocalidad.addItem("")
+
+        # Obtén la lista de municipios
+        municipios = dlgBuscaLocal.cargarMunicipios(self)
+
+        # Agrega cada municipio individualmente al combo box
+        for municipio in municipios:
+            self.ui.fcbLocalidad.addItem(municipio)
+
+        # Configura el autocompletado con la lista de municipios
+        completar = QCompleter(municipios, self)
+        completar.setCaseSensitivity(QtCore.Qt.CaseSensitivity.CaseInsensitive)
+        completar.setFilterMode(QtCore.Qt.MatchFlag.MatchContains)
+        self.ui.fcbLocalidad.setCompleter(completar)
+
+        # Configura el botón de generar informe
+        self.ui.btnGenInforme.clicked.connect(self.on_btnBuscaLocal_clicked)
+    def on_btnBuscaLocal_clicked(self):
+        localidad = self.ui.fcbLocalidad.currentText()
+        informes.Informes.reportPropiedades(localidad)
+        self.accept()
+
+    def cargarMunicipios(self):
+        listado = conexion.Conexion.listarMuniSinProv()
+        return listado

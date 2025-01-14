@@ -17,6 +17,7 @@ class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(Main, self).__init__()
+        conexion.Conexion.db_conexion(self)
         var.ui = Ui_venPrincipal()
         var.ui.setupUi(self)
         var.uicalendar = Calendar()
@@ -24,8 +25,8 @@ class Main(QtWidgets.QMainWindow):
         var.dlggestion = dlgGestionprop()
         var.dlgabout = dlgAboutprop()
         var.dlgbuscalocal = dlgBuscaLocal()
+        conexion.Conexion.listarMuniSinProv()
         self.setStyleSheet(styles.load_stylesheet())
-        conexion.Conexion.db_conexion(self)
         var.historico = 0
         var.current_page_cli = 0
         var.current_page_prop = 0
