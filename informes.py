@@ -112,20 +112,51 @@ class Informes:
             var.report = canvas.Canvas(pdf_path)
             titulo = "Listado Propiedades de " + localidad
             Informes.topInforme(titulo)
-            items = ['CODIGO', 'TIPO','DIRECCIÓN' ,'OPERACIÓN', 'VENTA (€)', 'ALQUILER (€)', 'DISPONIBILIDAD']
+            items = ['CODIGO', 'TIPO','DIRECCIÓN' ,'OPERACIÓN', 'VENTA (€)', 'ALQUILER (€)']
             var.report.setFont('Helvetica-Bold', size=10)
             var.report.drawString(55, 650, str(items[0]))
             var.report.drawString(110, 650, str(items[1]))
-            var.report.drawString(150, 650, str(items[2]))
-            var.report.drawString(220, 650, str(items[3]))
-            var.report.drawString(300, 650, str(items[4]))
-            var.report.drawString(360, 650, str(items[5]))
-            var.report.drawString(440, 650, str(items[6]))
+            var.report.drawString(160, 650, str(items[2]))
+            var.report.drawString(280, 650, str(items[3]))
+            var.report.drawString(380, 650, str(items[4]))
+            var.report.drawString(450, 650, str(items[5]))
             var.report.line(50, 645, 525, 645)
 
             query = QtSql.QSqlQuery()
             query.prepare('select idprop, tipoprop, dirprop, tipoperprop, prevenprop, prealquilerprop, estadoprop from propiedades'
                           ' order by idprop')
+
+            if query.exec():
+                x = 55
+                y = 635
+                while query.next():
+                    if y <= 90:
+                        Informes.num_paginas += 1
+                        Informes.footInforme(titulo)
+                        var.report.setFont("Helvetica-Oblique", size=8)
+                        var.report.drawString(450, 80, "Página siguiente...")
+                        var.report.showPage()
+                        Informes.num_paginas += 1
+                        Informes.topInforme(titulo)
+                        items = ['CODIGO', 'TIPO','DIRECCIÓN' ,'OPERACIÓN', 'VENTA (€)', 'ALQUILER (€)']
+                        var.report.setFont('Helvetica-Bold', size=10)
+                        var.report.drawString(55, 650, str(items[0]))
+                        var.report.drawString(110, 650, str(items[1]))
+                        var.report.drawString(160, 650, str(items[2]))
+                        var.report.drawString(280, 650, str(items[3]))
+                        var.report.drawString(380, 650, str(items[4]))
+                        var.report.drawString(450, 650, str(items[5]))
+                        var.report.line(50, 645, 525, 645)
+                        x=55
+                        y=625
+                    var.report.setFont('Helvetica-Oblique', size=9)
+                    var.report.drawCentredString(x + 10, y, str(query.value(0)))
+                    var.report.drawString(x + 45, y, str(query.value(1)))
+                    var.report.drawString(x + 100, y, str(query.value(2)))
+                    var.report.drawCentredString(x + 250, y, str(query.value(3)))
+                    var.report.drawRightString(x + 370, y, str(query.value(4))+ "€")
+                    var.report.drawRightString(x + 455, y, str(query.value(5))+ "€")
+                    y -= 20
 
             Informes.footInforme(titulo)
             var.report.save()
