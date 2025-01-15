@@ -619,4 +619,21 @@ class Conexion:
             print("error baja cliente", error)
 
 
+    '''
+    Zona facturacion
+    '''
+    def altaFactura(factura):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("INSERT into facturas (fechafac, dnifac) VALUES (:fechaFactura, :dniCliente)")
+            columnas = ['fechaFactura', 'dniCliente']
+            for i in range(len(columnas)):
+                query.bindValue(":"+str(columnas[i]), factura[i])
+            if query.exec():
+                return True
+            else:
+                return False
+        except sqlite3.IntegrityError:
+            return False
+
 
