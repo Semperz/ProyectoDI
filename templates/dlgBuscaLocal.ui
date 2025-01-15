@@ -46,15 +46,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QFontComboBox" name="fcbLocalidad">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="currentText">
-        <string/>
+      <widget class="QComboBox" name="cmbBuscalocal">
+       <property name="editable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

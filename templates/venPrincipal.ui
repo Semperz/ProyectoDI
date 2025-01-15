@@ -25,22 +25,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="2">
-     <spacer name="horizontalSpacer_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="0">
      <spacer name="horizontalSpacer_4">
       <property name="orientation">
@@ -73,10 +57,26 @@
       </property>
      </spacer>
     </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="panPrincipal">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pesClientes">
        <attribute name="title">
@@ -1049,7 +1049,7 @@ QPushButton:pressed {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tabPropiedades">
+      <widget class="QWidget" name="pesPropiedades">
        <attribute name="title">
         <string>Propiedades</string>
        </attribute>
@@ -1572,17 +1572,7 @@ QPushButton:pressed {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: whitesmoke;
-    color: white;
-    border-radius: 5px;
-}
-
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
-}
-</string>
+               <string notr="true">QPushButton {\n    background-color: whitesmoke;\n    color: white;\n    border-radius: 5px;\n}\n\nQPushButton:pressed {\n    background-color:#0ea2ae;\n    transform: scale(0.95);\n}\n</string>
               </property>
               <property name="text">
                <string/>
@@ -1712,17 +1702,7 @@ QPushButton:pressed {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: whitesmoke;
-    color: white;
-    border-radius: 5px;
-}
-
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
-}
-</string>
+               <string notr="true">QPushButton {\n    background-color: whitesmoke;\n    color: white;\n    border-radius: 5px;\n}\n\nQPushButton:pressed {\n    background-color:#0ea2ae;\n    transform: scale(0.95);\n}\n</string>
               </property>
               <property name="text">
                <string/>
@@ -2190,7 +2170,7 @@ QPushButton:checked {
        <zorder></zorder>
        <zorder>verticalSpacer_8</zorder>
       </widget>
-      <widget class="QWidget" name="tabVendedores">
+      <widget class="QWidget" name="pesVendedores">
        <attribute name="title">
         <string>Vendedores</string>
        </attribute>
@@ -2468,6 +2448,19 @@ QPushButton:checked {
                   <height>25</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -2523,6 +2516,19 @@ QPushButton:checked {
                   <width>25</width>
                   <height>25</height>
                  </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -2761,6 +2767,238 @@ QPushButton:checked {
          </spacer>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="pesVentas">
+       <attribute name="title">
+        <string>Ventas</string>
+       </attribute>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>60</y>
+          <width>271</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>241</width>
+           <height>111</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Num Factura:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="lblNumfac">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(222,222,222)</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Fecha Factura:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="lblFechafac">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(222,222,222)</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="btnFechafac">
+            <property name="minimumSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color:#0ea2ae;
+    transform: scale(0.95);
+}
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../img/calendario.ico</normaloff>../img/calendario.ico</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>DNI Cliente:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QPushButton" name="btnGrabven">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Grabar Venta</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="txtDnicliven">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_2">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>259</y>
+          <width>271</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_3">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>60</y>
+          <width>831</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_4">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>260</y>
+          <width>831</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>

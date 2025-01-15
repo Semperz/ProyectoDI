@@ -124,7 +124,9 @@ class Informes:
 
             query = QtSql.QSqlQuery()
             query.prepare('select idprop, tipoprop, dirprop, tipoperprop, prevenprop, prealquilerprop, estadoprop from propiedades'
-                          ' order by idprop')
+                          ' where muniprop = :localidad'
+                          ' order by idprop ')
+            query.bindValue(':localidad', localidad)
 
             if query.exec():
                 x = 55
@@ -156,7 +158,7 @@ class Informes:
                     var.report.drawCentredString(x + 250, y, str(query.value(3)))
                     var.report.drawRightString(x + 370, y, str(query.value(4))+ "€")
                     var.report.drawRightString(x + 455, y, str(query.value(5))+ "€")
-                    y -= 20
+                    y -= 30
 
             Informes.footInforme(titulo)
             var.report.save()

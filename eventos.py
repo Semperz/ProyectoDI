@@ -12,6 +12,8 @@ from PyQt6 import QtWidgets, QtGui
 import zipfile
 import shutil
 
+from PyQt6.uic.properties import QtCore
+
 import vendedores
 import clientes
 import conexion
@@ -100,6 +102,8 @@ class Eventos:
                     var.ui.txtAltaven.setText(str(data))
             elif var.panel == 2 and var.btn == 1:
                     var.ui.txtBajaven.setText(str(data))
+            elif var.panel == 3 and var.btn == 0:
+                var.ui.lblFechafac.setText(str(data))
             time.sleep(0.2)
             var.uicalendar.hide()
             return data

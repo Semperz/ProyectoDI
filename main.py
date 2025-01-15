@@ -1,8 +1,6 @@
 from calendar import Calendar
 
 import conexionserver
-import informes
-import propiedades
 import vendedores
 from venAux import *
 import clientes
@@ -94,6 +92,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBuscartipoprop.clicked.connect(propiedades.Propiedades.filtroBusqueda)
         var.ui.btnSiguienteprop.clicked.connect(propiedades.Propiedades.siguientePaginaProp)
         var.ui.btnAnteriorprop.clicked.connect(propiedades.Propiedades.anteriorPaginaProp)
+
+
+        var.ui.btnFechafac.clicked.connect(lambda: eventos.Eventos.abrirCalendar(3, 0))
         '''
         eventos de cajas de texto
         '''

@@ -52,25 +52,25 @@ class dlgBuscaLocal(QtWidgets.QDialog):
         self.ui = Ui_dlgBuscaLocal()
         self.ui.setupUi(self)
         # Inicializa el combo box con un elemento vacío
-        self.ui.fcbLocalidad.addItem("")
+        self.ui.cmbBuscalocal.addItem("")
 
         # Obtén la lista de municipios
         municipios = dlgBuscaLocal.cargarMunicipios(self)
 
         # Agrega cada municipio individualmente al combo box
         for municipio in municipios:
-            self.ui.fcbLocalidad.addItem(municipio)
+            self.ui.cmbBuscalocal.addItem(municipio)
 
         # Configura el autocompletado con la lista de municipios
         completar = QCompleter(municipios, self)
         completar.setCaseSensitivity(QtCore.Qt.CaseSensitivity.CaseInsensitive)
         completar.setFilterMode(QtCore.Qt.MatchFlag.MatchContains)
-        self.ui.fcbLocalidad.setCompleter(completar)
+        self.ui.cmbBuscalocal.setCompleter(completar)
 
         # Configura el botón de generar informe
         self.ui.btnGenInforme.clicked.connect(self.on_btnBuscaLocal_clicked)
     def on_btnBuscaLocal_clicked(self):
-        localidad = self.ui.fcbLocalidad.currentText()
+        localidad = self.ui.cmbBuscalocal.currentText()
         informes.Informes.reportPropiedades(localidad)
         self.accept()
 

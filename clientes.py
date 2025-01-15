@@ -154,6 +154,10 @@ class Clientes:
             # listadoServer = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli, var.ui.txtNomcli,
             #            var.ui.txtEmailcli, var.ui.txtDircli, var.ui.txtMovilcli , var.ui.cmbProvcli, var.ui.cmbMunicli,
             #            var.ui.txtBajaCli]
+            '''
+            Enlace con ventas
+            '''
+            var.ui.txtDnicliven.setText(registro[0])
             for i in range(len(listado)):
                 if i == 7 or i == 8:
                     listado[i].setCurrentText(registro[i])
