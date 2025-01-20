@@ -14,6 +14,7 @@ import shutil
 
 from PyQt6.uic.properties import QtCore
 
+import facturas
 import vendedores
 import clientes
 import conexion
@@ -202,21 +203,18 @@ class Eventos:
 
 
     def limpiarPanel(self):
-        clientes.Clientes.clearCamposCliente()
-        propiedades.Propiedades.clearCamposPropiedades()
-        propiedades.Propiedades.checkDisponibilidad(self)
+        if var.ui.panPrincipal.currentIndex() == 0:
+            clientes.Clientes.clearCamposCliente()
+        elif var.ui.panPrincipal.currentIndex() == 1:
+            propiedades.Propiedades.clearCamposPropiedades()
+            propiedades.Propiedades.checkDisponibilidad(self)
+        elif var.ui.panPrincipal.currentIndex() == 2:
+            vendedores.Vendedores.clearCamposVendedores()
+        elif var.ui.panPrincipal.currentIndex() == 3:
+            facturas.Facturas.clearCamposFacturas()
+
         vendedores.Vendedores.clearCamposVendedores()
-        # objetosPanelCli = [var.ui.txtDnicli, var.ui.txtAltaCli, var.ui.txtApelcli,
-        #             var.ui.txtNomcli,
-        #             var.ui.txtEmailcli, var.ui.txtMovilcli, var.ui.txtDircli,
-        #             var.ui.cmbProvcli, var.ui.cmbMunicli, var.ui.txtBajaCli]
-        #
-        # for i, dato in enumerate(objetosPanelCli):
-        #     if i == 7 or i == 8:
-        #         dato.setCurrentIndex(0)
-        #     else:
-        #         dato.setText(None)
-        # eventos.Eventos.cargarProv()
+        facturas.Facturas.clearCamposFacturas()
     """
     Pagina propiedades
     """

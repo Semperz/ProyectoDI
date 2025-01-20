@@ -187,10 +187,17 @@ class Vendedores:
             datos = [dato.text() for dato in fila]
             registro = conexion.Conexion.datosOneVendedor(str(datos[0]))
 
-            listado = [var.ui.txtDniven, var.ui.txtNomven, var.ui.txtAltaven, var.ui.txtBajaven,
+            listado = [var.ui.txtIDven, var.ui.txtDniven, var.ui.txtNomven, var.ui.txtAltaven, var.ui.txtBajaven,
              var.ui.txtMovilven, var.ui.txtEmailven, var.ui.cmbDelegacionven]
+
+
+            '''
+            conexión con ventas
+            '''
+            var.ui.txtIDven.setText(str(registro[0]))
+
             for index in range(len(listado)):
-                if index == 6:
+                if index == 7:
                     listado[index].setCurrentText(registro[index])
                 else:
                     listado[index].setText(registro[index])

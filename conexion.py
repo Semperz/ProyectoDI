@@ -577,7 +577,7 @@ class Conexion:
         try:
             registro = []
             query = QtSql.QSqlQuery()
-            query.prepare("SELECT dniVendedor, nombreVendedor, altaVendedor, bajaVendedor, movilVendedor, mailVendedor, delegacionVendedor"
+            query.prepare("SELECT idVendedor, dniVendedor, nombreVendedor, altaVendedor, bajaVendedor, movilVendedor, mailVendedor, delegacionVendedor"
                           " FROM vendedor WHERE idVendedor = :ID")
             query.bindValue(":ID", str(idVen))
             if query.exec():
@@ -624,6 +624,10 @@ class Conexion:
     '''
     def altaFactura(factura):
         try:
+            if factura[0] == "":
+                factura[0] = datetime.now().strftime("%d/%m/%Y")
+            if factura[1] == "":
+                return False
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into facturas (fechafac, dnifac) VALUES (:fechaFactura, :dniCliente)")
             columnas = ['fechaFactura', 'dniCliente']

@@ -1,6 +1,7 @@
 from calendar import Calendar
 
 import conexionserver
+import facturas
 import vendedores
 from venAux import *
 import clientes
@@ -93,8 +94,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnSiguienteprop.clicked.connect(propiedades.Propiedades.siguientePaginaProp)
         var.ui.btnAnteriorprop.clicked.connect(propiedades.Propiedades.anteriorPaginaProp)
 
-
+        var.ui.btnGrabven.clicked.connect(facturas.Facturas.altaFactura)
         var.ui.btnFechafac.clicked.connect(lambda: eventos.Eventos.abrirCalendar(3, 0))
+
         '''
         eventos de cajas de texto
         '''

@@ -1,4 +1,4 @@
-from PyQt6.uic.properties import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtGui
 
 import conexion
 import var
@@ -7,8 +7,8 @@ import var
 class Facturas:
     def altaFactura(self):
         try:
-            nuevafactura = [var.ui.txtfechafac.text(), var.ui.txtDnicliven.text()]
-            if (conexion.Conexion.altaFactura(nuevafactura)):
+            nuevafactura = [var.ui.lblFechafac.text(), var.ui.txtDnicliven.text()]
+            if conexion.Conexion.altaFactura(nuevafactura) and var.ui.txtDnicliven.text() != '':
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
@@ -32,3 +32,20 @@ class Facturas:
                 mbox.exec()
         except Exception as error:
             print('Error alta factura: %s' % str(error))
+
+    @staticmethod
+    def clearCamposFacturas():
+        var.ui.lblFechafac.setText(None)
+        var.ui.lblNumfac.setText(None)
+        var.ui.txtDnicliven.setText(None)
+        var.ui.txtApelcliven.setText(None)
+        var.ui.txtNomcliven.setText(None)
+        var.ui.txtdirpropven.setText(None)
+        var.ui.txtcodpropven.setText(None)
+        var.ui.txtTipopropven.setText(None)
+        var.ui.txtpreciopropven.setText(None)
+        var.ui.txtlocalpropven.setText(None)
+        var.ui.txtIDven.setText(None)
+
+
+
