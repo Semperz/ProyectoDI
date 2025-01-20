@@ -1,4 +1,4 @@
-from PyQt6 import QtWidgets, QtGui
+from PyQt6 import QtWidgets, QtGui, QtCore
 
 import conexion
 import var
@@ -19,6 +19,7 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
+                self.cargarTablaFacturas()
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -30,6 +31,7 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
+                self.cargarTablaFacturas()
         except Exception as error:
             print('Error alta factura: %s' % str(error))
 
@@ -46,6 +48,24 @@ class Facturas:
         var.ui.txtpreciopropven.setText(None)
         var.ui.txtlocalpropven.setText(None)
         var.ui.txtIDven.setText(None)
+
+
+    def cargarTablaFacturas(self):
+        try:
+            var.ui.tablaFacturas.setRowCount(0)
+            listado = conexion.Conexion.listadoFacturas()
+            for index, registro in enumerate(listado):
+                var.ui.tablaFacturas.insertRow(index)
+                var.ui.tablaFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(" " + " " +str(registro[0]) + " " + " "))
+                var.ui.tablaFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[2])))
+                var.ui.tablaFacturas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tablaFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tablaFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tablaFacturas.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tablaFacturas.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+
+        except Exception as error:
+            print('Error cargar tabla facturas: %s' % str(error))
 
 
 

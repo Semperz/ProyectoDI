@@ -640,4 +640,16 @@ class Conexion:
         except sqlite3.IntegrityError:
             return False
 
-
+    @staticmethod
+    def listadoFacturas():
+        listado = []
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM facturas ORDER BY id ASC")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("error listado facturas en conexión ", e)
