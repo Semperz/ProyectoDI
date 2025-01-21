@@ -653,3 +653,33 @@ class Conexion:
             return listado
         except Exception as e:
             print("error listado facturas en conexión ", e)
+
+
+
+    def eliminarFactura(numFac):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("DELETE FROM facturas WHERE id = :id")
+            query.bindValue(":id", numFac)
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error eliminar factura", error)
+
+
+    def datosOneFactura(idFac):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT id, fechafac, dnifac"
+                          " FROM facturas WHERE id = :ID")
+            query.bindValue(":ID", str(idFac))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+            return registro
+        except Exception as error:
+            print("error datos un vendedor", error)
