@@ -20,7 +20,7 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Facturas.cargarTablaFacturas(self)
+                Facturas.cargarTablaFacturas()
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -32,7 +32,7 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Facturas.cargarTablaFacturas(self)
+                Facturas.cargarTablaFacturas()
         except Exception as error:
             print('Error alta factura: %s' % str(error))
 
@@ -50,8 +50,8 @@ class Facturas:
         var.ui.txtlocalpropven.setText(None)
         var.ui.txtIDven.setText(None)
 
-
-    def cargarTablaFacturas(self):
+    @staticmethod
+    def cargarTablaFacturas():
         try:
             var.ui.tablaFacturas.setRowCount(0)
             listado = conexion.Conexion.listadoFacturas()
@@ -68,7 +68,7 @@ class Facturas:
                 botondelfac.setFixedSize(30,24)
                 botondelfac.setIcon(QtGui.QIcon('img/basura.png'))
                 botondelfac.setProperty("row", index)
-                botondelfac.clicked.connect(Facturas.eliminarFactura)
+                botondelfac.clicked.connect( lambda checked, idFactura=str(registro[0]) : Facturas.eliminarFactura(idFactura))
                 contenedor = QtWidgets.QWidget()
                 layout = QtWidgets.QHBoxLayout()
                 layout.addWidget(botondelfac)
@@ -81,32 +81,10 @@ class Facturas:
             print('Error cargar tabla facturas: %s' % str(error))
 
 
-    def eliminarFactura(self):
+    def eliminarFactura(idFac):
         try:
-            fila = var.ui.tablaFacturas.currentRow()
-            if fila == -1:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
-                mbox.setWindowTitle('Aviso')
-                mbox.setText('Seleccione una factura')
-                mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
-            else:
-                numfac = var.ui.tablaFacturas.item(fila, 0).text()
-                conexion.Conexion.eliminarFactura(numfac)
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
-                mbox.setWindowTitle('Informacion')
-                mbox.setText('Factura eliminada')
-                mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
-                Facturas.cargarTablaFacturas(self)
+            if conexion.Conexion.eliminarFactura(idFac):
+                Facturas.cargarTablaFacturas()
         except Exception as error:
             print('Error eliminar factura: %s' % str(error))
 

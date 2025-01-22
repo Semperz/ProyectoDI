@@ -36,7 +36,7 @@ class Main(QtWidgets.QMainWindow):
         vendedores.Vendedores.cargarTablaVendedores(self)
         propiedades.Propiedades.cargaTablaPropiedades(self)
         propiedades.Propiedades.checkDisponibilidad(self)
-        facturas.Facturas.cargarTablaFacturas(self)
+        facturas.Facturas.cargarTablaFacturas()
         '''
         Eventos formulario
         '''
