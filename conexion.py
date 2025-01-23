@@ -182,7 +182,7 @@ class Conexion:
         :param dni cliente
         :type dni: str
         :return: datos de un cliente
-        :rtype: bytearray
+        :rtype: list
 
         Devuelve los datos de un cliente
         """
@@ -200,6 +200,17 @@ class Conexion:
             print("error datos un cliente", error)
 
     def modifCliente(registro):
+        """
+
+        :param datos del cliente a modificar
+        :type list
+        :return: éxito de la operación
+        :rtype: bool
+
+        Modifica los datos de un cliente
+        Devuelve true si se realiza correctamente, sino false
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("select count(*) from clientes where dnicli = :dni")
@@ -237,6 +248,19 @@ class Conexion:
             print("error modificar cliente", error)
 
     def bajaCliente(datos):
+        """
+
+              :param dni del cliente y fecha de baja
+              :type list
+              :return: éxito de la operación
+              :rtype: bool
+
+              Da de baja al cliente
+              No elimina al cliente de la base de datos
+              Devuelve true si se realiza correctamente, sino false
+
+
+              """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE clientes set bajacli = :bajacli "
@@ -250,23 +274,22 @@ class Conexion:
         except Exception as error:
             print("error baja cliente", error)
 
-    def clienteExistente(DNI):
-        try:
-            query = QtSql.QSqlQuery()
-            query.prepare("SELECT COUNT(*) FROM clientes WHERE dnicli = :DNI")
-            query.bindValue(":DNI", str(DNI))
-            if query.exec() and query.value(0) == 1:
-                return True
-            else:
-                return False
-        except Exception as error:
-            print("error baja cliente", error)
 
     """
     Gestión de propiedades
     """
 
     def altaTipoprop(tipo):
+        """
+        :param nombre del tipo de propiedad
+        :type str
+        :return: operacion exitosa
+        :rtype: bool
+
+        Añade el tipo de propiedad, devolviendo true
+        Devuelve false si ya existe
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into tipoprop (tipo) VALUES (:tipo)")
@@ -281,6 +304,17 @@ class Conexion:
 
     
     def bajaTipoprop(tipo):
+        """
+
+        :param tipo de propiedad a eliminar
+        :type str
+        :return: operacion exitosa
+        :rtype: bool
+
+        Elimina el tipo de prop si existe, devolviendo true
+        Devuelve false si no existe
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("DELETE from tipoprop where tipo = :tipo")
@@ -300,6 +334,14 @@ class Conexion:
 
 
     def cargarTipoprop(self):
+        """
+
+        :return: listado de tipos de propiedad
+        :rtype: list
+
+        Devuelve los tipos de propiedades almacenados en la base de datos
+
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -313,6 +355,17 @@ class Conexion:
 
 
     def altaPropiedad(propiedad):
+        """
+
+         :param datos de la propiedad a dar de alta
+         :type  list
+         :return: operacion exitosa
+         :rtype: bool
+
+         Da de alta una propiedad con los datos pasados por parámetro
+         Devuelve true si la operación es exitosa, false en caso contrario
+
+         """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into propiedades (fechaprop, dirprop, provpro, muniprop, tipoprop, "
@@ -338,6 +391,16 @@ class Conexion:
             return False
     @staticmethod
     def listadoPropiedades():
+        """
+
+        :return: lista de propiedades registradas siguiendo condiciones
+        :rtype: list
+
+        Devuelve la lista de propiedades que existen en la base de datos
+        siguiendo X condiciones (botón de historico, buscar por tipo de propiedad...)
+        para mostrarla en la tabla
+
+        """
         listado = []
         historicoprop = var.ui.chkHistoricoprop.isChecked()
         muniActual = var.ui.cmbMuniprop.currentText()
@@ -389,6 +452,16 @@ class Conexion:
             print("error listado en conexión", e)
 
     def datosOnePropiedad(ID):
+        """
+
+        :param identificador de una propiedad
+        :type int
+        :return: datos de la propiedad
+        :rtype: list
+
+        Devuelve la información de una propiedad a partir de su código identificativo
+
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -404,6 +477,17 @@ class Conexion:
 
 
     def bajaPropiedad(datos):
+
+        """
+
+               :param lista de código de la propiedad, y su fecha de baja
+               :type list
+               :return: operación exitosa
+               :rtype: bool
+
+               Da de baja (no elimina) a la propiedad del código especificado
+               devuelve true si la operación se realiza correctamente, false en caso contrario
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE propiedades set bajaprop = :bajaprop "
@@ -418,6 +502,17 @@ class Conexion:
             print("error baja propiedad", error)
 
     def modifPropiedad(registro):
+        """
+
+               :param datos modificados de la propiedad
+               :type list
+               :return: operacion existosa
+               :rtype: bool
+
+               Modifica los datos de la propiedad pasada por parámetros
+               Devuelve true si la operación se realiza correctamente, false en caso contrario
+
+               """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("select count(*) from propiedades where idprop = :idprop")
@@ -459,6 +554,14 @@ class Conexion:
             print("error modificar cliente", error)
     @staticmethod
     def listadoAllPropiedades():
+        """
+
+              :return: lista de todas las propiedades registradas
+              :rtype: list
+
+              Devuelve la lista de propiedades que existen en la base de datos
+
+              """
         listado = []
         try:
             query = QtSql.QSqlQuery()
@@ -479,6 +582,17 @@ class Conexion:
 
 
     def altaVendedor(nuevoVen):
+        """
+
+        :param datos del nuevo vendedor
+        :type list
+        :return: operacion exitosa
+        :rtype: bool
+
+        Graba un vendedor en la base de datos con la información del parámetro
+        Devuelve true si se realiza correctamente, sino false
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into vendedor (dniVendedor, altaVendedor, nombreVendedor, mailVendedor, movilVendedor, "
@@ -497,6 +611,14 @@ class Conexion:
 
     @staticmethod
     def listadoVendedores():
+        """
+
+        :return: lista de vendedores
+        :rtype: list
+
+        Devuelve una lista con los datos de los vendedores de la base de datos
+
+        """
         searchBtn = var.ui.btnBuscarven.isChecked()
         movilven = var.ui.txtMovilven.text()
         historicoven = var.ui.chkHistoricoven.isChecked()
@@ -533,6 +655,15 @@ class Conexion:
 
     @staticmethod
     def listarDNIven():
+        """
+
+        :return: lista de vendedores
+        :rtype: list
+
+        Devuelve una lista con los dnis de vendedores existentes en la base de datos
+        para comprobar si ya hay uno
+
+        """
         try:
             listaDNIs = []
             query = QtSql.QSqlQuery()
@@ -548,7 +679,17 @@ class Conexion:
             return False
 
     def modifVendedor(modifVen):
+        """
 
+        :param datos del vendedor a modificar
+        :type list
+        :return: operacion exitosa
+        :rtype: bool
+
+        Modifica los datos de un cliente con los pasados por parámetros
+        Devuelve true si se realiza correctamente, sino false
+
+        """
         try:
 
             query2 = QtSql.QSqlQuery()
@@ -574,6 +715,16 @@ class Conexion:
 
 
     def datosOneVendedor(idVen):
+        """
+
+        :param id del vendedor a buscar
+        :type int
+        :return: datos de un vendedor
+        :rtype: list
+
+        Recupera la información del vendedor cuyo id es el pasado por parámetros
+
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -589,6 +740,16 @@ class Conexion:
             print("error datos un vendedor", error)
 
     def datosOneVendedorMovil(movilVen):
+        """
+
+        :param móvil del vendedor
+        :type str
+        :return: datos del vendedor
+        :rtype: list
+
+        Recupera los datos de un cliente a partir de su móvil, pasado por parámetro
+
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -605,6 +766,18 @@ class Conexion:
 
 
     def bajaVendedor(datos):
+        """
+
+        :param datos del vendedor a dar de baja
+        :type list
+        :return: operacion exitosa
+        :rtype: bool
+
+        Da de baja al cliente especificado, poniendo la fecha del día actual
+        No elimina al cliente de la base de datos
+        Devuelve true si se realiza correctamente, sino false
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE vendedor set bajaVendedor = :bajaVendedor "
@@ -623,6 +796,13 @@ class Conexion:
     Zona facturacion
     '''
     def altaFactura(factura):
+        """
+
+         :param dni del cliente y fecha de la factura
+         :type list
+         :return: éxito de la operación
+         :rtype: bool
+         """
         try:
             if factura[0] == "":
                 factura[0] = datetime.now().strftime("%d/%m/%Y")
@@ -642,6 +822,14 @@ class Conexion:
 
     @staticmethod
     def listadoFacturas():
+        """
+
+        :return: lista de facturas
+        :rtype: list
+
+        Devuelve una lista con los datos de las facturas de la base de datos
+
+        """
         listado = []
         try:
             query = QtSql.QSqlQuery()
