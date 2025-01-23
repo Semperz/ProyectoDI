@@ -96,7 +96,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnSiguienteprop.clicked.connect(propiedades.Propiedades.siguientePaginaProp)
         var.ui.btnAnteriorprop.clicked.connect(propiedades.Propiedades.anteriorPaginaProp)
 
-        var.ui.btnGrabven.clicked.connect(facturas.Facturas.altaFactura)
+        var.ui.btnGrabfac.clicked.connect(facturas.Facturas.altaFactura)
         var.ui.btnFechafac.clicked.connect(lambda: eventos.Eventos.abrirCalendar(3, 0))
 
         '''
