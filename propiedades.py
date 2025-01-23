@@ -405,6 +405,14 @@ class Propiedades():
 
 
     def checkDisponibilidad(self):
+
+        """
+
+        Habilita o desabilita los botones de radio de disponibilidad
+        según haya fecha de baja en la caja de texto o no y los de precio si hay precio
+        en la caja de texto o no
+
+        """
         try:
             if var.ui.txtFechabajaprop.text() == "":
                 var.ui.rbtDisponibleprop.setEnabled(True)
