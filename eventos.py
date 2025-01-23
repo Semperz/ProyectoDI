@@ -31,6 +31,11 @@ class Eventos:
 
 
     def mensajeSalir(self=None):
+        """
+
+        Muestra un mensaje de confirmación para salir de la aplicación
+        Si se marca si se cierra la aplicación
+        """
         mbox = QtWidgets.QMessageBox()
         mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
         mbox.setWindowIcon(QtGui.QIcon("./img/icono.svg"))
@@ -47,12 +52,22 @@ class Eventos:
             mbox.hide()
     @staticmethod
     def cargarProv():
+        """
+
+        Carga la lista de provincias de la base de datos
+        en los combobox de provincias de clientes
+        """
         var.ui.cmbProvcli.clear()
         listado = conexion.Conexion.listarProvincias()
         #listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvcli.addItems(listado)
     @staticmethod
     def cargarMuni():
+        """
+
+        Carga la lista de municipios de la base de datos
+        en los combobox de municipios de clientes dependiendo de la provincia que esté seleccionada
+        """
         var.ui.cmbMunicli.clear()
         provActual = var.ui.cmbProvcli.currentText()
         listado = conexion.Conexion.listarMunicipios(provActual)
@@ -60,6 +75,13 @@ class Eventos:
         var.ui.cmbMunicli.addItems(listado)
 
     def validarDNI(dni):
+
+        """
+        :param dni del cliente
+        :type str
+        :return: éxito de la validación
+        :rtype: bool
+        """
         try:
             tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
             dig_ext = "XYZ"
@@ -81,6 +103,13 @@ class Eventos:
 
 
     def abrirCalendar(op, btn):
+        """
+
+        :param da un boton dependiendo del panel en el que se encuentre
+        :type int
+
+        Abre una ventana emergente del calendario, independiente para cada panel
+        """
         try:
             var.panel=op
             var.btn = btn
