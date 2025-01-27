@@ -3003,7 +3003,7 @@ QPushButton:pressed {
           <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <attribute name="horizontalHeaderVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
@@ -3045,7 +3045,7 @@ QPushButton:pressed {
         <property name="frameShadow">
          <enum>QFrame::Sunken</enum>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>30</x>
@@ -3148,7 +3148,7 @@ QPushButton:pressed {
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>180</width>
+                  <width>200</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -3321,7 +3321,7 @@ QPushButton:pressed {
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="btnGrabven_2">
+             <widget class="QPushButton" name="btnGrabven">
               <property name="minimumSize">
                <size>
                 <width>90</width>
@@ -3372,6 +3372,58 @@ QPushButton:pressed {
         <property name="frameShadow">
          <enum>QFrame::Sunken</enum>
         </property>
+        <widget class="QTableWidget" name="tabVenta">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>20</y>
+           <width>781</width>
+           <height>251</height>
+          </rect>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectColumns</enum>
+         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>ID venta</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>ID propiedad</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Dirección</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Localidad</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Tipo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Precio</string>
+          </property>
+         </column>
+        </widget>
        </widget>
       </widget>
      </widget>
