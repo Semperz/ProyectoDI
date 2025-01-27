@@ -158,8 +158,6 @@ class Clientes:
             Enlace con ventas
             '''
             var.ui.txtDnicliven.setText(registro[0])
-            var.ui.txtNomcliven.setText(registro[3])
-            var.ui.txtApelcliven.setText(registro[2])
             for i in range(len(listado)):
                 if i == 7 or i == 8:
                     listado[i].setCurrentText(registro[i])

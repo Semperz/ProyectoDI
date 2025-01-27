@@ -98,6 +98,7 @@ class Main(QtWidgets.QMainWindow):
 
         var.ui.btnGrabfac.clicked.connect(facturas.Facturas.altaFactura)
         var.ui.btnFechafac.clicked.connect(lambda: eventos.Eventos.abrirCalendar(3, 0))
+        var.ui.btnGrabven.clicked.connect(facturas.Facturas.grabarVenta)
 
         '''
         eventos de cajas de texto

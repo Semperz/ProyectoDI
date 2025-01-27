@@ -220,11 +220,16 @@ class Propiedades():
             '''
             conexión con ventas
             '''
-            var.ui.txtcodpropven.setText(registro[0])
-            var.ui.txtTipopropven.setText(registro[6])
-            var.ui.txtpreciopropven.setText(registro[11] + " €")
-            var.ui.txtdirpropven.setText(registro[3])
-            var.ui.txtlocalpropven.setText(registro[5])
+            if registro[11] == "0.0":
+                var.ui.txtcodpropven.setText(registro[0])
+                var.ui.txtTipopropven.setText(registro[6])
+                var.ui.txtpreciopropven.setText("Propiedad en intercambio/alquiler")
+                var.ui.txtpreciopropven.setStyleSheet('background-color:#FFC0CB;')
+                var.ui.txtdirpropven.setText(registro[3])
+                var.ui.txtlocalpropven.setText(registro[5])
+            else:
+                Propiedades.cargarVentasBien(registro)
+
 
             for i in range(len(listado)):
                 if i == 3 or i == 4 or i == 5:
@@ -458,3 +463,11 @@ class Propiedades():
         except Exception as e:
             print("error check fecha baja", e)
 
+    @staticmethod
+    def cargarVentasBien(registro):
+        var.ui.txtcodpropven.setText(registro[0])
+        var.ui.txtTipopropven.setText(registro[6])
+        var.ui.txtpreciopropven.setText(registro[11] + " €")
+        var.ui.txtpreciopropven.setStyleSheet('background-color:rgb(229, 255, 255);')
+        var.ui.txtdirpropven.setText(registro[3])
+        var.ui.txtlocalpropven.setText(registro[5])
