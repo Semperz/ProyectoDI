@@ -2787,6 +2787,12 @@ QPushButton:checked {
           <height>201</height>
          </rect>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
         </property>
@@ -2969,6 +2975,12 @@ QPushButton:pressed {
           <height>351</height>
          </rect>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
         </property>
@@ -3038,6 +3050,12 @@ QPushButton:pressed {
           <width>821</width>
           <height>201</height>
          </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -3366,6 +3384,12 @@ QPushButton:pressed {
           <height>281</height>
          </rect>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
         </property>
@@ -3387,8 +3411,17 @@ QPushButton:pressed {
          <property name="horizontalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOff</enum>
          </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
          <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectColumns</enum>
+          <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>

@@ -43,6 +43,10 @@ class Facturas:
         var.ui.txtDnicliven.setText(None)
         var.ui.txtApelcliven.setText(None)
         var.ui.txtNomcliven.setText(None)
+        Facturas.clearCamposPropVen()
+
+    @staticmethod
+    def clearCamposPropVen():
         var.ui.txtdirpropven.setText(None)
         var.ui.txtcodpropven.setText(None)
         var.ui.txtTipopropven.setText(None)
@@ -93,6 +97,7 @@ class Facturas:
         try:
             fila = var.ui.tablaFacturas.selectedItems()
             datos = [dato.text() for dato in fila]
+
             registro = conexion.Conexion.datosOneFactura(str(datos[0]))
             registroVen = conexion.Conexion.datosOneCliente(str(datos[1]))
             var.ui.txtNomcliven.setText(registroVen[3])
@@ -100,7 +105,8 @@ class Facturas:
             listado = [var.ui.lblNumfac, var.ui.lblFechafac, var.ui.txtDnicliven]
             for index in range(len(listado)):
                 listado[index].setText(registro[index])
-
+            Facturas.cargarTablaVentas()
+            Facturas.clearCamposPropVen()
         except Exception as error:
             print("error carga factura", error)
 
@@ -127,7 +133,8 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Facturas.cargarTablaFacturas()
+                Facturas.cargarTablaVentas()
+                Facturas.clearCamposFacturas()
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -139,6 +146,45 @@ class Facturas:
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Facturas.cargarTablaFacturas()
+                Facturas.cargarTablaVentas()
         except Exception as error:
             print("error grabar Venta", error)
+
+
+    @staticmethod
+    def cargarTablaVentas():
+        try:
+            factura = var.ui.lblNumfac.text()
+            var.ui.tabVenta.setRowCount(0)
+            listado = conexion.Conexion.listadoVentas(factura)
+            for index, registro in enumerate(listado):
+                var.ui.tabVenta.insertRow(index)
+                var.ui.tabVenta.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                var.ui.tabVenta.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tabVenta.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
+                var.ui.tabVenta.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                var.ui.tabVenta.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
+                var.ui.tabVenta.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5]) + " €"))
+                var.ui.tabVenta.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabVenta.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabVenta.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tabVenta.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tabVenta.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
+                var.ui.tabVenta.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+
+        except Exception as error:
+            print('Error cargar tabla ventas: %s' % str(error))
+
+
+
+    def cargarOneVenta(self):
+        try:
+            fila = var.ui.tabVenta.selectedItems()
+            datos = [dato.text() for dato in fila]
+            registro = conexion.Conexion.datosOneVenta(str(datos[0]))
+            listado = [var.ui.txtcodpropven, var.ui.txtdirpropven, var.ui.txtlocalpropven,
+                       var.ui.txtTipopropven, var.ui.txtpreciopropven, var.ui.txtIDven]
+            for index in range(len(listado)):
+                listado[index].setText(registro[index])
+        except Exception as error:
+            print("error carga factura", error)

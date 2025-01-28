@@ -870,7 +870,7 @@ class Conexion:
                         registro.append(str(query.value(i)))
             return registro
         except Exception as error:
-            print("error datos un vendedor", error)
+            print("error datos una fac", error)
 
 
     def grabarVenta(nuevaventa):
@@ -888,3 +888,45 @@ class Conexion:
         except Exception as error:
             print("error grabar Venta", error)
 
+
+    def listadoVentas(facventa):
+        """
+
+        :return: lista de ventas
+        :rtype: list
+
+        Devuelve una lista con los datos de las ventas de la base de datos
+
+        """
+        listado = []
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT v.idventa, v.codprop, p.dirprop, p.muniprop, p.tipoprop, p.prevenprop FROM ventas as v "
+                          "INNER JOIN propiedades as p ON v.codprop = p.idprop where v.facventa = :facventa")
+            query.bindValue(":facventa", facventa)
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("error listado ventas en conexión ", e)
+
+
+    def datosOneVenta(idventa):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "SELECT v.codprop, p.dirprop, p.muniprop, p.tipoprop, p.prevenprop, v.agente "
+                "FROM ventas as v "
+                "INNER JOIN propiedades as p ON v.codprop = p.idprop "
+                "where v.idventa = :idventa")
+            query.bindValue(":idventa", str(idventa))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(str(query.value(i)))
+            return registro
+        except Exception as error:
+            print("error datos una venta", error)

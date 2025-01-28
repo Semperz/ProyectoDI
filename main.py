@@ -37,6 +37,7 @@ class Main(QtWidgets.QMainWindow):
         propiedades.Propiedades.cargaTablaPropiedades(self)
         propiedades.Propiedades.checkDisponibilidad(self)
         facturas.Facturas.cargarTablaFacturas()
+        facturas.Facturas.cargarTablaVentas()
         '''
         Eventos formulario
         '''
@@ -55,6 +56,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)
         var.ui.tablaPropiedades.clicked.connect(propiedades.Propiedades.cargaOnePropiedad)
         var.ui.tablaFacturas.clicked.connect(facturas.Facturas.cargarOneFactura)
+        var.ui.tabVenta.clicked.connect(facturas.Facturas.cargarOneVenta)
         '''
         zona de eventos del menubar
         '''
