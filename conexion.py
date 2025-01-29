@@ -61,10 +61,12 @@ class Conexion:
     @staticmethod
     def listarProvincias():
         """
+
         :return: lista provincias
         :rtype: bytearray
 
         Metodo que devuelve una lista de provincias
+
         """
         listaProv = []
         query = QtSql.QSqlQuery()
@@ -77,12 +79,13 @@ class Conexion:
     def listarMunicipios(provincia):
         """
 
-        :param provincia:
+        :param provincia
         :type provincia: str
         :return: lista municipios
         :rtype: bytearray
 
         Metodo que devuelve una lista de municipios de una provincia
+
         """
         listaMuni = []
         query = QtSql.QSqlQuery()
@@ -100,6 +103,7 @@ class Conexion:
 
         :return: lista municipios
         :rtype: bytearray
+
         """
 
         listaMuni = []
@@ -119,6 +123,7 @@ class Conexion:
         :rtype: boolean
 
         Metodo que da de alta un cliente en la base de datos
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -179,12 +184,14 @@ class Conexion:
 
     def datosOneCliente(DNI):
         """
+
         :param dni cliente
         :type dni: str
         :return: datos de un cliente
         :rtype: list
 
         Devuelve los datos de un cliente
+
         """
         try:
             registro = []
@@ -250,17 +257,17 @@ class Conexion:
     def bajaCliente(datos):
         """
 
-              :param dni del cliente y fecha de baja
-              :type list
-              :return: éxito de la operación
-              :rtype: bool
+          :param dni del cliente y fecha de baja
+          :type list
+          :return: éxito de la operación
+          :rtype: bool
 
-              Da de baja al cliente
-              No elimina al cliente de la base de datos
-              Devuelve true si se realiza correctamente, sino false
+          Da de baja al cliente
+          No elimina al cliente de la base de datos
+          Devuelve true si se realiza correctamente, sino false
 
 
-              """
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("UPDATE clientes set bajacli = :bajacli "
@@ -281,6 +288,7 @@ class Conexion:
 
     def altaTipoprop(tipo):
         """
+
         :param nombre del tipo de propiedad
         :type str
         :return: operacion exitosa
@@ -487,6 +495,7 @@ class Conexion:
 
                Da de baja (no elimina) a la propiedad del código especificado
                devuelve true si la operación se realiza correctamente, false en caso contrario
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -512,7 +521,7 @@ class Conexion:
                Modifica los datos de la propiedad pasada por parámetros
                Devuelve true si la operación se realiza correctamente, false en caso contrario
 
-               """
+       """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("select count(*) from propiedades where idprop = :idprop")
@@ -802,6 +811,7 @@ class Conexion:
          :type list
          :return: éxito de la operación
          :rtype: bool
+
          """
         try:
             if factura[0] == "":
