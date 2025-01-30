@@ -11,11 +11,9 @@ class Conexion:
 
 
     @staticmethod
-    def db_conexion(self):
+    def db_conexion():
         """
 
-        :param None
-        :type None
         :return: False or True
         :rtype: Boolean
 
@@ -79,7 +77,7 @@ class Conexion:
     def listarMunicipios(provincia):
         """
 
-        :param provincia
+        :param: provincia
         :type provincia: str
         :return: lista municipios
         :rtype: bytearray
@@ -185,7 +183,7 @@ class Conexion:
     def datosOneCliente(DNI):
         """
 
-        :param dni cliente
+        :param: dni cliente
         :type dni: str
         :return: datos de un cliente
         :rtype: list
@@ -209,8 +207,8 @@ class Conexion:
     def modifCliente(registro):
         """
 
-        :param datos del cliente a modificar
-        :type list
+        :param: datos del cliente a modificar
+        :type registro: list
         :return: éxito de la operación
         :rtype: bool
 
@@ -257,8 +255,8 @@ class Conexion:
     def bajaCliente(datos):
         """
 
-          :param dni del cliente y fecha de baja
-          :type list
+          :param: dni del cliente y fecha de baja
+          :type datos: list
           :return: éxito de la operación
           :rtype: bool
 
@@ -289,8 +287,8 @@ class Conexion:
     def altaTipoprop(tipo):
         """
 
-        :param nombre del tipo de propiedad
-        :type str
+        :param: nombre del tipo de propiedad
+        :type tipo: str
         :return: operacion exitosa
         :rtype: bool
 
@@ -314,8 +312,8 @@ class Conexion:
     def bajaTipoprop(tipo):
         """
 
-        :param tipo de propiedad a eliminar
-        :type str
+        :param: tipo de propiedad a eliminar
+        :type tipo: str
         :return: operacion exitosa
         :rtype: bool
 
@@ -365,8 +363,8 @@ class Conexion:
     def altaPropiedad(propiedad):
         """
 
-         :param datos de la propiedad a dar de alta
-         :type  list
+         :param propiedad: datos de la propiedad a dar de alta
+         :type propiedad: list
          :return: operacion exitosa
          :rtype: bool
 
@@ -462,8 +460,8 @@ class Conexion:
     def datosOnePropiedad(ID):
         """
 
-        :param identificador de una propiedad
-        :type int
+        :param: identificador de una propiedad
+        :type ID: int
         :return: datos de la propiedad
         :rtype: list
 
@@ -488,8 +486,8 @@ class Conexion:
 
         """
 
-               :param lista de código de la propiedad, y su fecha de baja
-               :type list
+               :param: lista de código de la propiedad, y su fecha de baja
+               :type datos: list
                :return: operación exitosa
                :rtype: bool
 
@@ -513,8 +511,8 @@ class Conexion:
     def modifPropiedad(registro):
         """
 
-               :param datos modificados de la propiedad
-               :type list
+               :param: datos modificados de la propiedad
+               :type registro: list
                :return: operacion existosa
                :rtype: bool
 
@@ -593,8 +591,8 @@ class Conexion:
     def altaVendedor(nuevoVen):
         """
 
-        :param datos del nuevo vendedor
-        :type list
+        :param: datos del nuevo vendedor
+        :type nuevoVen: list
         :return: operacion exitosa
         :rtype: bool
 
@@ -690,8 +688,8 @@ class Conexion:
     def modifVendedor(modifVen):
         """
 
-        :param datos del vendedor a modificar
-        :type list
+        :param: datos del vendedor a modificar
+        :type modifVen: list
         :return: operacion exitosa
         :rtype: bool
 
@@ -726,8 +724,8 @@ class Conexion:
     def datosOneVendedor(idVen):
         """
 
-        :param id del vendedor a buscar
-        :type int
+        :param: id del vendedor a buscar
+        :type idVen: int
         :return: datos de un vendedor
         :rtype: list
 
@@ -751,8 +749,8 @@ class Conexion:
     def datosOneVendedorMovil(movilVen):
         """
 
-        :param móvil del vendedor
-        :type str
+        :param: móvil del vendedor
+        :type movilVen: str
         :return: datos del vendedor
         :rtype: list
 
@@ -777,8 +775,8 @@ class Conexion:
     def bajaVendedor(datos):
         """
 
-        :param datos del vendedor a dar de baja
-        :type list
+        :param: datos del vendedor a dar de baja
+        :type datos: list
         :return: operacion exitosa
         :rtype: bool
 
@@ -807,8 +805,8 @@ class Conexion:
     def altaFactura(factura):
         """
 
-         :param dni del cliente y fecha de la factura
-         :type list
+         :param: dni del cliente y fecha de la factura
+         :type factura: list
          :return: éxito de la operación
          :rtype: bool
 
@@ -855,6 +853,18 @@ class Conexion:
 
 
     def eliminarFactura(numFac):
+
+        """
+
+        :param: ID de la factura
+        :type numFac: int
+        :return: operacion exitosa
+        :rtype: bool
+
+        Elimina de la base de datos esa factura
+        Devuelve true si se realiza correctamente, sino false
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("DELETE FROM facturas WHERE id = :id")
@@ -868,6 +878,17 @@ class Conexion:
 
 
     def datosOneFactura(idFac):
+
+        """
+
+                :param: ID de la factura
+                :type idFac: int
+                :return: datos de la factura
+                :rtype: list
+
+                Recupera los datos de una factura y los devuelve en los campos correspondientes
+
+                """
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -884,6 +905,15 @@ class Conexion:
 
 
     def grabarVenta(nuevaventa):
+
+        """
+
+         :param: numero de la factura. codigo de la propiedad y el ID del vendedor
+         :type nuevaventa: list
+         :return: éxito de la operación
+         :rtype: bool
+
+         """
         try:
             query = QtSql.QSqlQuery()
             query.prepare("INSERT into ventas (facventa, codprop, agente)"
@@ -924,6 +954,18 @@ class Conexion:
 
 
     def datosOneVenta(idventa):
+
+        """
+
+                       :param: ID de la venta
+                       :type idventa: int
+                       :return: datos de la venta
+                       :rtype: list
+
+                       Recupera los datos de una venta y los devuelve en los campos correspondientes
+
+                       """
+
         try:
             registro = []
             query = QtSql.QSqlQuery()

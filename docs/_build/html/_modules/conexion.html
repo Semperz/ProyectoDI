@@ -49,11 +49,9 @@
 <div class="viewcode-block" id="Conexion.db_conexion">
 <a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.db_conexion">[documentos]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">db_conexion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">db_conexion</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param None</span>
-<span class="sd">        :type None</span>
 <span class="sd">        :return: False or True</span>
 <span class="sd">        :rtype: Boolean</span>
 
@@ -123,7 +121,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">listarMunicipios</span><span class="p">(</span><span class="n">provincia</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param provincia:</span>
+<span class="sd">        :param: provincia</span>
 <span class="sd">        :type provincia: str</span>
 <span class="sd">        :return: lista municipios</span>
 <span class="sd">        :rtype: bytearray</span>
@@ -241,7 +239,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOneCliente</span><span class="p">(</span><span class="n">DNI</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param dni cliente</span>
+<span class="sd">        :param: dni cliente</span>
 <span class="sd">        :type dni: str</span>
 <span class="sd">        :return: datos de un cliente</span>
 <span class="sd">        :rtype: list</span>
@@ -268,8 +266,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">modifCliente</span><span class="p">(</span><span class="n">registro</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param datos del cliente a modificar</span>
-<span class="sd">        :type list</span>
+<span class="sd">        :param: datos del cliente a modificar</span>
+<span class="sd">        :type registro: list</span>
 <span class="sd">        :return: éxito de la operación</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -319,8 +317,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">bajaCliente</span><span class="p">(</span><span class="n">datos</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">          :param dni del cliente y fecha de baja</span>
-<span class="sd">          :type list</span>
+<span class="sd">          :param: dni del cliente y fecha de baja</span>
+<span class="sd">          :type datos: list</span>
 <span class="sd">          :return: éxito de la operación</span>
 <span class="sd">          :rtype: bool</span>
 
@@ -354,8 +352,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">altaTipoprop</span><span class="p">(</span><span class="n">tipo</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param nombre del tipo de propiedad</span>
-<span class="sd">        :type str</span>
+<span class="sd">        :param: nombre del tipo de propiedad</span>
+<span class="sd">        :type tipo: str</span>
 <span class="sd">        :return: operacion exitosa</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -382,8 +380,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">bajaTipoprop</span><span class="p">(</span><span class="n">tipo</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param tipo de propiedad a eliminar</span>
-<span class="sd">        :type str</span>
+<span class="sd">        :param: tipo de propiedad a eliminar</span>
+<span class="sd">        :type tipo: str</span>
 <span class="sd">        :return: operacion exitosa</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -439,8 +437,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">altaPropiedad</span><span class="p">(</span><span class="n">propiedad</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">         :param datos de la propiedad a dar de alta</span>
-<span class="sd">         :type  list</span>
+<span class="sd">         :param propiedad: datos de la propiedad a dar de alta</span>
+<span class="sd">         :type propiedad: list</span>
 <span class="sd">         :return: operacion exitosa</span>
 <span class="sd">         :rtype: bool</span>
 
@@ -542,8 +540,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOnePropiedad</span><span class="p">(</span><span class="n">ID</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param identificador de una propiedad</span>
-<span class="sd">        :type int</span>
+<span class="sd">        :param: identificador de una propiedad</span>
+<span class="sd">        :type ID: int</span>
 <span class="sd">        :return: datos de la propiedad</span>
 <span class="sd">        :rtype: list</span>
 
@@ -571,8 +569,8 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">               :param lista de código de la propiedad, y su fecha de baja</span>
-<span class="sd">               :type list</span>
+<span class="sd">               :param: lista de código de la propiedad, y su fecha de baja</span>
+<span class="sd">               :type datos: list</span>
 <span class="sd">               :return: operación exitosa</span>
 <span class="sd">               :rtype: bool</span>
 
@@ -599,8 +597,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">modifPropiedad</span><span class="p">(</span><span class="n">registro</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">               :param datos modificados de la propiedad</span>
-<span class="sd">               :type list</span>
+<span class="sd">               :param: datos modificados de la propiedad</span>
+<span class="sd">               :type registro: list</span>
 <span class="sd">               :return: operacion existosa</span>
 <span class="sd">               :rtype: bool</span>
 
@@ -685,8 +683,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">altaVendedor</span><span class="p">(</span><span class="n">nuevoVen</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param datos del nuevo vendedor</span>
-<span class="sd">        :type list</span>
+<span class="sd">        :param: datos del nuevo vendedor</span>
+<span class="sd">        :type nuevoVen: list</span>
 <span class="sd">        :return: operacion exitosa</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -791,8 +789,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">modifVendedor</span><span class="p">(</span><span class="n">modifVen</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param datos del vendedor a modificar</span>
-<span class="sd">        :type list</span>
+<span class="sd">        :param: datos del vendedor a modificar</span>
+<span class="sd">        :type modifVen: list</span>
 <span class="sd">        :return: operacion exitosa</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -830,8 +828,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOneVendedor</span><span class="p">(</span><span class="n">idVen</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param id del vendedor a buscar</span>
-<span class="sd">        :type int</span>
+<span class="sd">        :param: id del vendedor a buscar</span>
+<span class="sd">        :type idVen: int</span>
 <span class="sd">        :return: datos de un vendedor</span>
 <span class="sd">        :rtype: list</span>
 
@@ -858,8 +856,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOneVendedorMovil</span><span class="p">(</span><span class="n">movilVen</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param móvil del vendedor</span>
-<span class="sd">        :type str</span>
+<span class="sd">        :param: móvil del vendedor</span>
+<span class="sd">        :type movilVen: str</span>
 <span class="sd">        :return: datos del vendedor</span>
 <span class="sd">        :rtype: list</span>
 
@@ -887,8 +885,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">bajaVendedor</span><span class="p">(</span><span class="n">datos</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param datos del vendedor a dar de baja</span>
-<span class="sd">        :type list</span>
+<span class="sd">        :param: datos del vendedor a dar de baja</span>
+<span class="sd">        :type datos: list</span>
 <span class="sd">        :return: operacion exitosa</span>
 <span class="sd">        :rtype: bool</span>
 
@@ -920,8 +918,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">altaFactura</span><span class="p">(</span><span class="n">factura</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">         :param dni del cliente y fecha de la factura</span>
-<span class="sd">         :type list</span>
+<span class="sd">         :param: dni del cliente y fecha de la factura</span>
+<span class="sd">         :type factura: list</span>
 <span class="sd">         :return: éxito de la operación</span>
 <span class="sd">         :rtype: bool</span>
 
@@ -974,6 +972,18 @@
 <div class="viewcode-block" id="Conexion.eliminarFactura">
 <a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.eliminarFactura">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">eliminarFactura</span><span class="p">(</span><span class="n">numFac</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param: ID de la factura</span>
+<span class="sd">        :type numFac: int</span>
+<span class="sd">        :return: operacion exitosa</span>
+<span class="sd">        :rtype: bool</span>
+
+<span class="sd">        Elimina de la base de datos esa factura</span>
+<span class="sd">        Devuelve true si se realiza correctamente, sino false</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">query</span> <span class="o">=</span> <span class="n">QtSql</span><span class="o">.</span><span class="n">QSqlQuery</span><span class="p">()</span>
             <span class="n">query</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;DELETE FROM facturas WHERE id = :id&quot;</span><span class="p">)</span>
@@ -990,6 +1000,17 @@
 <div class="viewcode-block" id="Conexion.datosOneFactura">
 <a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.datosOneFactura">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOneFactura</span><span class="p">(</span><span class="n">idFac</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">                :param: ID de la factura</span>
+<span class="sd">                :type idFac: int</span>
+<span class="sd">                :return: datos de la factura</span>
+<span class="sd">                :rtype: list</span>
+
+<span class="sd">                Recupera los datos de una factura y los devuelve en los campos correspondientes</span>
+
+<span class="sd">                &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">registro</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">query</span> <span class="o">=</span> <span class="n">QtSql</span><span class="o">.</span><span class="n">QSqlQuery</span><span class="p">()</span>
@@ -1009,6 +1030,15 @@
 <div class="viewcode-block" id="Conexion.grabarVenta">
 <a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.grabarVenta">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">grabarVenta</span><span class="p">(</span><span class="n">nuevaventa</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">         :param: numero de la factura. codigo de la propiedad y el ID del vendedor</span>
+<span class="sd">         :type nuevaventa: list</span>
+<span class="sd">         :return: éxito de la operación</span>
+<span class="sd">         :rtype: bool</span>
+
+<span class="sd">         &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">query</span> <span class="o">=</span> <span class="n">QtSql</span><span class="o">.</span><span class="n">QSqlQuery</span><span class="p">()</span>
             <span class="n">query</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;INSERT into ventas (facventa, codprop, agente)&quot;</span>
@@ -1055,6 +1085,18 @@
 <div class="viewcode-block" id="Conexion.datosOneVenta">
 <a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.datosOneVenta">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">datosOneVenta</span><span class="p">(</span><span class="n">idventa</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">                       :param: ID de la venta</span>
+<span class="sd">                       :type idventa: int</span>
+<span class="sd">                       :return: datos de la venta</span>
+<span class="sd">                       :rtype: list</span>
+
+<span class="sd">                       Recupera los datos de una venta y los devuelve en los campos correspondientes</span>
+
+<span class="sd">                       &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">registro</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">query</span> <span class="o">=</span> <span class="n">QtSql</span><span class="o">.</span><span class="n">QSqlQuery</span><span class="p">()</span>

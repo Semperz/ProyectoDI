@@ -97,6 +97,7 @@
 
 <span class="sd">        Carga la lista de provincias de la base de datos</span>
 <span class="sd">        en los combobox de provincias de clientes</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvcli</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">listado</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">listarProvincias</span><span class="p">()</span>
@@ -124,8 +125,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">validarDNI</span><span class="p">(</span><span class="n">dni</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :param dni del cliente</span>
-<span class="sd">        :type str</span>
+<span class="sd">        :param: dni del cliente</span>
+<span class="sd">        :type dni: str</span>
 <span class="sd">        :return: éxito de la validación</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -155,7 +156,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">abrirCalendar</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">btn</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :param da un boton dependiendo del panel en el que se encuentre</span>
+<span class="sd">        :param: da un boton dependiendo del panel en el que se encuentre</span>
 <span class="sd">        :type int</span>
 
 <span class="sd">        Abre una ventana emergente del calendario, independiente para cada panel</span>
