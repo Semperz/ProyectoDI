@@ -157,6 +157,7 @@ class Facturas:
             factura = var.ui.lblNumfac.text()
             var.ui.tabVenta.setRowCount(0)
             listado = conexion.Conexion.listadoVentas(factura)
+            subtotal = 0
             for index, registro in enumerate(listado):
                 var.ui.tabVenta.insertRow(index)
                 var.ui.tabVenta.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
@@ -165,12 +166,25 @@ class Facturas:
                 var.ui.tabVenta.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
                 var.ui.tabVenta.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
                 var.ui.tabVenta.setItem(index, 5, QtWidgets.QTableWidgetItem(str(registro[5]) + " €"))
+
+                subtotal += float(registro[5])
+
                 var.ui.tabVenta.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 var.ui.tabVenta.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                 var.ui.tabVenta.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabVenta.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabVenta.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabVenta.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+
+            if not listado:
+                var.ui.txtSubtotalven.setText("- €")
+                var.ui.txtImpuestosven.setText("- €")
+                var.ui.txtTotalven.setText("- €")
+            else:
+                var.ui.txtSubtotalven.setText(f"{subtotal:.2f} €")
+                var.ui.txtImpuestosven.setText(f"{subtotal * 0.21:.2f} €")
+                total = subtotal + (subtotal * 0.21)
+                var.ui.txtTotalven.setText(f"{total:.2f} €")
 
         except Exception as error:
             print('Error cargar tabla ventas: %s' % str(error))
@@ -188,3 +202,4 @@ class Facturas:
                 listado[index].setText(registro[index])
         except Exception as error:
             print("error carga factura", error)
+

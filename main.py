@@ -16,7 +16,7 @@ class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(Main, self).__init__()
-        conexion.Conexion.db_conexion(self)
+        conexion.Conexion.db_conexion()
         var.ui = Ui_venPrincipal()
         var.ui.setupUi(self)
         var.uicalendar = Calendar()
@@ -51,6 +51,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resizeTablaClientes()
         eventos.Eventos.resizeTablaPropiedades()
         vendedores.Vendedores.resizeTablaVendedores()
+        eventos.Eventos.resizeTablaVentas()
 
         var.ui.tablaVendedores.clicked.connect(vendedores.Vendedores.cargaOneVendedor)
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)

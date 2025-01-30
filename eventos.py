@@ -56,6 +56,7 @@ class Eventos:
 
         Carga la lista de provincias de la base de datos
         en los combobox de provincias de clientes
+
         """
         var.ui.cmbProvcli.clear()
         listado = conexion.Conexion.listarProvincias()
@@ -77,8 +78,8 @@ class Eventos:
     def validarDNI(dni):
 
         """
-        :param dni del cliente
-        :type str
+        :param: dni del cliente
+        :type dni: str
         :return: éxito de la validación
         :rtype: bool
         """
@@ -105,7 +106,7 @@ class Eventos:
     def abrirCalendar(op, btn):
         """
 
-        :param da un boton dependiendo del panel en el que se encuentre
+        :param: da un boton dependiendo del panel en el que se encuentre
         :type int
 
         Abre una ventana emergente del calendario, independiente para cada panel
@@ -284,6 +285,24 @@ class Eventos:
                     header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
 
                 header_item = var.ui.tablaPropiedades.horizontalHeaderItem(i)
+                font = header_item.font()
+                font.setBold(True)
+                header_item.setFont(font)
+        except Exception as e:
+            print("error en resize tabla propiedades", e)
+
+    @staticmethod
+    def resizeTablaVentas():
+        try:
+            header = var.ui.tabVenta.horizontalHeader()
+            for i in range(header.count()):
+                if i == 2:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+                else:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+
+                header_item = var.ui.tabVenta.horizontalHeaderItem(i)
                 font = header_item.font()
                 font.setBold(True)
                 header_item.setFont(font)
