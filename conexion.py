@@ -906,6 +906,7 @@ class Conexion:
 
     def grabarVenta(nuevaventa):
 
+        fechaventa = var.ui.lblFechafac.text()
         """
 
          :param: numero de la factura. codigo de la propiedad y el ID del vendedor
@@ -922,7 +923,14 @@ class Conexion:
             for i in range(len(columnas)):
                 query.bindValue(":"+str(columnas[i]), nuevaventa[i])
             if query.exec():
-                return True
+                query.prepare("UPDATE propiedades set estadoprop = 'Vendido', bajaprop = :fechafac "
+                              "where idprop = :idprop")
+                query.bindValue(":idprop", nuevaventa[1])
+                query.bindValue(":fechafac", fechaventa)
+                if query.exec():
+                    return True
+                else:
+                    return False
             else:
                 return False
         except Exception as error:
@@ -982,3 +990,22 @@ class Conexion:
             return registro
         except Exception as error:
             print("error datos una venta", error)
+
+
+    def eliminarVenta(data):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("DELETE FROM ventas WHERE idventa = :id")
+            query.bindValue(":id", data[0])
+            if query.exec():
+                query.prepare("UPDATE propiedades SET estadoprop= 'Disponible', bajaprop = :baja where idprop = :idprop")
+                query.bindValue(":baja", QtCore.QVariant())
+                query.bindValue(":idprop", data[1])
+                if query.exec():
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        except Exception as error:
+            print("error eliminar factura", error)

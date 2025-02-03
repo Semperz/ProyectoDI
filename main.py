@@ -34,7 +34,7 @@ class Main(QtWidgets.QMainWindow):
         #conexionserver.ConexionServer.crear_conexion(self)
         clientes.Clientes.cargaTablaClientes(self)
         vendedores.Vendedores.cargarTablaVendedores(self)
-        propiedades.Propiedades.cargaTablaPropiedades(self)
+        propiedades.Propiedades.cargaTablaPropiedades()
         propiedades.Propiedades.checkDisponibilidad(self)
         facturas.Facturas.cargarTablaFacturas()
         facturas.Facturas.cargarTablaVentas()

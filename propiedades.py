@@ -125,7 +125,7 @@ class Propiedades():
                     mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                     mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                     mbox.exec()
-                    Propiedades.cargaTablaPropiedades(self)
+                    Propiedades.cargaTablaPropiedades()
                     propiedades.Propiedades.clearCamposPropiedades()
                 else:
                     QtWidgets.QMessageBox.critical(None, 'Error', "Faltan campos por cubrir o hay datos mal puestos.")
@@ -146,7 +146,8 @@ class Propiedades():
         except Exception as e:
             print("error numero propiedad", e)
 
-    def cargaTablaPropiedades(self):
+    @staticmethod
+    def cargaTablaPropiedades():
          try:
             var.ui.tablaPropiedades.setRowCount(0)
             #listado = conexionserver.ConexionServer.listadoPropiedades()
@@ -193,13 +194,13 @@ class Propiedades():
 
     def siguientePaginaProp(self):
         var.current_page_prop += 1
-        Propiedades.cargaTablaPropiedades(self)
+        Propiedades.cargaTablaPropiedades()
 
 
     def anteriorPaginaProp(self):
         if var.current_page_prop > 0:
             var.current_page_prop -= 1
-        Propiedades.cargaTablaPropiedades(self)
+        Propiedades.cargaTablaPropiedades()
 
 
     def cargaOnePropiedad(self):
@@ -277,7 +278,7 @@ class Propiedades():
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Propiedades.cargaTablaPropiedades(self)
+                Propiedades.cargaTablaPropiedades()
                 propiedades.Propiedades.clearCamposPropiedades()
             else:
                 mbox = QtWidgets.QMessageBox()
@@ -290,7 +291,7 @@ class Propiedades():
                 mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                 mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                 mbox.exec()
-                Propiedades.cargaTablaPropiedades(self)
+                Propiedades.cargaTablaPropiedades()
         except Exception as error:
             print("error baja propiedad", error)
 
@@ -378,7 +379,7 @@ class Propiedades():
                     mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                     mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                     mbox.exec()
-                    Propiedades.cargaTablaPropiedades(self)
+                    Propiedades.cargaTablaPropiedades()
 
                 else:
                     mbox = QtWidgets.QMessageBox()
@@ -391,20 +392,20 @@ class Propiedades():
                     mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
                     mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
                     mbox.exec()
-                    Propiedades.cargaTablaPropiedades(self)
-                Propiedades.cargaTablaPropiedades(self)
+                    Propiedades.cargaTablaPropiedades()
+                Propiedades.cargaTablaPropiedades()
         except Exception as error:
             print("error al modificar propiedades",error)
 
     def filtroBusqueda(self):
         try:
-            Propiedades.cargaTablaPropiedades(self)
+            Propiedades.cargaTablaPropiedades()
         except Exception as e:
             print(e)
 
     def filtroBusquedaHistorico(self):
         try:
-            Propiedades.cargaTablaPropiedades(self)
+            Propiedades.cargaTablaPropiedades()
         except Exception as e:
             print(e)
 
@@ -424,11 +425,17 @@ class Propiedades():
                 var.ui.rbtVendidoprop.setEnabled(False)
                 var.ui.rbtAlquiladoprop.setEnabled(False)
                 var.ui.rbtDisponibleprop.setChecked(True)
-            else:
+            elif var.ui.chkVentaprop.isChecked:
                 var.ui.rbtDisponibleprop.setEnabled(False)
                 var.ui.rbtVendidoprop.setEnabled(True)
+                var.ui.rbtAlquiladoprop.setEnabled(False)
+                var.ui.rbtVendidoprop.setChecked(True)
+            else:
+                var.ui.rbtDisponibleprop.setEnabled(False)
+                var.ui.rbtVendidoprop.setEnabled(False)
                 var.ui.rbtAlquiladoprop.setEnabled(True)
                 var.ui.rbtVendidoprop.setChecked(True)
+
 
 
             if var.ui.txtPrecioventaprop.text() == "":

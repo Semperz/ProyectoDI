@@ -3456,9 +3456,14 @@ QPushButton:pressed {
            <string>Precio</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Gestión</string>
+          </property>
+         </column>
         </widget>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>1090</x>

@@ -2,6 +2,7 @@ from PyQt6 import QtWidgets, QtGui, QtCore
 
 import conexion
 import var
+from propiedades import Propiedades
 
 
 class Facturas:
@@ -135,6 +136,8 @@ class Facturas:
                 mbox.exec()
                 Facturas.cargarTablaVentas()
                 Facturas.clearCamposFacturas()
+                Propiedades.clearCamposPropiedades()
+                Propiedades.cargaTablaPropiedades()
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -176,6 +179,20 @@ class Facturas:
                 var.ui.tabVenta.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignLeft.AlignVCenter)
                 var.ui.tabVenta.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
+                botondelfac = QtWidgets.QPushButton()
+                botondelfac.setFixedSize(30, 24)
+                botondelfac.setIcon(QtGui.QIcon('img/basura.png'))
+                botondelfac.setProperty("row", index)
+                botondelfac.clicked.connect(lambda checked, idVenta=str(registro[0]), idProp=str(registro[1]): Facturas.eliminarVenta(idVenta, idProp))
+                contenedor = QtWidgets.QWidget()
+                layout = QtWidgets.QHBoxLayout()
+                layout.addWidget(botondelfac)
+                layout.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                layout.setContentsMargins(0, 0, 0, 0)
+                contenedor.setLayout(layout)
+                var.ui.tabVenta.setCellWidget(index, 6, contenedor)
+
+
             if not listado:
                 var.ui.txtSubtotalven.setText("- €")
                 var.ui.txtImpuestosven.setText("- €")
@@ -202,4 +219,14 @@ class Facturas:
                 listado[index].setText(registro[index])
         except Exception as error:
             print("error carga factura", error)
+
+
+    def eliminarVenta(idVenta, idProp):
+        data = [idVenta, idProp]
+        try:
+            if conexion.Conexion.eliminarVenta(data):
+                Facturas.cargarTablaVentas()
+                Propiedades.cargaTablaPropiedades()
+        except Exception as error:
+            print('Error eliminar factura: %s' % str(error))
 
