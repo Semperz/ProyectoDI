@@ -1,11 +1,10 @@
 from datetime import datetime
 
 from PyQt6 import QtSql
-from PyQt6.QtGui import QPixmap
 from svglib.svglib import svg2rlg
 from reportlab.pdfgen import canvas
 from reportlab.graphics import renderPM
-import os, shutil
+import os
 import var
 from PIL import Image
 
@@ -214,4 +213,56 @@ class Informes:
                 print(f'Error: No se pudo cargar la imagen en {ruta_logo_png}')
         except Exception as error:
             print('Error en cabecera informe:', error)
+
+
+
+    def reportVentas(idFac):
+        try:
+            Informes.total_paginas = 1
+            rootPath = '.\\informes'
+            if not os.path.exists(rootPath):
+                os.makedirs(rootPath)
+            fecha = datetime.today()
+            fecha = fecha.strftime("%Y_%m_%d_%H_%M_%S")
+            nompdfcli = fecha + "_listadoVentas.pdf"
+            pdf_path = os.path.join(rootPath, nompdfcli)
+            var.report = canvas.Canvas(pdf_path)
+            titulo = "Factura " + str(idFac)
+            Informes.topInforme(titulo)
+            items = ['IDVENTA', 'IDPROPIEDAD', 'TIPO', 'DIRECCIÓN', 'LOCALIDAD', 'PRECIO']
+            var.report.setFont('Helvetica-Bold', size=10)
+            var.report.drawString(55, 650, str(items[0]))
+            var.report.drawString(110, 650, str(items[1]))
+            var.report.drawString(160, 650, str(items[2]))
+            var.report.drawString(280, 650, str(items[3]))
+            var.report.drawString(380, 650, str(items[4]))
+            var.report.drawString(450, 650, str(items[5]))
+            var.report.line(50, 645, 525, 645)
+
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "SELECT v.idventa, v.codprop, p.tipoprop, p.dirprop, p.muniprop, p.prevenprop FROM ventas as v "
+                "INNER JOIN propiedades as p ON v.codprop = p.idprop where v.facventa = :facventa")
+            query.bindValue(":facventa", idFac)
+
+            if query.exec():
+                while query.next():
+                    x = 55
+                    y = 625
+                    var.report.setFont('Helvetica-Oblique', size=9)
+                    var.report.drawCentredString(x + 10, y, str(query.value(0)))
+                    var.report.drawString(x + 45, y, str(query.value(1)))
+                    var.report.drawString(x + 100, y, str(query.value(2)))
+                    var.report.drawCentredString(x + 250, y, str(query.value(3)))
+                    var.report.drawRightString(x + 370, y, str(query.value(4)) + "€")
+                    var.report.drawRightString(x + 455, y, str(query.value(5)) + "€")
+                    y -= 30
+            Informes.footInforme(titulo)
+            var.report.save()
+            for file in os.listdir(rootPath):
+                if file.endswith(nompdfcli):
+                    os.startfile(pdf_path)
+        except Exception as e:
+            print("Error aqui", e)
+
 

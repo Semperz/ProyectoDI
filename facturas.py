@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets, QtGui, QtCore
 
 import conexion
+import informes
 import var
 from propiedades import Propiedades
 
@@ -229,4 +230,16 @@ class Facturas:
                 Propiedades.cargaTablaPropiedades()
         except Exception as error:
             print('Error eliminar factura: %s' % str(error))
+
+    @staticmethod
+    def generarInformeFactura():
+        try:
+            factura = var.ui.lblNumfac.text()
+            if factura == '':
+                QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "No hay una factura seleccionada")
+                return
+            informes.Informes.reportVentas(factura)
+        except Exception as error:
+            print('Error generar informe factura: %s' % str(error) )
 
