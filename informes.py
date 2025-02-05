@@ -227,16 +227,22 @@ class Informes:
             nompdfcli = fecha + "_listadoVentas.pdf"
             pdf_path = os.path.join(rootPath, nompdfcli)
             var.report = canvas.Canvas(pdf_path)
+            query = QtSql.QSqlQuery()
+            query.exec("select fechafac from facturas where id = '" + idFac + "'")
+            query.next()
+            fechaFac = str(query.value(0))
+            var.report.setFont('Helvetica', size=9)
+            var.report.drawString(55, 670, 'Fecha Factura: ' + fechaFac)
             titulo = "Factura " + str(idFac)
             Informes.topInforme(titulo)
-            items = ['IDVENTA', 'IDPROPIEDAD', 'TIPO', 'DIRECCIÓN', 'LOCALIDAD', 'PRECIO']
+            items = ['VENTA', 'PROPIEDAD', 'TIPO', 'DIRECCIÓN', 'LOCALIDAD', 'PRECIO']
             var.report.setFont('Helvetica-Bold', size=10)
-            var.report.drawString(55, 650, str(items[0]))
-            var.report.drawString(110, 650, str(items[1]))
-            var.report.drawString(160, 650, str(items[2]))
-            var.report.drawString(280, 650, str(items[3]))
-            var.report.drawString(380, 650, str(items[4]))
-            var.report.drawString(450, 650, str(items[5]))
+            var.report.drawString(50, 650, str(items[0]))
+            var.report.drawString(100, 650, str(items[1]))
+            var.report.drawString(200, 650, str(items[2]))
+            var.report.drawString(260, 650, str(items[3]))
+            var.report.drawString(365, 650, str(items[4]))
+            var.report.drawString(480, 650, str(items[5]))
             var.report.line(50, 645, 525, 645)
 
             query = QtSql.QSqlQuery()
@@ -246,17 +252,30 @@ class Informes:
             query.bindValue(":facventa", idFac)
 
             if query.exec():
+                total = 0
+                x = 55
+                y = 625
                 while query.next():
-                    x = 55
-                    y = 625
+
                     var.report.setFont('Helvetica-Oblique', size=9)
                     var.report.drawCentredString(x + 10, y, str(query.value(0)))
-                    var.report.drawString(x + 45, y, str(query.value(1)))
-                    var.report.drawString(x + 100, y, str(query.value(2)))
-                    var.report.drawCentredString(x + 250, y, str(query.value(3)))
-                    var.report.drawRightString(x + 370, y, str(query.value(4)) + "€")
-                    var.report.drawRightString(x + 455, y, str(query.value(5)) + "€")
+                    var.report.drawString(x + 70, y, str(query.value(1)))
+                    var.report.drawString(x + 140, y, str(query.value(2)))
+                    var.report.drawString(x + 200, y, str(query.value(3)))
+                    var.report.drawString(x + 310, y, str(query.value(4)))
+                    compra = "-" if not str(query.value(5)) else str(query.value(5)) + '€'
+                    var.report.drawRightString(x + 465, y, compra)
+                    total += query.value(5)
                     y -= 30
+
+                var.report.line(50, 110, 525, 110)
+                var.report.drawString(400, 100, "Subtotal: ")
+                var.report.drawString(400, 80, "Impuestos: ")
+                var.report.drawString(400, 60, "Total: ")
+                var.report.drawRightString(525, 100, str(total) + "€")
+                var.report.drawRightString(525, 80, str(round(total * 0.1, 3)) + "€")
+                var.report.drawRightString(525, 60, str(round(total * 1.1, 3)) + "€")
+
             Informes.footInforme(titulo)
             var.report.save()
             for file in os.listdir(rootPath):
