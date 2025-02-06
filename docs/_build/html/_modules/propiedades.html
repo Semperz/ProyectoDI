@@ -169,7 +169,7 @@
                     <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
                     <span class="n">propiedades</span><span class="o">.</span><span class="n">Propiedades</span><span class="o">.</span><span class="n">clearCamposPropiedades</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="s2">&quot;Faltan campos por cubrir o hay datos mal puestos.&quot;</span><span class="p">)</span>
@@ -196,7 +196,8 @@
 
 <div class="viewcode-block" id="Propiedades.cargaTablaPropiedades">
 <a class="viewcode-back" href="../src/propiedades.html#propiedades.Propiedades.cargaTablaPropiedades">[documentos]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cargaTablaPropiedades</span><span class="p">():</span>
          <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaPropiedades</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="c1">#listado = conexionserver.ConexionServer.listadoPropiedades()</span>
@@ -246,7 +247,7 @@
 <a class="viewcode-back" href="../src/propiedades.html#propiedades.Propiedades.siguientePaginaProp">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">siguientePaginaProp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">var</span><span class="o">.</span><span class="n">current_page_prop</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+        <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span></div>
 
 
 
@@ -255,7 +256,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">anteriorPaginaProp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">current_page_prop</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">current_page_prop</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+        <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span></div>
 
 
 
@@ -339,7 +340,7 @@
                 <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
                 <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
                 <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
                 <span class="n">propiedades</span><span class="o">.</span><span class="n">Propiedades</span><span class="o">.</span><span class="n">clearCamposPropiedades</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">mbox</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="p">()</span>
@@ -352,7 +353,7 @@
                 <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
                 <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
                 <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error baja propiedad&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
@@ -446,7 +447,7 @@
                     <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
 
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">mbox</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="p">()</span>
@@ -459,8 +460,8 @@
                     <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
                     <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                    <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
+                <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error al modificar propiedades&quot;</span><span class="p">,</span><span class="n">error</span><span class="p">)</span></div>
 
@@ -469,7 +470,7 @@
 <a class="viewcode-back" href="../src/propiedades.html#propiedades.Propiedades.filtroBusqueda">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">filtroBusqueda</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
@@ -478,7 +479,7 @@
 <a class="viewcode-back" href="../src/propiedades.html#propiedades.Propiedades.filtroBusquedaHistorico">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">filtroBusquedaHistorico</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">Propiedades</span><span class="o">.</span><span class="n">cargaTablaPropiedades</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
@@ -501,11 +502,17 @@
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtVendidoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtAlquiladoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtDisponibleprop</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">chkVentaprop</span><span class="o">.</span><span class="n">isChecked</span><span class="p">:</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtDisponibleprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtVendidoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtAlquiladoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtVendidoprop</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtDisponibleprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtVendidoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtAlquiladoprop</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtVendidoprop</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
 
 
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtPrecioventaprop</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>

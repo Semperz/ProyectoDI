@@ -11,6 +11,16 @@ import var
 class Clientes:
 
     def checkDNI(dni):
+        """
+
+               :param dni: dni: dni a verificar
+               :type dni: str
+
+               Llama a eventos.Eventos.validarDNI para validar el dni pasado por parámetros
+               Si no es valido, colorea de forma rojiza la caja de texto y borra el dni erróneo al hacer
+               click en otro lado o darle al Intro
+
+               """
         try:
             dni = str(dni).upper()
             var.ui.txtDnicli.setText(str(dni))
@@ -25,6 +35,18 @@ class Clientes:
             print("error check cliente",e)
 
     def altaClientes(self):
+        """
+
+            :param self: clase clientes
+            :type self: class
+
+            Lee los datos del cliente de la interfaz
+            comprueba si se verifican las restricciones necesarias y si se completaron todos los campos necesarios
+            y llama a Conexion.altaCliente para guardar la información en la base de datos
+            mostrando un mensaje con el resultado
+
+               """
+
         try:
 
             # nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),
@@ -61,6 +83,12 @@ class Clientes:
 
     @staticmethod
     def clearCamposCliente():
+
+        """
+
+        Limpia los campos de texto de la interfaz de clientes
+
+        """
         var.ui.txtDnicli.setText(None)
         var.ui.txtApelcli.setText(None)
         var.ui.txtNomcli.setText(None)
@@ -71,6 +99,14 @@ class Clientes:
         var.ui.cmbProvcli.setCurrentIndex(0)
 
     def checkEmail(nuevo):
+        """
+
+        Lee el email de la caja de texto correspondiente de clientes
+        y llama a eventos.Eventos.validarMail para comprobar si es válido
+        Si no es valido, colorea de forma rojiza la caja de texto y borra el email erróneo al hacer
+        click en otro lado o darle al Intro
+
+        """
         try:
             mail = str(var.ui.txtEmailcli.text())
             if eventos.Eventos.validarMail(mail):
@@ -86,6 +122,15 @@ class Clientes:
             print("error check cliente", error)
 
     def checkNumero(nuevo):
+
+        """
+
+            Lee el móvil de la caja de texto correspondiente de clientes
+            y llama a eventos.Eventos.validarMovil para comprobar si es válido
+            Si no es valido, colorea de forma rojiza la caja de texto y borra el numero erróneo al hacer
+            click en otro lado o darle al Intro
+
+               """
         try:
             telefono = str(var.ui.txtMovilcli.text())
             if eventos.Eventos.validarTelefono(telefono):
@@ -100,6 +145,14 @@ class Clientes:
             print("error check cliente", e)
 
     def cargaTablaClientes(self):
+        """
+            :param self: clase clientes
+            :type self: class
+
+            Recupera la lista de clientes mediante Conexion.listadoClientes
+            y muestra dicha información en la tabla de clientes
+
+               """
         try:
             var.ui.tablaClientes.setRowCount(0)
             listado = conexion.Conexion.listadoClientes()
@@ -131,17 +184,47 @@ class Clientes:
             print("Error carga tabla clientes ", e)
 
     def siguientePaginaClientes(self):
+
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Pasa a la siguiente pagina de clientes en caso de que la longitud pase de 15 elementos
+
+        """
         var.current_page_cli += 1
         Clientes.cargaTablaClientes(self)
 
 
     def anteriorPaginaClientes(self):
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Pasa a la pagina anterior de clientes en caso de que no sea la primera pagina
+
+        """
         if var.current_page_cli > 0:
             var.current_page_cli -= 1
         Clientes.cargaTablaClientes(self)
 
 
     def cargaOneCliente(self):
+
+
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Lee los datos del cliente seleccionado en la tabla clientes
+        busca en la base de datos el resto de la información del cliente
+        y la muestra en los elementos de la interfaz correspondientes
+
+        """
+
         try:
             fila = var.ui.tablaClientes.selectedItems()
             datos =  [dato.text() for dato in fila]
@@ -170,6 +253,18 @@ class Clientes:
             print("error carga cliente",error)
 
     def modifCliente(self):
+
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Lee los datos del cliente de la interfaz
+        comprueba si se verifican las restricciones necesarias
+        y llama a Conexion.modifCliente para modificar la información en la base de datos
+
+        """
+
         try:
             modifcli = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text(),
                         var.ui.txtNomcli.text(),
@@ -217,6 +312,14 @@ class Clientes:
             print("error al modificar clientes",error)
 
     def bajaCliente(self):
+        """
+            :param self: clase clientes
+            :type self: class
+
+            Lee el dni de la interfaz del cliente y llama a Conexion.bajaCliente
+            para dar al vendedor de baja con la fecha actual
+
+            """
         try:
             datos = [var.ui.txtBajaCli.text(), var.ui.txtDnicli.text()]
             #if conexionserver.ConexionServer.bajaCliente(datos):
@@ -248,6 +351,17 @@ class Clientes:
             print("error bajaCliente", error)
 
     def historicoCli(self):
+
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Recarga la tabla de clientes tras clickar el checkbox de histórico
+        reseteando la página de la tabla clientes a cero para evitar problemas al mostrar datos
+
+        """
+
         try:
             if var.ui.chkHistoriacli.isChecked():
                 var.historico = 0
@@ -258,6 +372,15 @@ class Clientes:
             print("error al historico cliente",error)
 
     def cargaOneClienteBusqueda(self):
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Lee el dni escrito en la caja de texto correspondiente de cliente
+        busca la información del cliente asociado y la carga en los elementos de la interfaz
+
+        """
         try:
             dni = var.ui.txtDnicli.text().upper()
             registro = conexion.Conexion.datosOneCliente(str(dni))
@@ -279,6 +402,14 @@ class Clientes:
             print("error carga cliente",error)
 
     def filtroBusquedaCliente(self):
+
+        """
+
+        :param self: clase clientes
+        :type self: class
+
+        Recarga la tabla al buscar un cliente por DNI
+        """
         try:
             Clientes.cargaTablaClientes(self)
             Clientes.cargaOneClienteBusqueda(self)
@@ -288,6 +419,14 @@ class Clientes:
 
     @staticmethod
     def checkFechaValidaCli():
+
+        """
+
+        :return: True si la fecha de baja es posterior a la fecha de alta, False en caso contrario
+        :rtype: bool
+
+        Comprueba si la fecha de baja es anterior a la fecha de alta
+        """
         try:
             if var.ui.txtBajaCli.text() == "" or var.ui.txtBajaCli.text() is None:
                 return True

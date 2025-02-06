@@ -41,77 +41,174 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.altaClientes">
 <span class="sig-name descname"><span class="pre">altaClientes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.altaClientes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.altaClientes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Lee los datos del cliente de la interfaz
+comprueba si se verifican las restricciones necesarias y si se completaron todos los campos necesarios
+y llama a Conexion.altaCliente para guardar la información en la base de datos
+mostrando un mensaje con el resultado</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.anteriorPaginaClientes">
 <span class="sig-name descname"><span class="pre">anteriorPaginaClientes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.anteriorPaginaClientes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.anteriorPaginaClientes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Pasa a la pagina anterior de clientes en caso de que no sea la primera pagina</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.bajaCliente">
 <span class="sig-name descname"><span class="pre">bajaCliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.bajaCliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.bajaCliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Lee el dni de la interfaz del cliente y llama a Conexion.bajaCliente
+para dar al vendedor de baja con la fecha actual</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.cargaOneCliente">
 <span class="sig-name descname"><span class="pre">cargaOneCliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.cargaOneCliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.cargaOneCliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Lee los datos del cliente seleccionado en la tabla clientes
+busca en la base de datos el resto de la información del cliente
+y la muestra en los elementos de la interfaz correspondientes</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.cargaOneClienteBusqueda">
 <span class="sig-name descname"><span class="pre">cargaOneClienteBusqueda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.cargaOneClienteBusqueda"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.cargaOneClienteBusqueda" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Lee el dni escrito en la caja de texto correspondiente de cliente
+busca la información del cliente asociado y la carga en los elementos de la interfaz</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.cargaTablaClientes">
 <span class="sig-name descname"><span class="pre">cargaTablaClientes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.cargaTablaClientes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.cargaTablaClientes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Recupera la lista de clientes mediante Conexion.listadoClientes
+y muestra dicha información en la tabla de clientes</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.checkDNI">
 <span class="sig-name descname"><span class="pre">checkDNI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.checkDNI"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.checkDNI" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dni</strong> (<em>str</em>) – dni: dni a verificar</p>
+</dd>
+</dl>
+<p>Llama a eventos.Eventos.validarDNI para validar el dni pasado por parámetros
+Si no es valido, colorea de forma rojiza la caja de texto y borra el dni erróneo al hacer
+click en otro lado o darle al Intro</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.checkEmail">
 <span class="sig-name descname"><span class="pre">checkEmail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.checkEmail"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.checkEmail" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Lee el email de la caja de texto correspondiente de clientes
+y llama a eventos.Eventos.validarMail para comprobar si es válido
+Si no es valido, colorea de forma rojiza la caja de texto y borra el email erróneo al hacer
+click en otro lado o darle al Intro</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.checkFechaValidaCli">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkFechaValidaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.checkFechaValidaCli"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.checkFechaValidaCli" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si la fecha de baja es posterior a la fecha de alta, False en caso contrario</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p>Comprueba si la fecha de baja es anterior a la fecha de alta</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.checkNumero">
 <span class="sig-name descname"><span class="pre">checkNumero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.checkNumero"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.checkNumero" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Lee el móvil de la caja de texto correspondiente de clientes
+y llama a eventos.Eventos.validarMovil para comprobar si es válido
+Si no es valido, colorea de forma rojiza la caja de texto y borra el numero erróneo al hacer
+click en otro lado o darle al Intro</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.clearCamposCliente">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clearCamposCliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.clearCamposCliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.clearCamposCliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Limpia los campos de texto de la interfaz de clientes</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.filtroBusquedaCliente">
 <span class="sig-name descname"><span class="pre">filtroBusquedaCliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.filtroBusquedaCliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.filtroBusquedaCliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Recarga la tabla al buscar un cliente por DNI</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.historicoCli">
 <span class="sig-name descname"><span class="pre">historicoCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.historicoCli"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.historicoCli" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Recarga la tabla de clientes tras clickar el checkbox de histórico
+reseteando la página de la tabla clientes a cero para evitar problemas al mostrar datos</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.modifCliente">
 <span class="sig-name descname"><span class="pre">modifCliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.modifCliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.modifCliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Lee los datos del cliente de la interfaz
+comprueba si se verifican las restricciones necesarias
+y llama a Conexion.modifCliente para modificar la información en la base de datos</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="clientes.Clientes.siguientePaginaClientes">
 <span class="sig-name descname"><span class="pre">siguientePaginaClientes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/clientes.html#Clientes.siguientePaginaClientes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#clientes.Clientes.siguientePaginaClientes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>class</em>) – clase clientes</p>
+</dd>
+</dl>
+<p>Pasa a la siguiente pagina de clientes en caso de que la longitud pase de 15 elementos</p>
+</dd></dl>
 
 </dd></dl>
 

@@ -49,6 +49,16 @@
 <div class="viewcode-block" id="Clientes.checkDNI">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.checkDNI">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">checkDNI</span><span class="p">(</span><span class="n">dni</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">               :param dni: dni: dni a verificar</span>
+<span class="sd">               :type dni: str</span>
+
+<span class="sd">               Llama a eventos.Eventos.validarDNI para validar el dni pasado por parámetros</span>
+<span class="sd">               Si no es valido, colorea de forma rojiza la caja de texto y borra el dni erróneo al hacer</span>
+<span class="sd">               click en otro lado o darle al Intro</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDnicli</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dni</span><span class="p">))</span>
@@ -66,6 +76,18 @@
 <div class="viewcode-block" id="Clientes.altaClientes">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.altaClientes">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">altaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">            :param self: clase clientes</span>
+<span class="sd">            :type self: class</span>
+
+<span class="sd">            Lee los datos del cliente de la interfaz</span>
+<span class="sd">            comprueba si se verifican las restricciones necesarias y si se completaron todos los campos necesarios</span>
+<span class="sd">            y llama a Conexion.altaCliente para guardar la información en la base de datos</span>
+<span class="sd">            mostrando un mensaje con el resultado</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
 
             <span class="c1"># nuevoCliServer = [var.ui.txtDnicli.text(), var.ui.txtAltaCli.text(), var.ui.txtApelcli.text().title(), var.ui.txtNomcli.text().title(),var.ui.txtDircli.text().title(),</span>
@@ -105,6 +127,12 @@
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.clearCamposCliente">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clearCamposCliente</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Limpia los campos de texto de la interfaz de clientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDnicli</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtApelcli</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNomcli</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -118,6 +146,14 @@
 <div class="viewcode-block" id="Clientes.checkEmail">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.checkEmail">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">checkEmail</span><span class="p">(</span><span class="n">nuevo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Lee el email de la caja de texto correspondiente de clientes</span>
+<span class="sd">        y llama a eventos.Eventos.validarMail para comprobar si es válido</span>
+<span class="sd">        Si no es valido, colorea de forma rojiza la caja de texto y borra el email erróneo al hacer</span>
+<span class="sd">        click en otro lado o darle al Intro</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">mail</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtEmailcli</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">eventos</span><span class="o">.</span><span class="n">Eventos</span><span class="o">.</span><span class="n">validarMail</span><span class="p">(</span><span class="n">mail</span><span class="p">):</span>
@@ -136,6 +172,15 @@
 <div class="viewcode-block" id="Clientes.checkNumero">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.checkNumero">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">checkNumero</span><span class="p">(</span><span class="n">nuevo</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">            Lee el móvil de la caja de texto correspondiente de clientes</span>
+<span class="sd">            y llama a eventos.Eventos.validarMovil para comprobar si es válido</span>
+<span class="sd">            Si no es valido, colorea de forma rojiza la caja de texto y borra el numero erróneo al hacer</span>
+<span class="sd">            click en otro lado o darle al Intro</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">telefono</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovilcli</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">eventos</span><span class="o">.</span><span class="n">Eventos</span><span class="o">.</span><span class="n">validarTelefono</span><span class="p">(</span><span class="n">telefono</span><span class="p">):</span>
@@ -153,6 +198,14 @@
 <div class="viewcode-block" id="Clientes.cargaTablaClientes">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.cargaTablaClientes">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargaTablaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            :param self: clase clientes</span>
+<span class="sd">            :type self: class</span>
+
+<span class="sd">            Recupera la lista de clientes mediante Conexion.listadoClientes</span>
+<span class="sd">            y muestra dicha información en la tabla de clientes</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaClientes</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">listado</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">listadoClientes</span><span class="p">()</span>
@@ -187,6 +240,15 @@
 <div class="viewcode-block" id="Clientes.siguientePaginaClientes">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.siguientePaginaClientes">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">siguientePaginaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Pasa a la siguiente pagina de clientes en caso de que la longitud pase de 15 elementos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">var</span><span class="o">.</span><span class="n">current_page_cli</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">Clientes</span><span class="o">.</span><span class="n">cargaTablaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
@@ -195,6 +257,14 @@
 <div class="viewcode-block" id="Clientes.anteriorPaginaClientes">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.anteriorPaginaClientes">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">anteriorPaginaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Pasa a la pagina anterior de clientes en caso de que no sea la primera pagina</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">current_page_cli</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">current_page_cli</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="n">Clientes</span><span class="o">.</span><span class="n">cargaTablaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -204,6 +274,19 @@
 <div class="viewcode-block" id="Clientes.cargaOneCliente">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.cargaOneCliente">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargaOneCliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Lee los datos del cliente seleccionado en la tabla clientes</span>
+<span class="sd">        busca en la base de datos el resto de la información del cliente</span>
+<span class="sd">        y la muestra en los elementos de la interfaz correspondientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fila</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaClientes</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
             <span class="n">datos</span> <span class="o">=</span>  <span class="p">[</span><span class="n">dato</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">for</span> <span class="n">dato</span> <span class="ow">in</span> <span class="n">fila</span><span class="p">]</span>
@@ -235,6 +318,18 @@
 <div class="viewcode-block" id="Clientes.modifCliente">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.modifCliente">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">modifCliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Lee los datos del cliente de la interfaz</span>
+<span class="sd">        comprueba si se verifican las restricciones necesarias</span>
+<span class="sd">        y llama a Conexion.modifCliente para modificar la información en la base de datos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">modifcli</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDnicli</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtAltaCli</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtApelcli</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
                         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNomcli</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
@@ -285,6 +380,14 @@
 <div class="viewcode-block" id="Clientes.bajaCliente">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.bajaCliente">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">bajaCliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            :param self: clase clientes</span>
+<span class="sd">            :type self: class</span>
+
+<span class="sd">            Lee el dni de la interfaz del cliente y llama a Conexion.bajaCliente</span>
+<span class="sd">            para dar al vendedor de baja con la fecha actual</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">datos</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtBajaCli</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDnicli</span><span class="o">.</span><span class="n">text</span><span class="p">()]</span>
             <span class="c1">#if conexionserver.ConexionServer.bajaCliente(datos):</span>
@@ -319,6 +422,17 @@
 <div class="viewcode-block" id="Clientes.historicoCli">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.historicoCli">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">historicoCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Recarga la tabla de clientes tras clickar el checkbox de histórico</span>
+<span class="sd">        reseteando la página de la tabla clientes a cero para evitar problemas al mostrar datos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">chkHistoriacli</span><span class="o">.</span><span class="n">isChecked</span><span class="p">():</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">historico</span> <span class="o">=</span> <span class="mi">0</span>
@@ -332,6 +446,15 @@
 <div class="viewcode-block" id="Clientes.cargaOneClienteBusqueda">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.cargaOneClienteBusqueda">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargaOneClienteBusqueda</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Lee el dni escrito en la caja de texto correspondiente de cliente</span>
+<span class="sd">        busca la información del cliente asociado y la carga en los elementos de la interfaz</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDnicli</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
             <span class="n">registro</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">datosOneCliente</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dni</span><span class="p">))</span>
@@ -356,6 +479,14 @@
 <div class="viewcode-block" id="Clientes.filtroBusquedaCliente">
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.filtroBusquedaCliente">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">filtroBusquedaCliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param self: clase clientes</span>
+<span class="sd">        :type self: class</span>
+
+<span class="sd">        Recarga la tabla al buscar un cliente por DNI</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">Clientes</span><span class="o">.</span><span class="n">cargaTablaClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">Clientes</span><span class="o">.</span><span class="n">cargaOneClienteBusqueda</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -368,6 +499,14 @@
 <a class="viewcode-back" href="../src/clientes.html#clientes.Clientes.checkFechaValidaCli">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">checkFechaValidaCli</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :return: True si la fecha de baja es posterior a la fecha de alta, False en caso contrario</span>
+<span class="sd">        :rtype: bool</span>
+
+<span class="sd">        Comprueba si la fecha de baja es anterior a la fecha de alta</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtBajaCli</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtBajaCli</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">True</span>
