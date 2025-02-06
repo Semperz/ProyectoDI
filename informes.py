@@ -5,6 +5,9 @@ from svglib.svglib import svg2rlg
 from reportlab.pdfgen import canvas
 from reportlab.graphics import renderPM
 import os
+
+import clientes
+import conexion
 import var
 from PIL import Image
 
@@ -233,6 +236,22 @@ class Informes:
             fechaFac = str(query.value(0))
             var.report.setFont('Helvetica', size=9)
             var.report.drawString(55, 670, 'Fecha Factura: ' + fechaFac)
+
+            #Datos del cliente
+            dni = var.ui.txtDnicliven.text()
+            cliente = conexion.Conexion.datosOneCliente(dni)
+            print(cliente)
+            var.report.setFont('Helvetica-Bold', size=8)
+            var.report.drawString(300, 770, 'DNI Cliente:')
+            var.report.drawString(300, 752, 'Nombre:')
+            var.report.drawString(300, 734, 'Dirección:')
+            var.report.drawString(300, 716, 'Localidad:')
+            var.report.setFont('Helvetica', size=8)
+            var.report.drawString(360, 770, cliente[0])
+            var.report.drawString(360, 752, cliente[3] + " " + cliente[2])
+            var.report.drawString(360, 734, cliente[6])
+            var.report.drawString(360, 716, cliente[8])
+
             titulo = "Factura " + str(idFac)
             Informes.topInforme(titulo)
             items = ['VENTA', 'PROPIEDAD', 'TIPO', 'DIRECCIÓN', 'LOCALIDAD', 'PRECIO']
