@@ -45,10 +45,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "E:\Sergio\DI\Proyectos\prietogarcia\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\Sergio\DI\Proyectos\prietogarcia\img\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "E:\Sergio\DI\Proyectos\prietogarcia\img\*"; DestDir: "{app}/img"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "E:\Sergio\DI\Proyectos\prietogarcia\bbdd.sqlite"; DestDir: "{app}"; Flags: ignoreversion
 Source: "E:\Sergio\DI\Proyectos\prietogarcia\styles.qss"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\Sergio\DI\Proyectos\prietogarcia\informes"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "E:\Sergio\DI\Proyectos\prietogarcia\informes"; DestDir: "{app}/informes"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

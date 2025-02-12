@@ -119,6 +119,8 @@ class Eventos:
             print("error en abrir calendar ", error)
 
     def cargaFecha(qDate):
+
+
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
             if var.panel == 0 and var.btn == 0:
@@ -143,6 +145,16 @@ class Eventos:
 
 
     def validarMail(mail):
+        """
+
+               :param mail: email a validar
+               :type mail: str
+               :return: resultado validación
+               :rtype: bool
+
+               Comprueba si el email sigue un formato válido
+
+               """
         mail = mail.lower()
         regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
         if re.match(regex, mail) or mail == "":
@@ -151,6 +163,16 @@ class Eventos:
             return False
 
     def validarTelefono(telefono):
+        """
+
+              :param movil: móvil a validar
+              :type movil: str
+              :return: resultado validacion
+              :rtype: bool
+
+              Comprueba si el móvil sigue un formato válido para España
+
+              """
         regex = r"^[67]\d{8}$"
         if re.match(regex, telefono):
             return True
@@ -158,6 +180,16 @@ class Eventos:
             return False
 
     def validar_numero_decimal(string):
+        """
+
+               :param string: string a validar
+               :type string: str
+               :return: resultado validacion
+               :rtype: bool
+
+               Comprueba si el numero tipo string tiene 2 decimales
+
+               """
         regex = r'^\d+(\.\d{1,2})?$'
         if re.match(regex, string):
             return True
