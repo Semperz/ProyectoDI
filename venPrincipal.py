@@ -1258,7 +1258,7 @@ class Ui_venPrincipal(object):
         self.tablaFacturas.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.tablaFacturas.setHorizontalHeaderItem(3, item)
-        self.tablaFacturas.horizontalHeader().setVisible(True)
+        self.tablaFacturas.horizontalHeader().setVisible(False)
         self.tablaFacturas.verticalHeader().setVisible(False)
         self.gridLayout_16.addWidget(self.tablaFacturas, 0, 0, 1, 1)
         self.gridLayout_18.addWidget(self.frame_2, 1, 0, 1, 1)
@@ -1370,120 +1370,8 @@ class Ui_venPrincipal(object):
         self.gridLayout_22.setObjectName("gridLayout_22")
         self.gridLayout_21 = QtWidgets.QGridLayout()
         self.gridLayout_21.setObjectName("gridLayout_21")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.gridLayout_20 = QtWidgets.QGridLayout()
-        self.gridLayout_20.setObjectName("gridLayout_20")
-        spacerItem51 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_20.addItem(spacerItem51, 0, 0, 3, 1)
-        self.txtIniciocontrato = QtWidgets.QLineEdit(parent=self.frame_6)
-        self.txtIniciocontrato.setMinimumSize(QtCore.QSize(120, 0))
-        self.txtIniciocontrato.setMaximumSize(QtCore.QSize(120, 16777215))
-        self.txtIniciocontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.txtIniciocontrato.setReadOnly(True)
-        self.txtIniciocontrato.setObjectName("txtIniciocontrato")
-        self.gridLayout_20.addWidget(self.txtIniciocontrato, 1, 2, 1, 1)
-        self.btnFincontrato = QtWidgets.QPushButton(parent=self.frame_6)
-        self.btnFincontrato.setMinimumSize(QtCore.QSize(25, 25))
-        self.btnFincontrato.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnFincontrato.setStyleSheet("QPushButton {\n"
-"    background-color: whitesmoke;\n"
-"    color: white;\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color:#0ea2ae;\n"
-"    transform: scale(0.95);\n"
-"}\n"
-"")
-        self.btnFincontrato.setText("")
-        self.btnFincontrato.setIcon(icon1)
-        self.btnFincontrato.setIconSize(QtCore.QSize(25, 25))
-        self.btnFincontrato.setObjectName("btnFincontrato")
-        self.gridLayout_20.addWidget(self.btnFincontrato, 2, 3, 1, 1)
-        self.lblNumcontrato = QtWidgets.QLabel(parent=self.frame_6)
-        self.lblNumcontrato.setMinimumSize(QtCore.QSize(120, 20))
-        self.lblNumcontrato.setMaximumSize(QtCore.QSize(120, 20))
-        self.lblNumcontrato.setStyleSheet("background-color:rgb(222,222,222)")
-        self.lblNumcontrato.setText("")
-        self.lblNumcontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.lblNumcontrato.setObjectName("lblNumcontrato")
-        self.gridLayout_20.addWidget(self.lblNumcontrato, 0, 2, 1, 1)
-        self.label_34 = QtWidgets.QLabel(parent=self.frame_6)
-        self.label_34.setObjectName("label_34")
-        self.gridLayout_20.addWidget(self.label_34, 1, 1, 1, 1)
-        self.label_33 = QtWidgets.QLabel(parent=self.frame_6)
-        self.label_33.setObjectName("label_33")
-        self.gridLayout_20.addWidget(self.label_33, 0, 1, 1, 1)
-        self.label_45 = QtWidgets.QLabel(parent=self.frame_6)
-        self.label_45.setObjectName("label_45")
-        self.gridLayout_20.addWidget(self.label_45, 2, 1, 1, 1)
-        self.btnIniciocontrato = QtWidgets.QPushButton(parent=self.frame_6)
-        self.btnIniciocontrato.setMinimumSize(QtCore.QSize(25, 25))
-        self.btnIniciocontrato.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnIniciocontrato.setStyleSheet("QPushButton {\n"
-"    background-color: whitesmoke;\n"
-"    color: white;\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color:#0ea2ae;\n"
-"    transform: scale(0.95);\n"
-"}\n"
-"")
-        self.btnIniciocontrato.setText("")
-        self.btnIniciocontrato.setIcon(icon1)
-        self.btnIniciocontrato.setIconSize(QtCore.QSize(25, 25))
-        self.btnIniciocontrato.setObjectName("btnIniciocontrato")
-        self.gridLayout_20.addWidget(self.btnIniciocontrato, 1, 3, 1, 1)
-        self.txtFincontrato = QtWidgets.QLineEdit(parent=self.frame_6)
-        self.txtFincontrato.setMinimumSize(QtCore.QSize(120, 0))
-        self.txtFincontrato.setMaximumSize(QtCore.QSize(120, 16777215))
-        self.txtFincontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.txtFincontrato.setReadOnly(True)
-        self.txtFincontrato.setObjectName("txtFincontrato")
-        self.gridLayout_20.addWidget(self.txtFincontrato, 2, 2, 1, 1)
-        spacerItem52 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_20.addItem(spacerItem52, 0, 4, 3, 1)
-        self.verticalLayout_10.addLayout(self.gridLayout_20)
-        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        spacerItem53 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem53)
-        self.btnGrabContrato = QtWidgets.QPushButton(parent=self.frame_6)
-        self.btnGrabContrato.setMinimumSize(QtCore.QSize(90, 25))
-        self.btnGrabContrato.setMaximumSize(QtCore.QSize(90, 25))
-        self.btnGrabContrato.setObjectName("btnGrabContrato")
-        self.horizontalLayout_13.addWidget(self.btnGrabContrato)
-        self.btnGenerarfacalqui = QtWidgets.QPushButton(parent=self.frame_6)
-        self.btnGenerarfacalqui.setMinimumSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setStyleSheet("QPushButton {\n"
-"    background-color: whitesmoke;\n"
-"    color: white;\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color:#0ea2ae;\n"
-"    transform: scale(0.95);\n"
-"}")
-        self.btnGenerarfacalqui.setText("")
-        self.btnGenerarfacalqui.setIcon(icon3)
-        self.btnGenerarfacalqui.setIconSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setObjectName("btnGenerarfacalqui")
-        self.horizontalLayout_13.addWidget(self.btnGenerarfacalqui)
-        spacerItem54 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem54)
-        self.verticalLayout_10.addLayout(self.horizontalLayout_13)
-        self.gridLayout_21.addLayout(self.verticalLayout_10, 0, 7, 3, 1)
-        spacerItem55 = QtWidgets.QSpacerItem(15, 15, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_21.addItem(spacerItem55, 0, 3, 1, 1)
-        spacerItem56 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_21.addItem(spacerItem56, 0, 5, 3, 1)
+        spacerItem51 = QtWidgets.QSpacerItem(15, 15, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_21.addItem(spacerItem51, 0, 3, 1, 1)
         self.gridLayout_25 = QtWidgets.QGridLayout()
         self.gridLayout_25.setObjectName("gridLayout_25")
         self.txtApelclialqui = QtWidgets.QLineEdit(parent=self.frame_6)
@@ -1513,24 +1401,19 @@ class Ui_venPrincipal(object):
         self.label_32 = QtWidgets.QLabel(parent=self.frame_6)
         self.label_32.setObjectName("label_32")
         self.gridLayout_25.addWidget(self.label_32, 1, 6, 1, 1)
-        spacerItem57 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_25.addItem(spacerItem57, 1, 2, 1, 1)
+        spacerItem52 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_25.addItem(spacerItem52, 1, 2, 1, 1)
         self.txtDniclialqui = QtWidgets.QLineEdit(parent=self.frame_6)
         self.txtDniclialqui.setObjectName("txtDniclialqui")
         self.gridLayout_25.addWidget(self.txtDniclialqui, 1, 7, 1, 1)
-        spacerItem58 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_25.addItem(spacerItem58, 1, 5, 1, 1)
+        spacerItem53 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_25.addItem(spacerItem53, 1, 5, 1, 1)
         self.gridLayout_21.addLayout(self.gridLayout_25, 0, 0, 1, 1)
         self.line_6 = QtWidgets.QFrame(parent=self.frame_6)
         self.line_6.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_6.setObjectName("line_6")
         self.gridLayout_21.addWidget(self.line_6, 0, 2, 1, 1)
-        self.line_5 = QtWidgets.QFrame(parent=self.frame_6)
-        self.line_5.setFrameShape(QtWidgets.QFrame.Shape.VLine)
-        self.line_5.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line_5.setObjectName("line_5")
-        self.gridLayout_21.addWidget(self.line_5, 0, 6, 3, 1)
         self.line_4 = QtWidgets.QFrame(parent=self.frame_6)
         self.line_4.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
@@ -1624,12 +1507,129 @@ class Ui_venPrincipal(object):
         self.label_43 = QtWidgets.QLabel(parent=self.frame_6)
         self.label_43.setObjectName("label_43")
         self.gridLayout_26.addWidget(self.label_43, 1, 7, 1, 2, QtCore.Qt.AlignmentFlag.AlignRight)
-        spacerItem59 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_26.addItem(spacerItem59, 2, 5, 1, 1)
+        spacerItem54 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_26.addItem(spacerItem54, 2, 5, 1, 1)
         self.gridLayout_21.addLayout(self.gridLayout_26, 2, 0, 1, 5)
-        spacerItem60 = QtWidgets.QSpacerItem(15, 15, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_21.addItem(spacerItem60, 0, 1, 1, 1)
-        self.gridLayout_22.addLayout(self.gridLayout_21, 0, 0, 1, 1)
+        spacerItem55 = QtWidgets.QSpacerItem(15, 15, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_21.addItem(spacerItem55, 0, 1, 1, 1)
+        self.gridLayout_22.addLayout(self.gridLayout_21, 0, 3, 1, 1)
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.gridLayout_20 = QtWidgets.QGridLayout()
+        self.gridLayout_20.setObjectName("gridLayout_20")
+        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_20.addItem(spacerItem56, 0, 0, 3, 1)
+        self.txtIniciocontrato = QtWidgets.QLineEdit(parent=self.frame_6)
+        self.txtIniciocontrato.setMinimumSize(QtCore.QSize(120, 0))
+        self.txtIniciocontrato.setMaximumSize(QtCore.QSize(120, 16777215))
+        self.txtIniciocontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txtIniciocontrato.setReadOnly(True)
+        self.txtIniciocontrato.setObjectName("txtIniciocontrato")
+        self.gridLayout_20.addWidget(self.txtIniciocontrato, 1, 2, 1, 1)
+        self.btnFincontrato = QtWidgets.QPushButton(parent=self.frame_6)
+        self.btnFincontrato.setMinimumSize(QtCore.QSize(25, 25))
+        self.btnFincontrato.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnFincontrato.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
+        self.btnFincontrato.setText("")
+        self.btnFincontrato.setIcon(icon1)
+        self.btnFincontrato.setIconSize(QtCore.QSize(25, 25))
+        self.btnFincontrato.setObjectName("btnFincontrato")
+        self.gridLayout_20.addWidget(self.btnFincontrato, 2, 3, 1, 1)
+        self.lblNumcontrato = QtWidgets.QLabel(parent=self.frame_6)
+        self.lblNumcontrato.setMinimumSize(QtCore.QSize(120, 20))
+        self.lblNumcontrato.setMaximumSize(QtCore.QSize(120, 20))
+        self.lblNumcontrato.setStyleSheet("background-color:rgb(222,222,222)")
+        self.lblNumcontrato.setText("")
+        self.lblNumcontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.lblNumcontrato.setObjectName("lblNumcontrato")
+        self.gridLayout_20.addWidget(self.lblNumcontrato, 0, 2, 1, 1)
+        self.label_34 = QtWidgets.QLabel(parent=self.frame_6)
+        self.label_34.setObjectName("label_34")
+        self.gridLayout_20.addWidget(self.label_34, 1, 1, 1, 1)
+        self.label_33 = QtWidgets.QLabel(parent=self.frame_6)
+        self.label_33.setObjectName("label_33")
+        self.gridLayout_20.addWidget(self.label_33, 0, 1, 1, 1)
+        self.label_45 = QtWidgets.QLabel(parent=self.frame_6)
+        self.label_45.setObjectName("label_45")
+        self.gridLayout_20.addWidget(self.label_45, 2, 1, 1, 1)
+        self.btnIniciocontrato = QtWidgets.QPushButton(parent=self.frame_6)
+        self.btnIniciocontrato.setMinimumSize(QtCore.QSize(25, 25))
+        self.btnIniciocontrato.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnIniciocontrato.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}\n"
+"")
+        self.btnIniciocontrato.setText("")
+        self.btnIniciocontrato.setIcon(icon1)
+        self.btnIniciocontrato.setIconSize(QtCore.QSize(25, 25))
+        self.btnIniciocontrato.setObjectName("btnIniciocontrato")
+        self.gridLayout_20.addWidget(self.btnIniciocontrato, 1, 3, 1, 1)
+        self.txtFincontrato = QtWidgets.QLineEdit(parent=self.frame_6)
+        self.txtFincontrato.setMinimumSize(QtCore.QSize(120, 0))
+        self.txtFincontrato.setMaximumSize(QtCore.QSize(120, 16777215))
+        self.txtFincontrato.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txtFincontrato.setReadOnly(True)
+        self.txtFincontrato.setObjectName("txtFincontrato")
+        self.gridLayout_20.addWidget(self.txtFincontrato, 2, 2, 1, 1)
+        spacerItem57 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_20.addItem(spacerItem57, 0, 4, 3, 1)
+        self.verticalLayout_10.addLayout(self.gridLayout_20)
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        spacerItem58 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem58)
+        self.btnGrabContrato = QtWidgets.QPushButton(parent=self.frame_6)
+        self.btnGrabContrato.setMinimumSize(QtCore.QSize(90, 25))
+        self.btnGrabContrato.setMaximumSize(QtCore.QSize(90, 25))
+        self.btnGrabContrato.setObjectName("btnGrabContrato")
+        self.horizontalLayout_13.addWidget(self.btnGrabContrato)
+        self.btnGenerarfacalqui = QtWidgets.QPushButton(parent=self.frame_6)
+        self.btnGenerarfacalqui.setMinimumSize(QtCore.QSize(25, 25))
+        self.btnGenerarfacalqui.setMaximumSize(QtCore.QSize(25, 25))
+        self.btnGenerarfacalqui.setStyleSheet("QPushButton {\n"
+"    background-color: whitesmoke;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color:#0ea2ae;\n"
+"    transform: scale(0.95);\n"
+"}")
+        self.btnGenerarfacalqui.setText("")
+        self.btnGenerarfacalqui.setIcon(icon3)
+        self.btnGenerarfacalqui.setIconSize(QtCore.QSize(25, 25))
+        self.btnGenerarfacalqui.setObjectName("btnGenerarfacalqui")
+        self.horizontalLayout_13.addWidget(self.btnGenerarfacalqui)
+        spacerItem59 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem59)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_13)
+        self.gridLayout_22.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
+        spacerItem60 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_22.addItem(spacerItem60, 0, 2, 1, 1)
+        self.line_5 = QtWidgets.QFrame(parent=self.frame_6)
+        self.line_5.setFrameShape(QtWidgets.QFrame.Shape.VLine)
+        self.line_5.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.line_5.setObjectName("line_5")
+        self.gridLayout_22.addWidget(self.line_5, 0, 1, 1, 1)
         self.gridLayout_23.addWidget(self.frame_6, 0, 0, 1, 2)
         self.frame_7 = QtWidgets.QFrame(parent=self.tab)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
@@ -1658,7 +1658,7 @@ class Ui_venPrincipal(object):
         self.tablaContrato.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tablaContrato.setHorizontalHeaderItem(1, item)
-        self.tablaContrato.horizontalHeader().setVisible(True)
+        self.tablaContrato.horizontalHeader().setVisible(False)
         self.tablaContrato.verticalHeader().setVisible(False)
         self.gridLayout_27.addWidget(self.tablaContrato, 0, 0, 1, 1)
         self.gridLayout_23.addWidget(self.frame_7, 1, 0, 1, 1)
@@ -1950,10 +1950,6 @@ class Ui_venPrincipal(object):
         self.label_29.setText(_translate("venPrincipal", "SUBTOTAL:"))
         self.label_30.setText(_translate("venPrincipal", "IMPUESTOS:"))
         self.panPrincipal.setTabText(self.panPrincipal.indexOf(self.pesVentas), _translate("venPrincipal", "Ventas"))
-        self.label_34.setText(_translate("venPrincipal", "Fecha inicio:"))
-        self.label_33.setText(_translate("venPrincipal", "Num. Contrato:"))
-        self.label_45.setText(_translate("venPrincipal", "Fecha fin:"))
-        self.btnGrabContrato.setText(_translate("venPrincipal", "Grabar Contrato"))
         self.label_35.setText(_translate("venPrincipal", "Cliente"))
         self.label_36.setText(_translate("venPrincipal", "Apellidos:"))
         self.label_37.setText(_translate("venPrincipal", "Nombre:"))
@@ -1966,6 +1962,10 @@ class Ui_venPrincipal(object):
         self.label_41.setText(_translate("venPrincipal", "Codigo:"))
         self.label_42.setText(_translate("venPrincipal", "Tipo:"))
         self.label_43.setText(_translate("venPrincipal", "Precio:"))
+        self.label_34.setText(_translate("venPrincipal", "Fecha inicio:"))
+        self.label_33.setText(_translate("venPrincipal", "Num. Contrato:"))
+        self.label_45.setText(_translate("venPrincipal", "Fecha fin:"))
+        self.btnGrabContrato.setText(_translate("venPrincipal", "Grabar Contrato"))
         item = self.tablaContrato.horizontalHeaderItem(0)
         item.setText(_translate("venPrincipal", "ID Contrato"))
         item = self.tablaContrato.horizontalHeaderItem(1)

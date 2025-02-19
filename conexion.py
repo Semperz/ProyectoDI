@@ -1009,3 +1009,88 @@ class Conexion:
                 return False
         except Exception as error:
             print("error eliminar factura", error)
+
+
+    '''
+      GESTIÓN DE ALQUILERES
+      '''
+
+    @staticmethod
+    def altaAlquiler(registro):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "INSERT INTO alquileres(propiedad_id,cliente_dni,fecha_inicio,fecha_fin,vendedor) values (:codigoprop,:dnicli,:fecha_inicio,:fecha_fin,:vendedor)")
+            query.bindValue(":codigoprop", str(registro[0]))
+            query.bindValue(":dnicli", str(registro[1]))
+            query.bindValue(":fecha_inicio", str(registro[2]))
+            query.bindValue(":fecha_fin", str(registro[3]))
+            query.bindValue(":vendedor", str(registro[4]))
+            if query.exec():
+                query_propiedad = QtSql.QSqlQuery()
+                query_propiedad.prepare(
+                    "UPDATE propiedades SET estadoprop = 'Alquilado', bajaprop = :fecha_baja WHERE  idprop = :codigo")
+                query_propiedad.bindValue(":codigo", str(registro[0]))
+                query_propiedad.bindValue(":fecha_baja", str(registro[2]))
+                if query_propiedad.exec():
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        except Exception as e:
+            print("Error en altaAlquiler en conexion", e)
+
+    @staticmethod
+    def propiedadIsAlquilada(codigo):
+        """
+
+        :param codigo: codigo identificador de propiedad
+        :type codigo: str
+        :return: si la propiedad se encuentra alquilada o no
+        :rtype: bool
+
+        Comprobación de si una propiedad se encuentra alquilada o no
+
+        """
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT estado FROM propiedades WHERE codigo = :codigo")
+            query.bindValue(":codigo", str(codigo))
+            if query.exec() and query.next():
+                estado = query.value(0)
+                return estado == "Alquilado"
+            else:
+                return False
+        except Exception as e:
+            print("Error en propiedadIsVendida en conexion", str(e))
+
+    @staticmethod
+    def listadoAlquileres():
+        try:
+            listado = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT id, cliente_dni FROM alquileres")
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("Error listando alquileres en listadoAlquileres - conexión", str(e))
+
+    @staticmethod
+    def datosOneAlquiler(idAlquiler):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "SELECT a.id, a.fecha_inicio, a.fecha_fin, a.vendedor, c.dnicli, c.nomecli, c.apelcli, p.codigo, p.tipo_propiedad, p.precio_alquiler, p.municipio, p.direccion FROM alquileres as a INNER JOIN propiedades as p ON a.propiedad_id = p.codigo INNER JOIN clientes as c ON a.cliente_dni = c.dnicli WHERE a.id = :idAlquiler")
+            query.bindValue(":idAlquiler", str(idAlquiler))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(query.value(i))
+            return registro
+        except Exception as e:
+            print("Error en datosOneAlquiler en conexion", str(e))
