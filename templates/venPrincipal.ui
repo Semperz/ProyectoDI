@@ -4306,7 +4306,7 @@ QPushButton:pressed {
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
+                     <width>105</width>
                      <height>25</height>
                     </size>
                    </property>
@@ -4419,6 +4419,11 @@ QPushButton:pressed {
                <column>
                 <property name="text">
                  <string>DNI</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Gestión</string>
                 </property>
                </column>
               </widget>

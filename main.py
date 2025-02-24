@@ -1,5 +1,6 @@
 from calendar import Calendar
 
+import alquileres
 import conexionserver
 import facturas
 import vendedores
@@ -38,6 +39,7 @@ class Main(QtWidgets.QMainWindow):
         propiedades.Propiedades.checkDisponibilidad(self)
         facturas.Facturas.cargarTablaFacturas()
         facturas.Facturas.cargarTablaVentas()
+        alquileres.Alquileres.cargaTablaContratos()
         '''
         Eventos formulario
         '''
@@ -103,6 +105,10 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnFechafac.clicked.connect(lambda: eventos.Eventos.abrirCalendar(3, 0))
         var.ui.btnGrabven.clicked.connect(facturas.Facturas.grabarVenta)
         var.ui.btnGenerarfac.clicked.connect(facturas.Facturas.generarInformeFactura)
+
+        var.ui.btnGrabContrato.clicked.connect(alquileres.Alquileres.altaAlquiler)
+        var.ui.btnIniciocontrato.clicked.connect(lambda: eventos.Eventos.abrirCalendar(4, 0))
+        var.ui.btnFincontrato.clicked.connect(lambda: eventos.Eventos.abrirCalendar(4, 1))
 
         '''
         eventos de cajas de texto

@@ -1123,3 +1123,17 @@ class Conexion:
                 return False
         except Exception as e:
             print("Error en propiedadIsVendida en conexion", str(e))
+
+
+    @staticmethod
+    def eliminarAlquiler(idContrato):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("DELETE FROM alquileres WHERE id = :id")
+            query.bindValue(":id", idContrato)
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as error:
+            print("error eliminar alquiler", error)

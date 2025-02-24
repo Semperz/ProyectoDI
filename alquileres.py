@@ -1,4 +1,5 @@
 from PyQt6 import QtWidgets
+from PyQt6 import QtCore, QtGui
 
 import conexion
 import eventos
@@ -26,6 +27,7 @@ class Alquileres:
                 QtWidgets.QMessageBox.information(None, 'Información',
                                                "Contrato de alquiler creado correctamente.")
                 eventos.Eventos.limpiarPanel(self)
+                Alquileres.cargaTablaContratos()
             else:
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "Se ha producido un error inesperado y no es posible generar un nuevo contrato de alquiler.")
@@ -40,6 +42,35 @@ class Alquileres:
                 return False
             else:
                 return True
+
+    @staticmethod
+    def cargaTablaContratos():
+
+        try:
+            var.ui.tablaContrato.setRowCount(0)
+            listado = conexion.Conexion.listadoAlquileres()
+            for index, registro in enumerate(listado):
+                var.ui.tablaContrato.insertRow(index)
+                var.ui.tablaContrato.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                var.ui.tablaContrato.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tablaContrato.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tablaContrato.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                botondelcontrato = QtWidgets.QPushButton()
+                botondelcontrato.setFixedSize(30, 24)
+                botondelcontrato.setIcon(QtGui.QIcon('img/basura.png'))
+                botondelcontrato.setProperty("row", index)
+                botondelcontrato.clicked.connect(
+                    lambda checked, idContrato=str(registro[0]): Alquileres.eliminarAlquiler(idContrato))
+                contenedor = QtWidgets.QWidget()
+                layout = QtWidgets.QHBoxLayout()
+                layout.addWidget(botondelcontrato)
+                layout.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                layout.setContentsMargins(0, 0, 0, 0)
+                contenedor.setLayout(layout)
+                var.ui.tablaContrato.setCellWidget(index, 2, contenedor)
+
+        except Exception as error:
+            print('Error cargar tabla facturas: %s' % str(error))
 
 
     @staticmethod
@@ -57,4 +88,19 @@ class Alquileres:
         var.ui.txtpreciopropalqui.setText(None)
         var.ui.txtlocalpropalqui.setText(None)
 
+
+    def eliminarAlquiler(idContrato):
+        try:
+            if QtWidgets.QMessageBox.question(None, 'Eliminar contrato',
+                                              '¿Desea eliminar el contrato seleccionado?',
+                                              QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No) == QtWidgets.QMessageBox.StandardButton.Yes:
+                if conexion.Conexion.eliminarAlquiler(idContrato):
+                    QtWidgets.QMessageBox.information(None, 'Información',
+                                                   "Contrato eliminado correctamente.")
+                    Alquileres.cargaTablaContratos()
+                else:
+                    QtWidgets.QMessageBox.critical(None, 'Error',
+                                               "Se ha producido un error inesperado y no es posible eliminar el contrato seleccionado.")
+        except Exception as e:
+            print("Error eliminar contrato en alquileres",str(e))
 

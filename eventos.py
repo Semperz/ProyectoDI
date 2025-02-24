@@ -138,6 +138,10 @@ class Eventos:
                     var.ui.txtBajaven.setText(str(data))
             elif var.panel == 3 and var.btn == 0:
                 var.ui.lblFechafac.setText(str(data))
+            elif var.panel == 4 and var.btn == 0:
+                var.ui.txtIniciocontrato.setText(str(data))
+            elif var.panel == 4 and var.btn == 1:
+                var.ui.txtFincontrato.setText(str(data))
             time.sleep(0.2)
             var.uicalendar.hide()
             return data
