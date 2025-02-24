@@ -280,8 +280,6 @@ class Eventos:
         elif var.ui.panPrincipal.currentIndex() == 3:
             facturas.Facturas.clearCamposFacturas()
         elif var.ui.panPrincipal.currentIndex() == 4:
-            facturas.Facturas.clearCamposFacturas()
-        elif var.ui.panPrincipal.currentIndex() == 5:
             alquileres.Alquileres.clearCamposAlquileres()
 
     """

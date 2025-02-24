@@ -84,7 +84,7 @@ class Alquileres:
         var.ui.txtApelclialqui.setText(None)
         var.ui.txtNomclialqui.setText(None)
         var.ui.txtTipopropalqui.setText(None)
-        var.ui.txtDirpropalqui.setText(None)
+        var.ui.txtdirpropalqui.setText(None)
         var.ui.txtpreciopropalqui.setText(None)
         var.ui.txtlocalpropalqui.setText(None)
 
@@ -103,4 +103,7 @@ class Alquileres:
                                                "Se ha producido un error inesperado y no es posible eliminar el contrato seleccionado.")
         except Exception as e:
             print("Error eliminar contrato en alquileres",str(e))
+
+
+
 
