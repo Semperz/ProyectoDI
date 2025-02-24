@@ -231,6 +231,19 @@ class Propiedades():
             else:
                 Propiedades.cargarVentasBien(registro)
 
+            '''
+            conexion con alquileres
+            '''
+
+            if registro[10] == "0.0":
+                var.ui.txtcodpropalqui.setText(registro[0])
+                var.ui.txtTipopropalqui.setText(registro[6])
+                var.ui.txtpreciopropalqui.setText("Propiedad en intercambio/venta")
+                var.ui.txtpreciopropalqui.setStyleSheet('background-color:#FFC0CB;')
+                var.ui.txtdirpropalqui.setText(registro[3])
+                var.ui.txtlocalpropalqui.setText(registro[5])
+            else:
+                Propiedades.cargarAlquileresBien(registro)
 
             for i in range(len(listado)):
                 if i == 3 or i == 4 or i == 5:
@@ -478,3 +491,12 @@ class Propiedades():
         var.ui.txtpreciopropven.setStyleSheet('background-color:rgb(229, 255, 255);')
         var.ui.txtdirpropven.setText(registro[3])
         var.ui.txtlocalpropven.setText(registro[5])
+
+    @staticmethod
+    def cargarAlquileresBien(registro):
+        var.ui.txtcodpropalqui.setText(registro[0])
+        var.ui.txtTipopropalqui.setText(registro[6])
+        var.ui.txtpreciopropalqui.setText(registro[10] + " €")
+        var.ui.txtpreciopropalqui.setStyleSheet('background-color:rgb(229, 255, 255);')
+        var.ui.txtdirpropalqui.setText(registro[3])
+        var.ui.txtlocalpropalqui.setText(registro[5])

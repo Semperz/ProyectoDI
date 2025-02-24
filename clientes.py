@@ -243,6 +243,14 @@ class Clientes:
             var.ui.txtDnicliven.setText(registro[0])
             var.ui.lblFechafac.setText(None)
             var.ui.lblNumfac.setText(None)
+            '''
+            Enlace con alquileres
+            '''
+            var.ui.txtDniclialqui.setText(registro[0])
+            var.ui.txtApelclialqui.setText(registro[2])
+            var.ui.txtNomclialqui.setText(registro[3])
+
+
             for i in range(len(listado)):
                 if i == 7 or i == 8:
                     listado[i].setCurrentText(registro[i])

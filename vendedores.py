@@ -196,6 +196,11 @@ class Vendedores:
             '''
             var.ui.txtIDven.setText(str(registro[0]))
 
+            '''
+            conexion con alquileres
+            '''
+            var.ui.txtIDvenalqui.setText(str(registro[0]))
+
             for index in range(len(listado)):
                 if index == 7:
                     listado[index].setCurrentText(registro[index])

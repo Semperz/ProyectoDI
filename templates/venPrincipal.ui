@@ -3446,7 +3446,7 @@ QPushButton:pressed {
                 <enum>QAbstractItemView::SelectRows</enum>
                </property>
                <attribute name="horizontalHeaderVisible">
-                <bool>false</bool>
+                <bool>true</bool>
                </attribute>
                <attribute name="verticalHeaderVisible">
                 <bool>false</bool>
@@ -4291,44 +4291,27 @@ QPushButton:pressed {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnGenerarfacalqui">
+                  <widget class="QPushButton" name="btnModificarcontrato">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="minimumSize">
                     <size>
-                     <width>25</width>
+                     <width>105</width>
                      <height>25</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>25</width>
+                     <width>100</width>
                      <height>25</height>
                     </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-    background-color: whitesmoke;
-    color: white;
-    border-radius: 5px;
-}
-
-
-QPushButton:pressed {
-    background-color:#0ea2ae;
-    transform: scale(0.95);
-}</string>
                    </property>
                    <property name="text">
-                    <string/>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../img/icoFactura.png</normaloff>../img/icoFactura.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>25</width>
-                     <height>25</height>
-                    </size>
+                    <string>Modificar Contrato</string>
                    </property>
                   </widget>
                  </item>
@@ -4423,7 +4406,7 @@ QPushButton:pressed {
                 <enum>QAbstractItemView::SelectRows</enum>
                </property>
                <attribute name="horizontalHeaderVisible">
-                <bool>false</bool>
+                <bool>true</bool>
                </attribute>
                <attribute name="verticalHeaderVisible">
                 <bool>false</bool>

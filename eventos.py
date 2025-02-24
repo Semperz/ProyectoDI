@@ -14,6 +14,7 @@ import shutil
 
 from PyQt6.uic.properties import QtCore
 
+import alquileres
 import facturas
 import vendedores
 import clientes
@@ -274,9 +275,11 @@ class Eventos:
             vendedores.Vendedores.clearCamposVendedores()
         elif var.ui.panPrincipal.currentIndex() == 3:
             facturas.Facturas.clearCamposFacturas()
+        elif var.ui.panPrincipal.currentIndex() == 4:
+            facturas.Facturas.clearCamposFacturas()
+        elif var.ui.panPrincipal.currentIndex() == 5:
+            alquileres.Alquileres.clearCamposAlquileres()
 
-        vendedores.Vendedores.clearCamposVendedores()
-        facturas.Facturas.clearCamposFacturas()
     """
     Pagina propiedades
     """

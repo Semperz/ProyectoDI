@@ -1085,7 +1085,12 @@ class Conexion:
             registro = []
             query = QtSql.QSqlQuery()
             query.prepare(
-                "SELECT a.id, a.fecha_inicio, a.fecha_fin, a.vendedor, c.dnicli, c.nomecli, c.apelcli, p.codigo, p.tipo_propiedad, p.precio_alquiler, p.municipio, p.direccion FROM alquileres as a INNER JOIN propiedades as p ON a.propiedad_id = p.codigo INNER JOIN clientes as c ON a.cliente_dni = c.dnicli WHERE a.id = :idAlquiler")
+                "SELECT a.id, a.fecha_inicio, a.fecha_fin, a.vendedor, c.dnicli, c.nomecli, c.apelcli, p.codigo, p.tipo_propiedad, p.precio_alquiler, p.municipio, p.direccion "
+                "FROM alquileres as a INNER JOIN propiedades as p "
+                "ON a.propiedad_id = p.idprop "
+                "INNER JOIN clientes as c "
+                "ON a.cliente_dni = c.dnicli "
+                "WHERE a.id = :idAlquiler")
             query.bindValue(":idAlquiler", str(idAlquiler))
             if query.exec():
                 while query.next():
@@ -1094,3 +1099,27 @@ class Conexion:
             return registro
         except Exception as e:
             print("Error en datosOneAlquiler en conexion", str(e))
+
+    @staticmethod
+    def propiedadIsVendida(codigo):
+        """
+
+        :param codigo: codigo identificador de propiedad
+        :type codigo: str
+        :return: si la propiedad se encuentra vendida o no
+        :rtype: bool
+
+        Comprobar si una propiedad se encuentra vendida o no
+
+        """
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT estadoprop FROM propiedades WHERE idprop = :codigo")
+            query.bindValue(":codigo", str(codigo))
+            if query.exec() and query.next():
+                estado = query.value(0)
+                return estado == "Vendido"
+            else:
+                return False
+        except Exception as e:
+            print("Error en propiedadIsVendida en conexion", str(e))

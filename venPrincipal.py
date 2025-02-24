@@ -1258,7 +1258,7 @@ class Ui_venPrincipal(object):
         self.tablaFacturas.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.tablaFacturas.setHorizontalHeaderItem(3, item)
-        self.tablaFacturas.horizontalHeader().setVisible(False)
+        self.tablaFacturas.horizontalHeader().setVisible(True)
         self.tablaFacturas.verticalHeader().setVisible(False)
         self.gridLayout_16.addWidget(self.tablaFacturas, 0, 0, 1, 1)
         self.gridLayout_18.addWidget(self.frame_2, 1, 0, 1, 1)
@@ -1600,25 +1600,16 @@ class Ui_venPrincipal(object):
         self.btnGrabContrato.setMaximumSize(QtCore.QSize(90, 25))
         self.btnGrabContrato.setObjectName("btnGrabContrato")
         self.horizontalLayout_13.addWidget(self.btnGrabContrato)
-        self.btnGenerarfacalqui = QtWidgets.QPushButton(parent=self.frame_6)
-        self.btnGenerarfacalqui.setMinimumSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setMaximumSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setStyleSheet("QPushButton {\n"
-"    background-color: whitesmoke;\n"
-"    color: white;\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color:#0ea2ae;\n"
-"    transform: scale(0.95);\n"
-"}")
-        self.btnGenerarfacalqui.setText("")
-        self.btnGenerarfacalqui.setIcon(icon3)
-        self.btnGenerarfacalqui.setIconSize(QtCore.QSize(25, 25))
-        self.btnGenerarfacalqui.setObjectName("btnGenerarfacalqui")
-        self.horizontalLayout_13.addWidget(self.btnGenerarfacalqui)
+        self.btnModificarcontrato = QtWidgets.QPushButton(parent=self.frame_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnModificarcontrato.sizePolicy().hasHeightForWidth())
+        self.btnModificarcontrato.setSizePolicy(sizePolicy)
+        self.btnModificarcontrato.setMinimumSize(QtCore.QSize(105, 25))
+        self.btnModificarcontrato.setMaximumSize(QtCore.QSize(100, 25))
+        self.btnModificarcontrato.setObjectName("btnModificarcontrato")
+        self.horizontalLayout_13.addWidget(self.btnModificarcontrato)
         spacerItem59 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_13.addItem(spacerItem59)
         self.verticalLayout_10.addLayout(self.horizontalLayout_13)
@@ -1658,7 +1649,7 @@ class Ui_venPrincipal(object):
         self.tablaContrato.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tablaContrato.setHorizontalHeaderItem(1, item)
-        self.tablaContrato.horizontalHeader().setVisible(False)
+        self.tablaContrato.horizontalHeader().setVisible(True)
         self.tablaContrato.verticalHeader().setVisible(False)
         self.gridLayout_27.addWidget(self.tablaContrato, 0, 0, 1, 1)
         self.gridLayout_23.addWidget(self.frame_7, 1, 0, 1, 1)
@@ -1966,6 +1957,7 @@ class Ui_venPrincipal(object):
         self.label_33.setText(_translate("venPrincipal", "Num. Contrato:"))
         self.label_45.setText(_translate("venPrincipal", "Fecha fin:"))
         self.btnGrabContrato.setText(_translate("venPrincipal", "Grabar Contrato"))
+        self.btnModificarcontrato.setText(_translate("venPrincipal", "Modificar Contrato"))
         item = self.tablaContrato.horizontalHeaderItem(0)
         item.setText(_translate("venPrincipal", "ID Contrato"))
         item = self.tablaContrato.horizontalHeaderItem(1)
