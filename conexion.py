@@ -1137,3 +1137,23 @@ class Conexion:
                 return False
         except Exception as error:
             print("error eliminar alquiler", error)
+
+
+    @staticmethod
+    def datosOneContrato(idContrato):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                "SELECT a.id, a.fecha_inicio, a.fecha_fin, p.idprop, p.dirprop, p.tipoprop, p.muniprop, p.prealquilerprop, a.vendedor "
+                "FROM alquileres as a INNER JOIN propiedades as p "
+                "ON a.propiedad_id = p.idprop "
+                "WHERE a.id = :idContrato")
+            query.bindValue(":idContrato", str(idContrato))
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(query.value(i))
+            return registro
+        except Exception as e:
+            print("Error en datosOneContrato en conexion", str(e))

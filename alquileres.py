@@ -105,5 +105,24 @@ class Alquileres:
             print("Error eliminar contrato en alquileres",str(e))
 
 
+    def cargaOneContrato(self):
+        try:
+            fila = var.ui.tablaContrato.selectedItems()
+            datos = [dato.text() for dato in fila]
+
+            registro = conexion.Conexion.datosOneContrato(str(datos[0]))
+            registroCli = conexion.Conexion.datosOneCliente(str(datos[1]))
+            var.ui.txtNomclialqui.setText(registroCli[3])
+            var.ui.txtApelclialqui.setText(registroCli[2])
+            var.ui.txtDniclialqui.setText(registroCli[1])
+            listado = [var.ui.lblNumcontrato, var.ui.txtIniciocontrato, var.ui.txtFincontrato, var.ui.txtcodpropalqui,
+                       var.ui.txtdirpropalqui, var.ui.txtTipopropalqui,
+                       var.ui.txtlocalpropalqui,  var.ui.txtpreciopropalqui, var.ui.txtIDvenalqui]
+            for index in range(len(listado)):
+                listado[index].setText(str(registro[index]))
+            Alquileres.cargaTablaContratos()
+        except Exception as error:
+            print("error carga contrato", error)
+
 
 
