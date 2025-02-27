@@ -443,6 +443,11 @@ class Propiedades():
                 var.ui.rbtVendidoprop.setEnabled(True)
                 var.ui.rbtAlquiladoprop.setEnabled(False)
                 var.ui.rbtVendidoprop.setChecked(True)
+            elif var.ui.chkAlquilerprop.isChecked:
+                var.ui.rbtDisponibleprop.setEnabled(False)
+                var.ui.rbtVendidoprop.setEnabled(False)
+                var.ui.rbtAlquiladoprop.setEnabled(True)
+                var.ui.rbtAlquiladoprop.setChecked(True)
             else:
                 var.ui.rbtDisponibleprop.setEnabled(False)
                 var.ui.rbtVendidoprop.setEnabled(False)

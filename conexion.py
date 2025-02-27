@@ -1085,7 +1085,8 @@ class Conexion:
             registro = []
             query = QtSql.QSqlQuery()
             query.prepare(
-                "SELECT a.id, a.fecha_inicio, a.fecha_fin, a.vendedor, c.dnicli, c.nomecli, c.apelcli, p.codigo, p.tipo_propiedad, p.precio_alquiler, p.municipio, p.direccion "
+                "SELECT a.id, a.fecha_inicio, a.fecha_fin, a.vendedor, c.dnicli, c.nomecli,"
+                " c.apelcli, p.idprop, p.tipoprop, p.prealquilerprop, p.muniprop, p.dirprop "
                 "FROM alquileres as a INNER JOIN propiedades as p "
                 "ON a.propiedad_id = p.idprop "
                 "INNER JOIN clientes as c "
@@ -1095,7 +1096,7 @@ class Conexion:
             if query.exec():
                 while query.next():
                     for i in range(query.record().count()):
-                        registro.append(query.value(i))
+                        registro.append(str(query.value(i)))
             return registro
         except Exception as e:
             print("Error en datosOneAlquiler en conexion", str(e))
@@ -1139,21 +1140,101 @@ class Conexion:
             print("error eliminar alquiler", error)
 
 
+
     @staticmethod
-    def datosOneContrato(idContrato):
+    def altaMensualidad(registro):
+        """
+
+        :param registro: datos de una mensualidad
+        :type registro: list
+        :return: éxito al insertar una nueva mensualidad
+        :rtype: bool
+
+        Registra una nueva mensualidad respecto de un contrato de alquiler
+
+        """
         try:
-            registro = []
             query = QtSql.QSqlQuery()
-            query.prepare(
-                "SELECT a.id, a.fecha_inicio, a.fecha_fin, p.idprop, p.dirprop, p.tipoprop, p.muniprop, p.prealquilerprop, a.vendedor "
-                "FROM alquileres as a INNER JOIN propiedades as p "
-                "ON a.propiedad_id = p.idprop "
-                "WHERE a.id = :idContrato")
-            query.bindValue(":idContrato", str(idContrato))
+            query.prepare("INSERT INTO mensualidades(idalquiler, mes, pagado) VALUES (:idalquiler,:mes,:pagado)")
+            query.bindValue(":idalquiler", str(registro[0]))
+            query.bindValue(":mes", str(registro[1]))
+            query.bindValue(":pagado", str(registro[2]))
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as e:
+            print("Error al grabar nueva mensualidad en conexion", str(e))
+
+    @staticmethod
+    def idOneAlquiler(codPropiedad, dniCliente):
+        """
+
+        :param codPropiedad: identificador de propiedad
+        :type codPropiedad: int
+        :param dniCliente: el identificador de un cliente, su DNI
+        :type dniCliente: str
+        :return: el identificador de un contrato de alquiler
+        :rtype: id
+
+        Obtiene el id de un contrato de alquiler en función del id de la propiedad y el id del cliente
+        """
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT id FROM alquileres WHERE cliente_dni = :dniCliente AND propiedad_id = :codPropiedad")
+            query.bindValue(":dniCliente", str(dniCliente))
+            query.bindValue(":codPropiedad", str(codPropiedad))
             if query.exec():
                 while query.next():
-                    for i in range(query.record().count()):
-                        registro.append(query.value(i))
-            return registro
+                    return query.value(0)
         except Exception as e:
-            print("Error en datosOneContrato en conexion", str(e))
+            print("Error en idOneAlquiler en conexion", str(e))
+
+
+    @staticmethod
+    def listarMensualidades(idAlq):
+        """
+
+                :param idAlq: identificador de un contrato de alquiler
+                :type idAlq: int
+                :return: todos los datos las mensualidades de un contrato de alquiler
+                :rtype: list
+
+                Obtiene todos los datos de las mensualidades relacionadas con un contrato de alquiler
+
+                """
+        try:
+            listado = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT idmensualidad, mes, pagado FROM mensualidades WHERE idalquiler = :idalq")
+            query.bindValue(":idalq", str(idAlq))
+            if query.exec():
+                while query.next():
+                    fila = [query.value(i) for i in range(query.record().count())]
+                    listado.append(fila)
+            return listado
+        except Exception as e:
+            print("Error en listarMensualidades - conexion", str(e))
+
+    @staticmethod
+    def pagarMensualidad(idMensualidad):
+        """
+
+        :param idMensualidad: identificador de mensualidad
+        :type idMensualidad: int
+        :return: éxito al marcar como pagada una mensualidad
+        :rtype: bool
+
+        Registra en la base de datos el pago de una mensualidad
+
+        """
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("UPDATE mensualidades SET pagado = 1 WHERE idmensualidad = :idMensualidad")
+            query.bindValue(":idMensualidad", idMensualidad)
+            if query.exec():
+                return True
+            else:
+                return False
+        except Exception as e:
+            print("Error en pagar mensualidad", str(e))

@@ -4489,6 +4489,16 @@ QPushButton:pressed {
                  <string>Precio</string>
                 </property>
                </column>
+               <column>
+                <property name="text">
+                 <string>Pagado</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Recibo</string>
+                </property>
+               </column>
               </widget>
              </item>
             </layout>

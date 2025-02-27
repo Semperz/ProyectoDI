@@ -304,3 +304,7 @@ class Informes:
             print("Error aqui", e)
 
 
+    def reportReciboMes(idAlquilerInforme, idMensualidad):
+        pass
+
+
