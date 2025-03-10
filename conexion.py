@@ -1250,3 +1250,29 @@ class Conexion:
                 return False
         except Exception as e:
             print("Error en pagar mensualidad", str(e))
+
+    @staticmethod
+    def datosOneMensualidad(idMensualidad):
+        """
+
+        :param idMensualidad: identificador de la mensualidad
+        :type idMensualidad: int
+        :return: todos los datos de la mensualidad
+        :rtype: list
+
+        Obtiene todos los datos de una mensualidad dado su identificador
+
+        """
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT idalquiler, mes, pagado FROM mensualidades WHERE idmensualidad = :idMensualidad")
+            query.bindValue(":idMensualidad", idMensualidad)
+            if query.exec():
+                while query.next():
+                    for i in range(query.record().count()):
+                        registro.append(query.value(i))
+            return registro
+
+        except Exception as e:
+            print("Error al cargar datos de una mensualidad en conexcion", str(e))

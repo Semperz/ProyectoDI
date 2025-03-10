@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from PyQt6 import QtSql
+from reportlab.lib import colors
 from svglib.svglib import svg2rlg
 from reportlab.pdfgen import canvas
 from reportlab.graphics import renderPM
@@ -24,7 +25,7 @@ class Informes:
         if query.exec():
             if query.next():
                 total_registros = query.value(0)
-                registros_por_pagina = 28  # Ajusta este valor según el número de registros por página
+                registros_por_pagina = 28
                 Informes.total_paginas = (total_registros // registros_por_pagina) + (
                     1 if total_registros % registros_por_pagina > 0 else 0)
 
@@ -303,8 +304,81 @@ class Informes:
         except Exception as e:
             print("Error aqui", e)
 
+    @staticmethod
+    def reportReciboMes(idAlquiler, idMensualidad):
+        try:
+            Informes.total_paginas = 1
+            rootPath = '.\\informes'
+            if not os.path.exists(rootPath):
+                os.makedirs(rootPath)
+            titulo = "RECIBO MENSUALIDAD ALQUILER"
+            fecha = datetime.today().strftime('%Y_%m_%d_%H_%M_%S')
+            nomepdffac = fecha + "_recibo_alquiler_" + str(idAlquiler) + ".pdf"
+            pdf_path = os.path.join(rootPath, nomepdffac)
+            var.report = canvas.Canvas(pdf_path)
 
-    def reportReciboMes(idAlquilerInforme, idMensualidad):
-        pass
+            datosAlquiler = conexion.Conexion.datosOneAlquiler(idAlquiler)
+            fecha_inicio = datosAlquiler[1]
+            fecha_final = datosAlquiler[2]
+            id_vendedor = str(datosAlquiler[3])
+            dni_cliente = str(datosAlquiler[4])
+            nombre_cliente = str(datosAlquiler[5]) + " " + str(datosAlquiler[6])
+            cod_propiedad = str(datosAlquiler[7])
+            tipo_propiedad = str(datosAlquiler[8])
+            precio_alquiler = str(datosAlquiler[9]) + " €"
+            localidad = datosAlquiler[10]
+            direccion_inmueble = datosAlquiler[11]
+
+            var.report.drawString(55, 650, "DATOS CLIENTE:")
+            var.report.drawString(100, 630, "DNI: " + dni_cliente)
+            var.report.drawString(330, 630, "Nombre: " + nombre_cliente)
+
+            var.report.drawString(55, 600, "DATOS CONTRATO:")
+            var.report.drawString(100, 580, "Num. contrato: " + str(idAlquiler))
+            var.report.drawString(100, 560, "Num. vendedor: " + id_vendedor)
+            var.report.drawString(330, 580, "Fecha inicio: " + fecha_inicio)
+            var.report.drawString(330, 560, "Fecha fin de contrato: " + fecha_final)
+
+            var.report.drawString(55, 540, "DATOS INMUEBLE:")
+            var.report.drawString(100, 520, "Num. inmueble: " + cod_propiedad)
+            var.report.drawString(100, 500, "Tipo de inmueble: " + tipo_propiedad)
+            var.report.drawString(330, 520, "Dirección: " + direccion_inmueble)
+            var.report.drawString(330, 500, "Localidad: " + localidad)
+
+            var.report.line(40, 480, 540, 480)
+            var.report.drawString(55, 420, "Mensualidad correspondiente a:")
+            var.report.setFont('Helvetica-Bold', size=12)
+            datos_mensualidad = conexion.Conexion.datosOneMensualidad(idMensualidad)
+            var.report.drawCentredString(300, 430, datos_mensualidad[1].upper())
+
+            total = precio_alquiler
+
+            var.report.setFont('Helvetica-Bold', size=10)
+            var.report.drawString(370, 430, "Subtotal: ")
+            var.report.drawRightString(540, 430, precio_alquiler)
+            var.report.setFont('Helvetica-Bold', size=12)
+            var.report.drawString(370, 380, "Total: ")
+            var.report.drawRightString(540, 380, str(total) + " €")
+            var.report.line(40, 350, 540, 350)
+
+            Informes.topInforme(titulo)
+            Informes.footInforme(titulo)
+
+            isPagado = datos_mensualidad[2]
+
+            if isPagado:
+                var.report.setFont('Helvetica-Bold', size=25)
+                var.report.setFillColor(colors.red)
+                var.report.drawString(100, 380, 'PAGADO')
+
+            var.report.save()
+            for file in os.listdir(rootPath):
+                if file.endswith(nomepdffac):
+                    os.startfile(pdf_path)
+
+        except Exception as e:
+            print("Error en reportReciboMes", str(e))
+
+
 
 
