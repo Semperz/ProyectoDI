@@ -1130,9 +1130,21 @@ class Conexion:
     def eliminarAlquiler(idContrato):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare("DELETE FROM alquileres WHERE id = :id")
+            query.prepare("DELETE FROM mensualidades WHERE idalquiler = :id")
             query.bindValue(":id", idContrato)
-            if query.exec():
+            if not query.exec():
+                return False
+            query_prop = QtSql.QSqlQuery()
+            query_prop.prepare(
+                "UPDATE propiedades SET estadoprop = 'Disponible', bajaprop = NULL WHERE idprop = ( SELECT propiedad_id FROM alquileres WHERE id = :id) ")
+            query_prop.bindValue(":id", idContrato)
+            if not query_prop.exec():
+                return False
+
+            query_alq = QtSql.QSqlQuery()
+            query_alq.prepare("DELETE FROM alquileres WHERE id = :id")
+            query_alq.bindValue(":id", idContrato)
+            if query_alq.exec():
                 return True
             else:
                 return False

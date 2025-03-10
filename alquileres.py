@@ -8,6 +8,7 @@ import conexion
 import eventos
 import informes
 import var
+from facturas import Facturas
 from propiedades import Propiedades
 
 locale.setlocale(locale.LC_TIME, "es_ES.UTF-8")
@@ -24,7 +25,7 @@ class Alquileres:
             if isAlquilada or isVendida:
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "La propiedad seleccionada ya se encuentra alquilada. No es posible crear el contrato.")
-            elif not Alquileres.hasCamposObligatorios(registro):
+            elif Alquileres.hasCamposObligatorios(registro):
                 QtWidgets.QMessageBox.critical(None, 'Error',
                                                "No se ha podido crear el contrato. Alguno de los campos necesarios está vacío. Recuerde seleccionar una propiedad, un cliente, un vendedor y fecha de inicio y fin de contrato.")
             elif precio == "":
@@ -47,10 +48,10 @@ class Alquileres:
     @staticmethod
     def hasCamposObligatorios(registro):
         for dato in registro:
-            if dato is None or dato == '':
-                return False
-            else:
+            if dato is None or dato == "":
                 return True
+            else:
+                return False
 
     @staticmethod
     def cargaTablaContratos():
@@ -96,10 +97,27 @@ class Alquileres:
         var.ui.txtdirpropalqui.setText(None)
         var.ui.txtpreciopropalqui.setText(None)
         var.ui.txtlocalpropalqui.setText(None)
+        Alquileres.cargarTablaMensualidades(0,0,0)
 
 
     def eliminarAlquiler(idContrato):
+        """
+
+               :param idAlquiler: identificador de contrato de alquiler
+               :type idAlquiler: int
+
+               Elimina un contrato de alquiler si este no tiene mensualidades ya pagadas
+
+               """
         try:
+            mensualidades = conexion.Conexion.listarMensualidades(idContrato)
+            for mensualidad in mensualidades:
+                pagado = mensualidad[2]
+                if pagado:
+                    QtWidgets.QMessageBox.critical(None, 'Error',
+                                                   "Existen registros pagados y no es posible eliminar el contrato seleccionado.")
+                    return
+
             if QtWidgets.QMessageBox.question(None, 'Eliminar contrato',
                                               '¿Desea eliminar el contrato seleccionado?',
                                               QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No) == QtWidgets.QMessageBox.StandardButton.Yes:
@@ -107,9 +125,10 @@ class Alquileres:
                     QtWidgets.QMessageBox.information(None, 'Información',
                                                    "Contrato eliminado correctamente.")
                     Alquileres.cargaTablaContratos()
-                else:
-                    QtWidgets.QMessageBox.critical(None, 'Error',
-                                               "Se ha producido un error inesperado y no es posible eliminar el contrato seleccionado.")
+                    Alquileres.cargarTablaMensualidades(0,0,0)
+                    Alquileres.clearCamposAlquileres()
+                    Propiedades.cargaTablaPropiedades()
+
         except Exception as e:
             print("Error eliminar contrato en alquileres",str(e))
 
@@ -207,7 +226,6 @@ class Alquileres:
 
         """
         try:
-            var.ui.btnModificarcontrato.setDisabled(False)
             listado = conexion.Conexion.listarMensualidades(idAlquiler)
             var.ui.tabAlquiler.setRowCount(0)
 
