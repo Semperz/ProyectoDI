@@ -1626,6 +1626,7 @@ class Ui_venPrincipal(object):
         self.gridLayout_27 = QtWidgets.QGridLayout(self.frame_7)
         self.gridLayout_27.setObjectName("gridLayout_27")
         self.tablaContrato = QtWidgets.QTableWidget(parent=self.frame_7)
+        self.tablaContrato.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.tablaContrato.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tablaContrato.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tablaContrato.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)

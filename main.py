@@ -54,6 +54,8 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resizeTablaPropiedades()
         vendedores.Vendedores.resizeTablaVendedores()
         eventos.Eventos.resizeTablaVentas()
+        eventos.Eventos.resizeTablaAlquilerContrato()
+        eventos.Eventos.resizeTablaMensualidades()
 
         var.ui.tablaVendedores.clicked.connect(vendedores.Vendedores.cargaOneVendedor)
         var.ui.tablaClientes.clicked.connect(clientes.Clientes.cargaOneCliente)

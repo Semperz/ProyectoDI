@@ -344,7 +344,41 @@ class Eventos:
                 font.setBold(True)
                 header_item.setFont(font)
         except Exception as e:
-            print("error en resize tabla propiedades", e)
+            print("error en resize tabla ventas", e)
+
+    @staticmethod
+    def resizeTablaAlquilerContrato():
+        try:
+            header = var.ui.tablaContrato.horizontalHeader()
+            for i in range(header.count()):
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+                header_item = var.ui.tablaContrato.horizontalHeaderItem(i)
+                font = header_item.font()
+                font.setBold(True)
+                header_item.setFont(font)
+        except Exception as e:
+            print("error en resize tabla alquiler", e)
+
+
+
+    @staticmethod
+    def resizeTablaMensualidades():
+        try:
+            header = var.ui.tabAlquiler.horizontalHeader()
+            for i in range(header.count()):
+                if i == 2 or i == 3:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+                else:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+
+                header_item = var.ui.tabAlquiler.horizontalHeaderItem(i)
+                font = header_item.font()
+                font.setBold(True)
+                header_item.setFont(font)
+        except Exception as e:
+            print("error en resize tabla mensualidades", e)
+
 
     def cargarTipoprop(self):
         try:
