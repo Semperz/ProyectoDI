@@ -121,6 +121,15 @@ class Eventos:
 
     def cargaFecha(qDate):
 
+        """
+
+        :param qDate: fecha seleccionada en el calendario
+        :type qDate: QDate
+        :return: devuelve la fecha seleccionada en el calendario
+        :rtype: QDate
+
+        Carga la fecha seleccionada en el calendario en el campo correspondiente
+        """
 
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
@@ -203,6 +212,12 @@ class Eventos:
 
     @staticmethod
     def resizeTablaClientes():
+
+        """
+
+        Redimensiona las columnas de la tabla de clientes
+
+        """
         try:
             header = var.ui.tablaClientes.horizontalHeader()
             for i in range(header.count()):
@@ -220,6 +235,11 @@ class Eventos:
 
 
     def crearBackup(self):
+
+        """
+
+        Crea una copia de seguridad de la base de datos en un archivo zip
+        """
         try:
             fecha = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
             copia = str(fecha)+"_backup.zip"
@@ -244,6 +264,13 @@ class Eventos:
             print("error en crear backup: ", error)
 
     def restaurarBackup(self):
+
+
+        """
+
+        Restaura una copia de seguridad de la base de datos
+
+        """
         try:
             filename = var.dlgabrir.getOpenFileName(None, "Restaurar Copia Seguridad", "", "*.zip;;All Files (*)")
             file = filename[0]
@@ -270,6 +297,12 @@ class Eventos:
 
 
     def limpiarPanel(self):
+
+        """
+
+        Limpia los campos de los formularios de los paneles dependiendo del panel en el que se encuentre
+
+        """
         if var.ui.panPrincipal.currentIndex() == 0:
             clientes.Clientes.clearCamposCliente()
         elif var.ui.panPrincipal.currentIndex() == 1:
@@ -286,24 +319,51 @@ class Eventos:
     Pagina propiedades
     """
     def abrirTipoprop(self):
+
+        """
+
+        Abre la ventana emergente de gestión de tipos de propiedades
+
+        """
         try:
             var.dlggestion.show()
         except Exception as error:
             print(error)
 
     def abrirBuscaLocal(self):
+
+        """
+
+        Abre la ventana emergente de búsqueda de localidades
+
+        """
+
         try:
             var.dlgbuscalocal.show()
         except Exception as error:
             print(error)
 
     def abrirAboutprop(self):
+
+
+        """
+
+        Abre la ventana emergente de información sobre la aplicación
+
+        """
+
         try:
             var.dlgabout.show()
         except Exception as error:
             print(error)
 
     def cerrarVentanaAbout(self):
+
+        """
+
+        Cierra la ventana emergente de información sobre la aplicación
+
+        """
         try:
             var.dlgabout.close()
         except Exception as error:
@@ -312,6 +372,12 @@ class Eventos:
 
     @staticmethod
     def resizeTablaPropiedades():
+
+        """
+
+        Redimensiona las columnas de la tabla de propiedades
+
+        """
         try:
             header = var.ui.tablaPropiedades.horizontalHeader()
             for i in range(header.count()):
@@ -330,6 +396,13 @@ class Eventos:
 
     @staticmethod
     def resizeTablaVentas():
+
+
+        """
+
+        Redimensiona las columnas de la tabla de ventas
+
+        """
         try:
             header = var.ui.tabVenta.horizontalHeader()
             for i in range(header.count()):
@@ -348,6 +421,12 @@ class Eventos:
 
     @staticmethod
     def resizeTablaAlquilerContrato():
+
+        """
+
+        Redimensiona las columnas de la tabla de contratos de alquiler
+
+        """
         try:
             header = var.ui.tablaContrato.horizontalHeader()
             for i in range(header.count()):
@@ -363,6 +442,13 @@ class Eventos:
 
     @staticmethod
     def resizeTablaMensualidades():
+
+
+        """
+
+        Redimensiona las columnas de la tabla de mensualidades
+
+        """
         try:
             header = var.ui.tabAlquiler.horizontalHeader()
             for i in range(header.count()):
@@ -381,6 +467,12 @@ class Eventos:
 
 
     def cargarTipoprop(self):
+
+        """
+
+        Carga los tipos de propiedades en el combobox de tipos de propiedades
+
+        """
         try:
             registro = conexion.Conexion.cargarTipoprop(self)
             #registro = conexionserver.ConexionServer.cargarTipoprop(self)
@@ -391,12 +483,25 @@ class Eventos:
 
     @staticmethod
     def cargarProvprop():
+
+        """
+
+        Carga las provincias en el combobox de provincias de propiedades
+
+        """
+
         var.ui.cmbProvprop.clear()
         listado = conexion.Conexion.listarProvincias()
         #listado = conexionserver.ConexionServer.listaProv()
         var.ui.cmbProvprop.addItems(listado)
     @staticmethod
     def cargarMuniprop():
+
+        """
+
+        Carga los municipios en el combobox de municipios de propiedades dependiendo de la provincia seleccionada
+
+        """
         var.ui.cmbMuniprop.clear()
         provActual = var.ui.cmbProvprop.currentText()
         listado = conexion.Conexion.listarMunicipios(provActual)
@@ -404,6 +509,13 @@ class Eventos:
         var.ui.cmbMuniprop.addItems(listado)
 
     def buscarPorFiltro(self):
+
+
+        """
+
+        Aplica el filtro de busqueda dependiendo del panel en el que se encuentre
+
+        """
         if var.ui.panPrincipal.currentIndex() == 0:
             checked = var.ui.btnBuscarcli.isChecked()
             var.ui.btnBuscarcli.setChecked(not checked)
@@ -419,40 +531,14 @@ class Eventos:
             vendedores.Vendedores.filtroBusquedaVendedor(self)
 
 
-
-
-
     def exportCSVprop(self):
-        try:
-            fecha = datetime.today()
-            fecha = fecha.strftime("%d-%m-%Y")
-            file = (str(fecha) + "_DatosPropiedades.csv")
-            directorio, fichero = var.dlgabrir.getSaveFileName(None, "Exportar datos en CSV", file, ".csv")
-            if fichero:
-                registros = conexion.Conexion.listadoPropiedades()
-                with open(fichero, "w", newline="", encoding="utf-8") as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(["Codigo", "Alta", "Baja", "Dirección", "Provincia", "Municipio", "Tipo",
-                                     "Nº Habitaciones", "Nº Baños", "Superficie", "Pecio alquiler", "Precio compra",
-                                     "Código Postal", "Observaciones", "Operación", "Estado", "Propietario", "Móvil"])
-                    for registro in registros:
-                        writer.writerow(registro)
-                shutil.move(fichero, directorio)
-            else:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Critical)
-                mbox.setWindowIcon(QtGui.QIcon('img/icono.svg'))
-                mbox.setWindowTitle('Aviso')
-                mbox.setText('Error al exportar a CSV')
-                mbox.setStandardButtons(
-                    QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.Ok)
-                mbox.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                mbox.exec()
-        except Exception as e:
-            print("error en exportar propiedades", e)
 
-    def exportCSVprop(self):
+        """
+
+        Exporta los datos de las propiedades a un archivo CSV
+
+        """
+
         try:
             fecha = datetime.today()
             fecha = fecha.strftime("%d-%m-%Y")
@@ -464,8 +550,7 @@ class Eventos:
                     writer = csv.writer(csvfile)
                     writer.writerow(["Codigo", "Alta", "Baja", "Dirección", "Provincia", "Municipio", "Tipo",
                                      "Nº Habitaciones", "Nº Baños", "Superficie", "Pecio alquiler", "Precio compra",
-                                     "Código Postal", "Observaciones", "Operación", "Estado", "Propietario",
-                                     "Móvil"])
+                                     "Código Postal", "Observaciones", "Operación", "Estado", "Propietario", "Móvil"])
                     for registro in registros:
                         writer.writerow(registro)
                 shutil.move(fichero, directorio)
@@ -496,6 +581,13 @@ class Eventos:
 
 
     def exportJSONprop(self):
+
+
+        """
+
+        Exporta los datos de las propiedades a un archivo JSON
+
+        """
         try:
             fecha = datetime.today()
             fecha = fecha.strftime("%d-%m-%Y")

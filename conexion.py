@@ -993,6 +993,17 @@ class Conexion:
 
 
     def eliminarVenta(data):
+
+        """
+
+        :param data: datos necesarios para eliminar una venta
+        :type data: bytearray
+        :return: Exito de la operación
+        :rtype: bool
+
+        Elimina una venta de la base de datos y actualiza el estado de la propiedad a disponible
+        """
+
         try:
             query = QtSql.QSqlQuery()
             query.prepare("DELETE FROM ventas WHERE idventa = :id")
@@ -1017,6 +1028,17 @@ class Conexion:
 
     @staticmethod
     def altaAlquiler(registro):
+
+        """
+
+        :param registro: datos del alquiler
+        :type registro: bytearray
+        :return: Exito de la operación
+        :rtype: bool
+
+        Da de alta un alquiler en la base de datos y actualiza el estado de la propiedad a alquilado
+        """
+
         try:
             query = QtSql.QSqlQuery()
             query.prepare(
@@ -1067,6 +1089,15 @@ class Conexion:
 
     @staticmethod
     def listadoAlquileres():
+
+        """
+
+        :return: listado de alquileres
+        :rtype: bytearray
+
+        Lista los alquileres de la base de datos
+        """
+
         try:
             listado = []
             query = QtSql.QSqlQuery()
@@ -1081,6 +1112,15 @@ class Conexion:
 
     @staticmethod
     def datosOneAlquiler(idAlquiler):
+
+        """
+
+        :param idAlquiler: identificador de un contrato de alquiler
+        :type idAlquiler: int
+        :return: datos de un contrato de alquiler
+        :rtype: bytearray
+        """
+
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -1128,6 +1168,18 @@ class Conexion:
 
     @staticmethod
     def eliminarAlquiler(idContrato):
+
+
+        """
+
+        :param idContrato: identificador de un contrato de alquiler
+        :type idContrato: int
+        :return: Exito de la operación
+        :rtype: bool
+
+        Elimina un contrato de alquiler de la base de datos y actualiza el estado de la propiedad a disponible si no tiene mensualidades pagadas
+        """
+
         try:
             query = QtSql.QSqlQuery()
             query.prepare("DELETE FROM mensualidades WHERE idalquiler = :id")
