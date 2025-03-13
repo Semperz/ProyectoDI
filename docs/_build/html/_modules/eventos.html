@@ -48,6 +48,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.uic.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtCore</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">alquileres</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">facturas</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">vendedores</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">clientes</span>
@@ -172,6 +173,17 @@
 <div class="viewcode-block" id="Eventos.cargaFecha">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.cargaFecha">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargaFecha</span><span class="p">(</span><span class="n">qDate</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param qDate: fecha seleccionada en el calendario</span>
+<span class="sd">        :type qDate: QDate</span>
+<span class="sd">        :return: devuelve la fecha seleccionada en el calendario</span>
+<span class="sd">        :rtype: QDate</span>
+
+<span class="sd">        Carga la fecha seleccionada en el calendario en el campo correspondiente</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">/</span><span class="si">{:02d}</span><span class="s1">/</span><span class="si">{:4d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qDate</span><span class="o">.</span><span class="n">day</span><span class="p">(),</span> <span class="n">qDate</span><span class="o">.</span><span class="n">month</span><span class="p">(),</span> <span class="n">qDate</span><span class="o">.</span><span class="n">year</span><span class="p">()))</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">panel</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">var</span><span class="o">.</span><span class="n">btn</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -188,6 +200,10 @@
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtBajaven</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
             <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">panel</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">var</span><span class="o">.</span><span class="n">btn</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblFechafac</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">panel</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">var</span><span class="o">.</span><span class="n">btn</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtIniciocontrato</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">panel</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">var</span><span class="o">.</span><span class="n">btn</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFincontrato</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
             <span class="n">var</span><span class="o">.</span><span class="n">uicalendar</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">data</span>
@@ -199,6 +215,16 @@
 <div class="viewcode-block" id="Eventos.validarMail">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.validarMail">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validarMail</span><span class="p">(</span><span class="n">mail</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">               :param mail: email a validar</span>
+<span class="sd">               :type mail: str</span>
+<span class="sd">               :return: resultado validación</span>
+<span class="sd">               :rtype: bool</span>
+
+<span class="sd">               Comprueba si el email sigue un formato válido</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
         <span class="n">mail</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$&#39;</span>
         <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">mail</span><span class="p">)</span> <span class="ow">or</span> <span class="n">mail</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -210,6 +236,16 @@
 <div class="viewcode-block" id="Eventos.validarTelefono">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.validarTelefono">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validarTelefono</span><span class="p">(</span><span class="n">telefono</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">              :param movil: móvil a validar</span>
+<span class="sd">              :type movil: str</span>
+<span class="sd">              :return: resultado validacion</span>
+<span class="sd">              :rtype: bool</span>
+
+<span class="sd">              Comprueba si el móvil sigue un formato válido para España</span>
+
+<span class="sd">              &quot;&quot;&quot;</span>
         <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^[67]\d</span><span class="si">{8}</span><span class="s2">$&quot;</span>
         <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">telefono</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
@@ -220,6 +256,16 @@
 <div class="viewcode-block" id="Eventos.validar_numero_decimal">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.validar_numero_decimal">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validar_numero_decimal</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">               :param string: string a validar</span>
+<span class="sd">               :type string: str</span>
+<span class="sd">               :return: resultado validacion</span>
+<span class="sd">               :rtype: bool</span>
+
+<span class="sd">               Comprueba si el numero tipo string tiene 2 decimales</span>
+
+<span class="sd">               &quot;&quot;&quot;</span>
         <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^\d+(\.\d{1,2})?$&#39;</span>
         <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
@@ -231,6 +277,12 @@
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.resizeTablaClientes">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeTablaClientes</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Redimensiona las columnas de la tabla de clientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaClientes</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
@@ -251,6 +303,11 @@
 <div class="viewcode-block" id="Eventos.crearBackup">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.crearBackup">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">crearBackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Crea una copia de seguridad de la base de datos en un archivo zip</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y_%m_</span><span class="si">%d</span><span class="s2">_%H_%M_%S&quot;</span><span class="p">)</span>
             <span class="n">copia</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_backup.zip&quot;</span>
@@ -278,6 +335,13 @@
 <div class="viewcode-block" id="Eventos.restaurarBackup">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.restaurarBackup">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">restaurarBackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Restaura una copia de seguridad de la base de datos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">dlgabrir</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Restaurar Copia Seguridad&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;*.zip;;All Files (*)&quot;</span><span class="p">)</span>
             <span class="n">file</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -307,6 +371,12 @@
 <div class="viewcode-block" id="Eventos.limpiarPanel">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.limpiarPanel">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">limpiarPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Limpia los campos de los formularios de los paneles dependiendo del panel en el que se encuentre</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">panPrincipal</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">clientes</span><span class="o">.</span><span class="n">Clientes</span><span class="o">.</span><span class="n">clearCamposCliente</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">panPrincipal</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -316,9 +386,9 @@
             <span class="n">vendedores</span><span class="o">.</span><span class="n">Vendedores</span><span class="o">.</span><span class="n">clearCamposVendedores</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">panPrincipal</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">facturas</span><span class="o">.</span><span class="n">Facturas</span><span class="o">.</span><span class="n">clearCamposFacturas</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">panPrincipal</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">alquileres</span><span class="o">.</span><span class="n">Alquileres</span><span class="o">.</span><span class="n">clearCamposAlquileres</span><span class="p">()</span></div>
 
-        <span class="n">vendedores</span><span class="o">.</span><span class="n">Vendedores</span><span class="o">.</span><span class="n">clearCamposVendedores</span><span class="p">()</span>
-        <span class="n">facturas</span><span class="o">.</span><span class="n">Facturas</span><span class="o">.</span><span class="n">clearCamposFacturas</span><span class="p">()</span></div>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pagina propiedades</span>
@@ -326,6 +396,12 @@
 <div class="viewcode-block" id="Eventos.abrirTipoprop">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.abrirTipoprop">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">abrirTipoprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Abre la ventana emergente de gestión de tipos de propiedades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlggestion</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
@@ -335,6 +411,13 @@
 <div class="viewcode-block" id="Eventos.abrirBuscaLocal">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.abrirBuscaLocal">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">abrirBuscaLocal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Abre la ventana emergente de búsqueda de localidades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgbuscalocal</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
@@ -344,6 +427,14 @@
 <div class="viewcode-block" id="Eventos.abrirAboutprop">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.abrirAboutprop">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">abrirAboutprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Abre la ventana emergente de información sobre la aplicación</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgabout</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
@@ -353,6 +444,12 @@
 <div class="viewcode-block" id="Eventos.cerrarVentanaAbout">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.cerrarVentanaAbout">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cerrarVentanaAbout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Cierra la ventana emergente de información sobre la aplicación</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgabout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
@@ -364,6 +461,12 @@
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.resizeTablaPropiedades">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeTablaPropiedades</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Redimensiona las columnas de la tabla de propiedades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaPropiedades</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
@@ -385,6 +488,13 @@
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.resizeTablaVentas">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">resizeTablaVentas</span><span class="p">():</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Redimensiona las columnas de la tabla de ventas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabVenta</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
@@ -399,12 +509,71 @@
                 <span class="n">font</span><span class="o">.</span><span class="n">setBold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">header_item</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en resize tabla propiedades&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en resize tabla ventas&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Eventos.resizeTablaAlquilerContrato">
+<a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.resizeTablaAlquilerContrato">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeTablaAlquilerContrato</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Redimensiona las columnas de la tabla de contratos de alquiler</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaContrato</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
+                <span class="n">header</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeMode</span><span class="o">.</span><span class="n">Stretch</span><span class="p">)</span>
+                <span class="n">header_item</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tablaContrato</span><span class="o">.</span><span class="n">horizontalHeaderItem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">font</span> <span class="o">=</span> <span class="n">header_item</span><span class="o">.</span><span class="n">font</span><span class="p">()</span>
+                <span class="n">font</span><span class="o">.</span><span class="n">setBold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">header_item</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en resize tabla alquiler&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="Eventos.resizeTablaMensualidades">
+<a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.resizeTablaMensualidades">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeTablaMensualidades</span><span class="p">():</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Redimensiona las columnas de la tabla de mensualidades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabAlquiler</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">header</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeMode</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">header</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeMode</span><span class="o">.</span><span class="n">Stretch</span><span class="p">)</span>
+
+
+                <span class="n">header_item</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabAlquiler</span><span class="o">.</span><span class="n">horizontalHeaderItem</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">font</span> <span class="o">=</span> <span class="n">header_item</span><span class="o">.</span><span class="n">font</span><span class="p">()</span>
+                <span class="n">font</span><span class="o">.</span><span class="n">setBold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">header_item</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en resize tabla mensualidades&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
 
 
 <div class="viewcode-block" id="Eventos.cargarTipoprop">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.cargarTipoprop">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargarTipoprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Carga los tipos de propiedades en el combobox de tipos de propiedades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">registro</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">cargarTipoprop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="c1">#registro = conexionserver.ConexionServer.cargarTipoprop(self)</span>
@@ -418,6 +587,13 @@
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.cargarProvprop">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargarProvprop</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Carga las provincias en el combobox de provincias de propiedades</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvprop</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">listado</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">listarProvincias</span><span class="p">()</span>
         <span class="c1">#listado = conexionserver.ConexionServer.listaProv()</span>
@@ -427,6 +603,12 @@
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.cargarMuniprop">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cargarMuniprop</span><span class="p">():</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Carga los municipios en el combobox de municipios de propiedades dependiendo de la provincia seleccionada</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbMuniprop</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">provActual</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvprop</span><span class="o">.</span><span class="n">currentText</span><span class="p">()</span>
         <span class="n">listado</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">listarMunicipios</span><span class="p">(</span><span class="n">provActual</span><span class="p">)</span>
@@ -437,6 +619,13 @@
 <div class="viewcode-block" id="Eventos.buscarPorFiltro">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.buscarPorFiltro">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">buscarPorFiltro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Aplica el filtro de busqueda dependiendo del panel en el que se encuentre</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">panPrincipal</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">checked</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">btnBuscarcli</span><span class="o">.</span><span class="n">isChecked</span><span class="p">()</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">btnBuscarcli</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="ow">not</span> <span class="n">checked</span><span class="p">)</span>
@@ -453,42 +642,16 @@
 
 
 
-
-
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">exportCSVprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-            <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y&quot;</span><span class="p">)</span>
-            <span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_DatosPropiedades.csv&quot;</span><span class="p">)</span>
-            <span class="n">directorio</span><span class="p">,</span> <span class="n">fichero</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">dlgabrir</span><span class="o">.</span><span class="n">getSaveFileName</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Exportar datos en CSV&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">fichero</span><span class="p">:</span>
-                <span class="n">registros</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">listadoPropiedades</span><span class="p">()</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fichero</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-                    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
-                    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Codigo&quot;</span><span class="p">,</span> <span class="s2">&quot;Alta&quot;</span><span class="p">,</span> <span class="s2">&quot;Baja&quot;</span><span class="p">,</span> <span class="s2">&quot;Dirección&quot;</span><span class="p">,</span> <span class="s2">&quot;Provincia&quot;</span><span class="p">,</span> <span class="s2">&quot;Municipio&quot;</span><span class="p">,</span> <span class="s2">&quot;Tipo&quot;</span><span class="p">,</span>
-                                     <span class="s2">&quot;Nº Habitaciones&quot;</span><span class="p">,</span> <span class="s2">&quot;Nº Baños&quot;</span><span class="p">,</span> <span class="s2">&quot;Superficie&quot;</span><span class="p">,</span> <span class="s2">&quot;Pecio alquiler&quot;</span><span class="p">,</span> <span class="s2">&quot;Precio compra&quot;</span><span class="p">,</span>
-                                     <span class="s2">&quot;Código Postal&quot;</span><span class="p">,</span> <span class="s2">&quot;Observaciones&quot;</span><span class="p">,</span> <span class="s2">&quot;Operación&quot;</span><span class="p">,</span> <span class="s2">&quot;Estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Propietario&quot;</span><span class="p">,</span> <span class="s2">&quot;Móvil&quot;</span><span class="p">])</span>
-                    <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
-                        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">registro</span><span class="p">)</span>
-                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">fichero</span><span class="p">,</span> <span class="n">directorio</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">mbox</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="p">()</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">Icon</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setWindowIcon</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QIcon</span><span class="p">(</span><span class="s1">&#39;img/icono.svg&#39;</span><span class="p">))</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;Aviso&#39;</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Error al exportar a CSV&#39;</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setStandardButtons</span><span class="p">(</span>
-                    <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">setDefaultButton</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Aceptar&#39;</span><span class="p">)</span>
-                <span class="n">mbox</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en exportar propiedades&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-
 <div class="viewcode-block" id="Eventos.exportCSVprop">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.exportCSVprop">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">exportCSVprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Exporta los datos de las propiedades a un archivo CSV</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y&quot;</span><span class="p">)</span>
@@ -500,8 +663,7 @@
                     <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
                     <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Codigo&quot;</span><span class="p">,</span> <span class="s2">&quot;Alta&quot;</span><span class="p">,</span> <span class="s2">&quot;Baja&quot;</span><span class="p">,</span> <span class="s2">&quot;Dirección&quot;</span><span class="p">,</span> <span class="s2">&quot;Provincia&quot;</span><span class="p">,</span> <span class="s2">&quot;Municipio&quot;</span><span class="p">,</span> <span class="s2">&quot;Tipo&quot;</span><span class="p">,</span>
                                      <span class="s2">&quot;Nº Habitaciones&quot;</span><span class="p">,</span> <span class="s2">&quot;Nº Baños&quot;</span><span class="p">,</span> <span class="s2">&quot;Superficie&quot;</span><span class="p">,</span> <span class="s2">&quot;Pecio alquiler&quot;</span><span class="p">,</span> <span class="s2">&quot;Precio compra&quot;</span><span class="p">,</span>
-                                     <span class="s2">&quot;Código Postal&quot;</span><span class="p">,</span> <span class="s2">&quot;Observaciones&quot;</span><span class="p">,</span> <span class="s2">&quot;Operación&quot;</span><span class="p">,</span> <span class="s2">&quot;Estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Propietario&quot;</span><span class="p">,</span>
-                                     <span class="s2">&quot;Móvil&quot;</span><span class="p">])</span>
+                                     <span class="s2">&quot;Código Postal&quot;</span><span class="p">,</span> <span class="s2">&quot;Observaciones&quot;</span><span class="p">,</span> <span class="s2">&quot;Operación&quot;</span><span class="p">,</span> <span class="s2">&quot;Estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Propietario&quot;</span><span class="p">,</span> <span class="s2">&quot;Móvil&quot;</span><span class="p">])</span>
                     <span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
                         <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">registro</span><span class="p">)</span>
                 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">fichero</span><span class="p">,</span> <span class="n">directorio</span><span class="p">)</span>
@@ -535,6 +697,13 @@
 <div class="viewcode-block" id="Eventos.exportJSONprop">
 <a class="viewcode-back" href="../src/eventos.html#eventos.Eventos.exportJSONprop">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">exportJSONprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Exporta los datos de las propiedades a un archivo JSON</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y&quot;</span><span class="p">)</span>
